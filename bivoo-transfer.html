@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Reserve seu transfer com a Bivoo. Transporte confortável e seguro do aeroporto ao seu destino com os melhores preços.">
+    <title>Transfer e Transporte | Bivoo - Viaje com Conforto</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .vehicle-card {
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .vehicle-card.selected {
+            border-color: #EC7430;
+            box-shadow: 0 0 0 3px rgba(236, 116, 48, 0.2);
+        }
+
+        .route-card {
+            transition: all 0.3s ease;
+        }
+
+        .route-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.5s ease forwards;
+        }
+
+        .feature-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .feature-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .feature-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#EC7430',
+                        'primary-dark': '#D66328',
+                        secondary: '#0099CC',
+                        'text-dark': '#726983',
+                        'text-light': '#9B95A8'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+
+    <!-- HEADER BIVOO - PADRÃO -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-4 border-b border-gray-200">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências" class="h-12 w-auto">
+                </a>
+
+                <!-- Right Side Links Desktop -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Vendas -->
+                    <a href="tel:08008870248"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                        <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                    </a>
+
+                    <!-- Iniciar sessão -->
+                    <a href="#login"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                        <span>Iniciar sessão</span>
+                    </a>
+
+                    <!-- Minhas viagens -->
+                    <a href="#minhas-viagens"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                        <span>Minhas viagens</span>
+                    </a>
+
+                    <!-- Para onde ir? -->
+                    <a href="#para-onde-ir"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                        <span>Para onde ir?</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-[#EC7430] transition-colors"
+                    aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="hidden lg:block" role="navigation" aria-label="Menu principal">
+                <ul class="flex items-center justify-start space-x-8 py-4">
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="hospedagens">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="experiencias">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="pacotes">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="seguros">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="nav-link text-[#EC7430] font-bold transition-all text-base active-nav"
+                            data-nav="transfer">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Menu mobile">
+                <ul class="space-y-2">
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="tel:08008870248"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                            Vendas: <strong>0800 887 0248</strong>
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#login"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                            Iniciar sessão
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#minhas-viagens"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                            Minhas viagens
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-4 border-b border-gray-200">
+                        <a href="#para-onde-ir"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                            Para onde ir?
+                        </a>
+                    </li>
+                    <li><a href="bivoo-listings.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Hospedagens</a>
+                    </li>
+                    <li><a href="bivoo-listings.html?type=experiencias"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Experiências</a>
+                    </li>
+                    <li><a href="bivoo-listings.html?type=pacotes"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Pacotes</a>
+                    </li>
+                    <li><a href="bivoo-safe.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Seguros</a>
+                    </li>
+                    <li><a href="bivoo-transfer.html"
+                            class="block px-4 py-3 text-[#EC7430] bg-gray-50 rounded-lg font-bold">Transfer</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary to-orange-600 text-white py-20 lg:py-32">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                    <i class="fas fa-car mr-2"></i>
+                    Transfer Aeroporto e City Tour
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                    Transporte Confortável e Seguro
+                </h1>
+                <p class="text-xl lg:text-2xl mb-8 text-orange-50">
+                    Do aeroporto ao seu destino com conforto, pontualidade e os melhores preços
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#reserva"
+                        class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        Reservar Transfer
+                    </a>
+                    <a href="#veiculos"
+                        class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                        Ver Veículos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Image -->
+                <div class="relative">
+                    <div class="aspect-w-16 aspect-h-12 rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="assets/img/transfer-hero.jpg" alt="Transfer confortável Bivoo"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -right-6 bg-gradient-to-br from-primary to-orange-600 text-white p-6 rounded-2xl shadow-xl">
+                        <p class="text-sm font-semibold mb-1">Satisfação</p>
+                        <p class="text-4xl font-bold">98%</p>
+                        <p class="text-xs text-orange-100">dos clientes</p>
+                    </div>
+                </div>
+
+                <!-- Right Side - Features -->
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                        Por que escolher nosso Transfer?
+                    </h2>
+                    <p class="text-xl text-text-dark mb-8">
+                        Experiência completa em transporte turístico com motoristas profissionais e veículos modernos
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div class="feature-item flex items-start space-x-4">
+                            <div
+                                class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1">Pontualidade Garantida</h3>
+                                <p class="text-text-dark">Monitorizamos seu voo em tempo real e ajustamos o horário de
+                                    coleta automaticamente</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="feature-item flex items-start space-x-4">
+                            <div
+                                class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1">Segurança e Conforto</h3>
+                                <p class="text-text-dark">Veículos revisados, ar-condicionado, Wi-Fi e motoristas
+                                    treinados e certificados</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="feature-item flex items-start space-x-4">
+                            <div
+                                class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-dollar-sign text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1">Melhor Preço</h3>
+                                <p class="text-text-dark">Preços fixos sem surpresas. Sem taxas extras por bagagem ou
+                                    paradas no caminho</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 4 -->
+                        <div class="feature-item flex items-start space-x-4">
+                            <div
+                                class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-calendar-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1">Cancelamento Flexível</h3>
+                                <p class="text-text-dark">Cancele gratuitamente até 24h antes da viagem com reembolso
+                                    total</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section id="veiculos" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Escolha seu Veículo
+                </h2>
+                <p class="text-xl text-text-dark max-w-3xl mx-auto">
+                    Frota moderna e diversificada para atender suas necessidades
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Vehicle 1 - Sedan -->
+                <div class="vehicle-card bg-white border-2 border-gray-200 rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-10 bg-gray-200">
+                        <img src="assets/img/sedan.jpg" alt="Sedan Executivo" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">Sedan</h3>
+                            <span class="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
+                                Popular
+                            </span>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-text-dark">
+                            <li class="flex items-center">
+                                <i class="fas fa-users text-primary mr-2"></i>
+                                Até 4 passageiros
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-suitcase text-primary mr-2"></i>
+                                2 malas grandes + 2 pequenas
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-snowflake text-primary mr-2"></i>
+                                Ar-condicionado
+                            </li>
+                        </ul>
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-3xl font-bold text-gray-900">R$ 85</span>
+                                <span class="text-text-light text-sm ml-1">por trecho</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-gray-100 hover:bg-primary hover:text-white text-gray-900 py-3 rounded-lg font-bold transition-all">
+                            Selecionar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vehicle 2 - SUV -->
+                <div class="vehicle-card bg-white border-2 border-gray-200 rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-10 bg-gray-200">
+                        <img src="assets/img/suv.jpg" alt="SUV Conforto" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">SUV</h3>
+                            <span class="bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
+                                Conforto
+                            </span>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-text-dark">
+                            <li class="flex items-center">
+                                <i class="fas fa-users text-primary mr-2"></i>
+                                Até 6 passageiros
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-suitcase text-primary mr-2"></i>
+                                4 malas grandes + 2 pequenas
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-wifi text-primary mr-2"></i>
+                                Wi-Fi + Ar-condicionado
+                            </li>
+                        </ul>
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-3xl font-bold text-gray-900">R$ 135</span>
+                                <span class="text-text-light text-sm ml-1">por trecho</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-gray-100 hover:bg-primary hover:text-white text-gray-900 py-3 rounded-lg font-bold transition-all">
+                            Selecionar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vehicle 3 - Van -->
+                <div class="vehicle-card bg-white border-2 border-gray-200 rounded-2xl overflow-hidden cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-10 bg-gray-200">
+                        <img src="assets/img/van.jpg" alt="Van Executiva" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-900">Van</h3>
+                            <span class="bg-purple-100 text-purple-700 text-xs font-semibold px-3 py-1 rounded-full">
+                                Grupos
+                            </span>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-text-dark">
+                            <li class="flex items-center">
+                                <i class="fas fa-users text-primary mr-2"></i>
+                                Até 10 passageiros
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-suitcase text-primary mr-2"></i>
+                                8 malas grandes + 4 pequenas
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-tv text-primary mr-2"></i>
+                                TV + Wi-Fi + Ar
+                            </li>
+                        </ul>
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-3xl font-bold text-gray-900">R$ 220</span>
+                                <span class="text-text-light text-sm ml-1">por trecho</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-gray-100 hover:bg-primary hover:text-white text-gray-900 py-3 rounded-lg font-bold transition-all">
+                            Selecionar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vehicle 4 - Executive -->
+                <div
+                    class="vehicle-card bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-gray-900 rounded-2xl overflow-hidden text-white cursor-pointer">
+                    <div class="aspect-w-16 aspect-h-10 bg-gray-700">
+                        <img src="assets/img/executive.jpg" alt="Executivo Premium"
+                            class="w-full h-48 object-cover opacity-90">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold">Executivo</h3>
+                            <span class="bg-yellow-400 text-gray-900 text-xs font-semibold px-3 py-1 rounded-full">
+                                VIP
+                            </span>
+                        </div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-users text-primary mr-2"></i>
+                                Até 3 passageiros
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-suitcase text-primary mr-2"></i>
+                                2 malas grandes
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-star text-primary mr-2"></i>
+                                Água + Jornal + Wi-Fi
+                            </li>
+                        </ul>
+                        <div class="flex items-baseline justify-between mb-4">
+                            <div>
+                                <span class="text-3xl font-bold">R$ 180</span>
+                                <span class="text-gray-400 text-sm ml-1">por trecho</span>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-lg font-bold transition-all">
+                            Selecionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="reserva" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div
+                    class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-2xl p-8 lg:p-12 border border-gray-200">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            Reserve seu Transfer
+                        </h2>
+                        <p class="text-xl text-text-dark">
+                            Preencha os dados e receba confirmação imediata
+                        </p>
+                    </div>
+
+                    <form id="transferForm" class="space-y-6">
+                        <!-- Transfer Type -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-3">Tipo de Transfer</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="transferType" value="aeroporto-hotel" class="peer sr-only"
+                                        checked>
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-plane-arrival text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900 text-sm">Aeroporto → Hotel</p>
+                                    </div>
+                                </label>
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="transferType" value="hotel-aeroporto"
+                                        class="peer sr-only">
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-plane-departure text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900 text-sm">Hotel → Aeroporto</p>
+                                    </div>
+                                </label>
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="transferType" value="ida-volta" class="peer sr-only">
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-exchange-alt text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900 text-sm">Ida e Volta</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Origin and Destination -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="origin"
+                                    class="block text-sm font-semibold text-gray-900 mb-2">Origem</label>
+                                <select id="origin" name="origin" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                                    <option value="">Selecione a origem</option>
+                                    <optgroup label="Aeroportos RN">
+                                        <option value="aeroporto-natal">Aeroporto de Natal (GOV)</option>
+                                        <option value="aeroporto-sao-goncalo">Aeroporto São Gonçalo do Amarante</option>
+                                    </optgroup>
+                                    <optgroup label="Hotéis em Natal">
+                                        <option value="hotel-ponta-negra">Ponta Negra</option>
+                                        <option value="hotel-via-costeira">Via Costeira</option>
+                                        <option value="hotel-centro">Centro de Natal</option>
+                                    </optgroup>
+                                    <optgroup label="Praias">
+                                        <option value="pipa">Praia de Pipa</option>
+                                        <option value="genipabu">Genipabu</option>
+                                        <option value="maracajau">Maracajaú</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="destination"
+                                    class="block text-sm font-semibold text-gray-900 mb-2">Destino</label>
+                                <select id="destination" name="destination" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                                    <option value="">Selecione o destino</option>
+                                    <optgroup label="Aeroportos RN">
+                                        <option value="aeroporto-natal">Aeroporto de Natal (GOV)</option>
+                                        <option value="aeroporto-sao-goncalo">Aeroporto São Gonçalo do Amarante</option>
+                                    </optgroup>
+                                    <optgroup label="Hotéis em Natal">
+                                        <option value="hotel-ponta-negra">Ponta Negra</option>
+                                        <option value="hotel-via-costeira">Via Costeira</option>
+                                        <option value="hotel-centro">Centro de Natal</option>
+                                    </optgroup>
+                                    <optgroup label="Praias">
+                                        <option value="pipa">Praia de Pipa</option>
+                                        <option value="genipabu">Genipabu</option>
+                                        <option value="maracajau">Maracajaú</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Date and Time -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="date" class="block text-sm font-semibold text-gray-900 mb-2">Data</label>
+                                <input type="date" id="date" name="date" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="time" class="block text-sm font-semibold text-gray-900 mb-2">Horário</label>
+                                <input type="time" id="time" name="time" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Flight Info (conditional) -->
+                        <div id="flightInfo" class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="flightNumber" class="block text-sm font-semibold text-gray-900 mb-2">
+                                    Número do Voo <span class="text-text-light font-normal">(opcional)</span>
+                                </label>
+                                <input type="text" id="flightNumber" name="flightNumber"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="Ex: G31234">
+                            </div>
+                            <div>
+                                <label for="airline" class="block text-sm font-semibold text-gray-900 mb-2">
+                                    Companhia Aérea <span class="text-text-light font-normal">(opcional)</span>
+                                </label>
+                                <input type="text" id="airline" name="airline"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="Ex: GOL">
+                            </div>
+                        </div>
+
+                        <!-- Passengers and Luggage -->
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <label for="passengers"
+                                    class="block text-sm font-semibold text-gray-900 mb-2">Passageiros</label>
+                                <input type="number" id="passengers" name="passengers" min="1" max="15" value="1"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="luggage" class="block text-sm font-semibold text-gray-900 mb-2">Malas
+                                    Grandes</label>
+                                <input type="number" id="luggage" name="luggage" min="0" max="10" value="1"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="handLuggage" class="block text-sm font-semibold text-gray-900 mb-2">Malas
+                                    Pequenas</label>
+                                <input type="number" id="handLuggage" name="handLuggage" min="0" max="10" value="0"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">Nome
+                                    Completo</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="Seu nome completo">
+                            </div>
+                            <div>
+                                <label for="phone"
+                                    class="block text-sm font-semibold text-gray-900 mb-2">Telefone/WhatsApp</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">E-mail</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="seu@email.com">
+                        </div>
+
+                        <!-- Special Requests -->
+                        <div>
+                            <label for="notes" class="block text-sm font-semibold text-gray-900 mb-2">
+                                Observações <span class="text-text-light font-normal">(opcional)</span>
+                            </label>
+                            <textarea id="notes" name="notes" rows="3"
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                                placeholder="Cadeirinha de bebê, parada adicional, etc."></textarea>
+                        </div>
+
+                        <!-- Price Estimate -->
+                        <div id="priceEstimate"
+                            class="bg-gradient-to-br from-primary/10 to-orange-50 border-2 border-primary/30 rounded-xl p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-semibold text-text-dark mb-1">Valor Estimado</p>
+                                    <p class="text-4xl font-bold text-gray-900">R$ <span id="estimatedPrice">85</span>
+                                    </p>
+                                    <p class="text-xs text-text-light mt-1">*Valor pode variar conforme veículo
+                                        selecionado</p>
+                                </div>
+                                <div class="text-right">
+                                    <i class="fas fa-calculator text-5xl text-primary/30"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-orange-600 hover:from-primary-dark hover:to-orange-700 text-white py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Confirmar Reserva
+                        </button>
+
+                        <p class="text-sm text-center text-text-light">
+                            Confirmação imediata por e-mail e WhatsApp. Pagamento no momento do embarque.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Routes -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Rotas Mais Populares
+                </h2>
+                <p class="text-xl text-text-dark">
+                    Principais trajetos em Natal e Região
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Route 1 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">Aeroporto → Ponta Negra</h3>
+                            <p class="text-sm text-text-dark">25 km · 30 minutos</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 85</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">4.9</span>
+                        <span>(1.234 avaliações)</span>
+                    </div>
+                </div>
+
+                <!-- Route 2 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">Aeroporto → Pipa</h3>
+                            <p class="text-sm text-text-dark">85 km · 90 minutos</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 220</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">4.8</span>
+                        <span>(892 avaliações)</span>
+                    </div>
+                </div>
+
+                <!-- Route 3 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">Ponta Negra → Maracajaú</h3>
+                            <p class="text-sm text-text-dark">60 km · 70 minutos</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 180</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">5.0</span>
+                        <span>(567 avaliações)</span>
+                    </div>
+                </div>
+
+                <!-- Route 4 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">Natal → Genipabu</h3>
+                            <p class="text-sm text-text-dark">30 km · 35 minutos</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 110</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">4.9</span>
+                        <span>(723 avaliações)</span>
+                    </div>
+                </div>
+
+                <!-- Route 5 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">Aeroporto → Via Costeira</h3>
+                            <p class="text-sm text-text-dark">18 km · 25 minutos</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 75</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">4.8</span>
+                        <span>(456 avaliações)</span>
+                    </div>
+                </div>
+
+                <!-- Route 6 -->
+                <div class="route-card bg-white rounded-xl shadow-md p-6 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-900 mb-1">City Tour Natal</h3>
+                            <p class="text-sm text-text-dark">Dia completo · 8 horas</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm text-text-light">A partir de</p>
+                            <p class="text-2xl font-bold text-primary">R$ 350</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-xs text-text-dark">
+                        <i class="fas fa-star text-yellow-400 mr-1"></i>
+                        <span class="font-semibold mr-1">5.0</span>
+                        <span>(312 avaliações)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-secondary to-blue-700 text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                    Precisa de um Transfer Agora?
+                </h2>
+                <p class="text-xl lg:text-2xl mb-8 text-blue-100">
+                    Reserve online ou ligue para nosso atendimento 24 horas
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#reserva"
+                        class="bg-white hover:bg-gray-100 text-secondary px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Reservar Online
+                    </a>
+                    <a href="tel:08008870248"
+                        class="bg-transparent border-2 border-white hover:bg-white hover:text-secondary text-white px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        0800 887 0248
+                    </a>
+                </div>
+                <p class="mt-6 text-blue-100 text-sm">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Pagamento seguro · Cancelamento gratuito até 24h antes
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Navegue</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="bivoo-home.html"
+                                class="text-gray-300 hover:text-white transition-colors">Início</a></li>
+                        <li><a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors">Hospedagens</a></li>
+                        <li><a href="bivoo-about.html" class="text-gray-300 hover:text-white transition-colors">Sobre
+                                nós</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="bivoo-help.html" class="text-gray-300 hover:text-white transition-colors">Central
+                                de ajuda</a></li>
+                        <li><a href="bivoo-faq.html" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
+                        </li>
+                        <li><a href="tel:08008870248" class="text-gray-300 hover:text-white transition-colors">0800 887
+                                0248</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Transfer</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#reserva" class="text-gray-300 hover:text-white transition-colors">Reservar
+                                transfer</a></li>
+                        <li><a href="#veiculos" class="text-gray-300 hover:text-white transition-colors">Tipos de
+                                veículos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Rotas populares</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contato</h4>
+                    <p class="text-sm text-gray-300 mb-2">Rua Bem e São Agostinho</p>
+                    <p class="text-sm text-gray-300 mb-2">Pipa/RN - CEP 59.178-000</p>
+                    <p class="text-sm text-gray-300">(84) 00694-0365</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-sm text-gray-400">&copy; 2025 Bivoo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+
+        // Vehicle Selection
+        document.querySelectorAll('.vehicle-card button').forEach((btn, index) => {
+            btn.addEventListener('click', function () {
+                const vehicleCard = this.closest('.vehicle-card');
+                const vehicleName = vehicleCard.querySelector('h3').textContent;
+                const price = vehicleCard.querySelector('.text-3xl').textContent;
+
+                // Remove selected from all
+                document.querySelectorAll('.vehicle-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+
+                // Add selected to clicked
+                vehicleCard.classList.add('selected');
+
+                // Update price estimate
+                const priceValue = price.replace('R$', '').trim();
+                document.getElementById('estimatedPrice').textContent = priceValue;
+
+                // Show feedback
+                alert(`${vehicleName} selecionado!\n\nValor: ${price}\n\nProssiga para finalizar a reserva.`);
+
+                // Scroll to form
+                document.querySelector('#reserva').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Form Submission
+        const transferForm = document.getElementById('transferForm');
+
+        if (transferForm) {
+            transferForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(transferForm);
+                const data = Object.fromEntries(formData);
+
+                // Show confirmation
+                alert(`Reserva Confirmada!\n\nTipo: ${data.transferType}\nOrigem: ${data.origin}\nDestino: ${data.destination}\nData: ${data.date} às ${data.time}\nPassageiros: ${data.passengers}\n\nConfirmação enviada para ${data.email}`);
+
+                // In production, send to backend
+                console.log('Form data:', data);
+            });
+        }
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        // Route Cards Click
+        document.querySelectorAll('.route-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const route = this.querySelector('h3').textContent;
+                const price = this.querySelector('.text-2xl').textContent;
+
+                alert(`Rota selecionada:\n\n${route}\n${price}\n\nPreencha o formulário para confirmar sua reserva.`);
+
+                document.querySelector('#reserva').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

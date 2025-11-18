@@ -54,102 +54,246 @@
 <body class="font-sans antialiased">
 
     <!-- Header/Navigation -->
-    <header class="bg-white sticky top-0 z-50 shadow-sm">
-        <!-- Top Header Bar -->
-        <div class="relative">
-            <!-- Background extension for right side -->
-            <div class="absolute top-0 right-0 rounded-bl-xl bottom-0 w-1/2 bg-gray-100"></div>
 
-            <div class="container mx-auto px-4 lg:px-8 relative z-10">
-                <div class="flex items-center justify-between py-3">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <a href="/" class="flex items-center">
-                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
-                                class="h-10 w-auto">
-                        </a>
-                    </div>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-4 border-b border-gray-200">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências" class="h-12 w-auto">
+                </a>
 
-                    <!-- Right Side - Contact & Actions -->
-                    <div class="hidden lg:flex items-center space-x-6">
-                        <!-- Phone -->
-                        <a href="tel:08008870248"
-                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
-                            <i class="fas fa-phone-alt text-orange-500 mr-2"></i>
-                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
-                        </a>
+                <!-- Right Side Links Desktop -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Vendas -->
+                    <a href="tel:08008870248"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                        <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                    </a>
 
-                        <!-- Login -->
-                        <a href="#login"
-                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
-                            <i class="fas fa-user text-orange-500 mr-2"></i>
-                            <span>Iniciar sessão</span>
-                        </a>
+                    <!-- Iniciar sessão -->
+                    <a href="#login"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                        <span>Iniciar sessão</span>
+                    </a>
 
-                        <!-- My Trips -->
-                        <a href="#minhas-viagens"
-                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
-                            <i class="fas fa-suitcase text-orange-500 mr-2"></i>
-                            <span>Minhas viagens</span>
-                        </a>
+                    <!-- Minhas viagens -->
+                    <a href="#minhas-viagens"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                        <span>Minhas viagens</span>
+                    </a>
 
-                        <!-- Help -->
-                        <a href="#ajuda"
-                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
-                            <i class="fas fa-question-circle text-orange-500 mr-2"></i>
-                            <span>Para onde ir?</span>
-                        </a>
-                    </div>
-
-                    <!-- Mobile Menu Button -->
-                    <button class="lg:hidden text-gray-700 hover:text-orange-500" aria-label="Menu">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+                    <!-- Para onde ir? -->
+                    <a href="#para-onde-ir"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                        <span>Para onde ir?</span>
+                    </a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-[#EC7430] transition-colors"
+                    aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
+
+            <!-- Main Navigation -->
+            <nav class="hidden lg:block" role="navigation" aria-label="Menu principal">
+                <ul class="flex items-center justify-start space-x-8 py-4">
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="hospedagens">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="experiencias">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="pacotes">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="seguros">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="transfer">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
-        <!-- Bottom Header - Main Navigation -->
-        <div>
-            <div class="container mx-auto px-4 lg:px-8">
-                <nav class="hidden lg:flex items-center space-x-8 py-4">
-                    <a href="#hospedagens"
-                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
-                        Hospedagens
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#experiencias" class="text-orange-500 font-medium text-sm relative border-orange-500">
-                        Experiências
-                    </a>
-                    <a href="#pacotes"
-                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
-                        Pacotes
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#seguros"
-                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
-                        Seguros
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#transfer"
-                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
-                        Transfer
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#onibus"
-                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
-                        Ônibus
-                        <span
-                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </nav>
-            </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Menu mobile">
+                <ul class="space-y-2">
+                    <!-- Top Links Mobile -->
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="tel:08008870248"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                            Vendas: <strong>0800 887 0248</strong>
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#login"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                            Iniciar sessão
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#minhas-viagens"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                            Minhas viagens
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-4 border-b border-gray-200">
+                        <a href="#para-onde-ir"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                            Para onde ir?
+                        </a>
+                    </li>
+
+                    <!-- Main Navigation -->
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+
+        // Active Navigation Item
+        // Detecta a página atual e marca o item correspondente como ativo
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPath = window.location.pathname;
+            const currentParams = new URLSearchParams(window.location.search);
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                const linkPath = new URL(link.href).pathname;
+                const linkParams = new URLSearchParams(new URL(link.href).search);
+                const navType = link.getAttribute('data-nav');
+
+                // Verifica se é a página atual
+                let isActive = false;
+
+                if (currentPath.includes('bivoo-listings.html')) {
+                    const typeParam = currentParams.get('type');
+                    const linkTypeParam = linkParams.get('type');
+
+                    if (navType === 'hospedagens' && !typeParam) {
+                        isActive = true;
+                    } else if (typeParam === linkTypeParam) {
+                        isActive = true;
+                    }
+                } else if (currentPath.includes('bivoo-safe.html') && navType === 'seguros') {
+                    isActive = true;
+                } else if (currentPath.includes('bivoo-transfer.html') && navType === 'transfer') {
+                    isActive = true;
+                }
+
+                if (isActive) {
+                    link.classList.add('active-nav');
+                    link.classList.remove('text-[#726983]');
+                    link.classList.add('text-[#EC7430]', 'font-bold');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            }
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            }
+        });
+    </script>
+
 
     <!-- Hero Section -->
     <section class="relative overflow-hidden h-[600px] lg:h-[550px]">

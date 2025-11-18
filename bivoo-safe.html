@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contrate seu seguro viagem com a Bivoo. Proteção completa para sua viagem com os melhores preços e cobertura internacional.">
+    <title>Seguro Viagem | Bivoo - Viaje Protegido</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .plan-card {
+            transition: all 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card.selected {
+            border-color: #EC7430;
+            box-shadow: 0 0 0 3px rgba(236, 116, 48, 0.2);
+        }
+
+        .benefit-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .benefit-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .benefit-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .benefit-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .benefit-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#EC7430',
+                        'primary-dark': '#D66328',
+                        secondary: '#0099CC',
+                        'text-dark': '#726983',
+                        'text-light': '#9B95A8'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+
+    <!-- HEADER BIVOO - PADRÃO -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-4 border-b border-gray-200">
+                <!-- Logo -->
+                <a href="/" class="flex items-center">
+                    <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências" class="h-12 w-auto">
+                </a>
+
+                <!-- Right Side Links Desktop -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Vendas -->
+                    <a href="tel:08008870248"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                        <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                    </a>
+
+                    <!-- Iniciar sessão -->
+                    <a href="#login"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                        <span>Iniciar sessão</span>
+                    </a>
+
+                    <!-- Minhas viagens -->
+                    <a href="#minhas-viagens"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                        <span>Minhas viagens</span>
+                    </a>
+
+                    <!-- Para onde ir? -->
+                    <a href="#para-onde-ir"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                        <span>Para onde ir?</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-[#EC7430] transition-colors"
+                    aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="hidden lg:block" role="navigation" aria-label="Menu principal">
+                <ul class="flex items-center justify-start space-x-8 py-4">
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="hospedagens">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="experiencias">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="pacotes">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="nav-link text-[#EC7430] font-bold transition-all text-base active-nav"
+                            data-nav="seguros">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="transfer">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Menu mobile">
+                <ul class="space-y-2">
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="tel:08008870248"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                            Vendas: <strong>0800 887 0248</strong>
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#login"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                            Iniciar sessão
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#minhas-viagens"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                            Minhas viagens
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-4 border-b border-gray-200">
+                        <a href="#para-onde-ir"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                            Para onde ir?
+                        </a>
+                    </li>
+                    <li><a href="bivoo-listings.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Hospedagens</a>
+                    </li>
+                    <li><a href="bivoo-listings.html?type=experiencias"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Experiências</a>
+                    </li>
+                    <li><a href="bivoo-listings.html?type=pacotes"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Pacotes</a>
+                    </li>
+                    <li><a href="bivoo-safe.html"
+                            class="block px-4 py-3 text-[#EC7430] bg-gray-50 rounded-lg font-bold">Seguros</a></li>
+                    <li><a href="bivoo-transfer.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">Transfer</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-secondary to-blue-600 text-white py-20 lg:py-32">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                    Viaje Tranquilo com Seguro Viagem
+                </h1>
+                <p class="text-xl lg:text-2xl mb-8 text-blue-50">
+                    Proteção completa para você e sua família em qualquer destino do mundo
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#cotacao"
+                        class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        Fazer Cotação Agora
+                    </a>
+                    <a href="#planos"
+                        class="bg-white hover:bg-gray-100 text-secondary px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                        Ver Planos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Por que contratar um Seguro Viagem?
+                </h2>
+                <p class="text-xl text-text-dark max-w-3xl mx-auto">
+                    Viajar com segurança é essencial. Conheça os benefícios de ter um seguro viagem
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Assistência Médica</h3>
+                    <p class="text-text-dark">
+                        Cobertura para despesas médicas e hospitalares em caso de acidente ou doença durante a viagem
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl border border-green-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-suitcase-rolling"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Bagagem Extraviada</h3>
+                    <p class="text-text-dark">
+                        Indenização em caso de extravio, roubo ou danos à sua bagagem durante a viagem
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-yellow-50 to-white p-8 rounded-2xl border border-yellow-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-plane-slash"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cancelamento de Viagem</h3>
+                    <p class="text-text-dark">
+                        Reembolso de despesas não-reembolsáveis em caso de cancelamento por motivos cobertos
+                    </p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-phone-volume"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Assistência 24h</h3>
+                    <p class="text-text-dark">
+                        Suporte em português 24 horas por dia, 7 dias por semana, em qualquer lugar do mundo
+                    </p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-red-50 to-white p-8 rounded-2xl border border-red-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Emergências</h3>
+                    <p class="text-text-dark">
+                        Cobertura para situações de emergência, incluindo repatriação médica e funeral
+                    </p>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div
+                    class="benefit-item bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100 hover:shadow-xl transition-all">
+                    <div
+                        class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Proteção Completa</h3>
+                    <p class="text-text-dark">
+                        Cobertura jurídica, perda de documentos, atrasos de voo e muito mais
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insurance Calculator / Quote Form -->
+    <section id="cotacao" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                            Faça sua Cotação
+                        </h2>
+                        <p class="text-xl text-text-dark">
+                            Preencha os dados e receba os melhores planos para sua viagem
+                        </p>
+                    </div>
+
+                    <form id="insuranceForm" class="space-y-6">
+                        <!-- Trip Type -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-900 mb-3">Tipo de Viagem</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="tripType" value="nacional" class="peer sr-only" checked>
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-flag text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900">Nacional</p>
+                                    </div>
+                                </label>
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="tripType" value="internacional" class="peer sr-only">
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-globe-americas text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900">Internacional</p>
+                                    </div>
+                                </label>
+                                <label class="relative cursor-pointer">
+                                    <input type="radio" name="tripType" value="multiplo" class="peer sr-only">
+                                    <div
+                                        class="border-2 border-gray-300 peer-checked:border-primary peer-checked:bg-primary/5 rounded-lg p-4 text-center transition-all hover:border-primary/50">
+                                        <i
+                                            class="fas fa-plane-departure text-2xl text-text-dark peer-checked:text-primary mb-2"></i>
+                                        <p class="font-semibold text-gray-900">Múltiplos Destinos</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Destination -->
+                        <div>
+                            <label for="destination" class="block text-sm font-semibold text-gray-900 mb-2">Destino
+                                Principal</label>
+                            <select id="destination" name="destination" required
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                                <option value="">Selecione o destino</option>
+                                <optgroup label="América do Sul">
+                                    <option value="argentina">Argentina</option>
+                                    <option value="chile">Chile</option>
+                                    <option value="uruguai">Uruguai</option>
+                                    <option value="paraguai">Paraguai</option>
+                                </optgroup>
+                                <optgroup label="América do Norte">
+                                    <option value="eua">Estados Unidos</option>
+                                    <option value="canada">Canadá</option>
+                                    <option value="mexico">México</option>
+                                </optgroup>
+                                <optgroup label="Europa">
+                                    <option value="portugal">Portugal</option>
+                                    <option value="espanha">Espanha</option>
+                                    <option value="franca">França</option>
+                                    <option value="italia">Itália</option>
+                                    <option value="alemanha">Alemanha</option>
+                                    <option value="reino-unido">Reino Unido</option>
+                                </optgroup>
+                                <optgroup label="Outros">
+                                    <option value="asia">Ásia</option>
+                                    <option value="oceania">Oceania</option>
+                                    <option value="africa">África</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="startDate" class="block text-sm font-semibold text-gray-900 mb-2">Data de
+                                    Ida</label>
+                                <input type="date" id="startDate" name="startDate" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="endDate" class="block text-sm font-semibold text-gray-900 mb-2">Data de
+                                    Volta</label>
+                                <input type="date" id="endDate" name="endDate" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Number of Travelers -->
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <label for="adults" class="block text-sm font-semibold text-gray-900 mb-2">Adultos
+                                    (18-64)</label>
+                                <input type="number" id="adults" name="adults" min="1" max="9" value="1" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="children" class="block text-sm font-semibold text-gray-900 mb-2">Crianças
+                                    (0-17)</label>
+                                <input type="number" id="children" name="children" min="0" max="9" value="0"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div>
+                                <label for="seniors" class="block text-sm font-semibold text-gray-900 mb-2">Idosos
+                                    (65+)</label>
+                                <input type="number" id="seniors" name="seniors" min="0" max="9" value="0"
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">Nome
+                                    Completo</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="Seu nome completo">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">E-mail</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                    placeholder="seu@email.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="phone"
+                                class="block text-sm font-semibold text-gray-900 mb-2">Telefone/WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" required
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                placeholder="(00) 00000-0000">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-orange-600 hover:from-primary-dark hover:to-orange-700 text-white py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Calcular Meu Seguro
+                        </button>
+
+                        <p class="text-sm text-center text-text-light">
+                            Ao continuar, você concorda com nossos <a href="#"
+                                class="text-primary hover:underline">Termos de Uso</a> e <a href="#"
+                                class="text-primary hover:underline">Política de Privacidade</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="planos" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Escolha o Plano Ideal
+                </h2>
+                <p class="text-xl text-text-dark max-w-3xl mx-auto">
+                    Planos com coberturas diferenciadas para atender suas necessidades
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Plan 1 - Basic -->
+                <div
+                    class="plan-card bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-primary cursor-pointer">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Básico</h3>
+                        <p class="text-text-dark mb-6">Proteção essencial</p>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">
+                            R$ 15
+                            <span class="text-xl font-normal text-text-light">/dia</span>
+                        </div>
+                        <p class="text-sm text-text-light">a partir de</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8" role="list">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Despesas médicas até USD 30.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Bagagem extraviada USD 1.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Assistência 24h em português</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Cobertura odontológica</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Regresso antecipado</span>
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-900 py-3 rounded-lg font-bold transition-all">
+                        Selecionar Plano
+                    </button>
+                </div>
+
+                <!-- Plan 2 - Standard (Featured) -->
+                <div
+                    class="plan-card bg-gradient-to-br from-primary to-orange-600 border-2 border-primary rounded-2xl p-8 text-white transform lg:scale-110 shadow-2xl relative">
+                    <div
+                        class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-6 py-2 rounded-full font-bold text-sm shadow-lg">
+                        MAIS POPULAR
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2">Completo</h3>
+                        <p class="text-orange-100 mb-6">Proteção ideal</p>
+                        <div class="text-5xl font-bold mb-2">
+                            R$ 28
+                            <span class="text-xl font-normal text-orange-100">/dia</span>
+                        </div>
+                        <p class="text-sm text-orange-100">a partir de</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8" role="list">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Despesas médicas até USD 60.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Bagagem extraviada USD 2.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Assistência 24h em português</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Cobertura odontológica USD 1.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Cancelamento de viagem</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Atraso de voo</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-yellow-300 mt-1 mr-3"></i>
+                            <span>Prática de esportes</span>
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full bg-white text-primary py-3 rounded-lg font-bold transition-all hover:bg-gray-100">
+                        Selecionar Plano
+                    </button>
+                </div>
+
+                <!-- Plan 3 - Premium -->
+                <div
+                    class="plan-card bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-primary cursor-pointer">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                        <p class="text-text-dark mb-6">Proteção máxima</p>
+                        <div class="text-5xl font-bold text-gray-900 mb-2">
+                            R$ 45
+                            <span class="text-xl font-normal text-text-light">/dia</span>
+                        </div>
+                        <p class="text-sm text-text-light">a partir de</p>
+                    </div>
+
+                    <ul class="space-y-4 mb-8" role="list">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Despesas médicas até USD 150.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Bagagem extraviada USD 3.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Assistência 24h multilíngue</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Cobertura odontológica USD 2.000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Cancelamento total</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Atraso de voo e conexões</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Esportes radicais</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3"></i>
+                            <span class="text-text-dark">Traslado de familiar</span>
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full bg-gray-100 hover:bg-gray-200 text-gray-900 py-3 rounded-lg font-bold transition-all">
+                        Selecionar Plano
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                        Perguntas Frequentes
+                    </h2>
+                    <p class="text-xl text-text-dark">
+                        Tire suas dúvidas sobre seguro viagem
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden group">
+                        <summary
+                            class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                            <span>O seguro viagem é obrigatório?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-6 pb-4 text-text-dark">
+                            <p>Para alguns destinos, como países da Europa que fazem parte do Tratado de Schengen, o
+                                seguro viagem é obrigatório com cobertura mínima de 30.000 euros. Para outros destinos,
+                                embora não seja obrigatório, é altamente recomendado para garantir sua segurança e
+                                tranquilidade durante a viagem.</p>
+                        </div>
+                    </details>
+
+                    <!-- FAQ 2 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden group">
+                        <summary
+                            class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                            <span>Como funciona a assistência médica?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-6 pb-4 text-text-dark">
+                            <p>Em caso de necessidade médica, você deve entrar em contato com a central de atendimento
+                                24h através dos telefones informados na apólice. A seguradora indicará hospitais e
+                                clínicas credenciadas. Em casos de emergência, você pode procurar atendimento imediato e
+                                depois solicitar o reembolso conforme as condições do plano.</p>
+                        </div>
+                    </details>
+
+                    <!-- FAQ 3 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden group">
+                        <summary
+                            class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                            <span>O que fazer se minha bagagem for extraviada?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-6 pb-4 text-text-dark">
+                            <p>Registre um boletim de ocorrência (RIB - Registro de Irregularidade de Bagagem) no
+                                aeroporto imediatamente. Entre em contato com a central do seguro para abrir um
+                                sinistro. Guarde todos os comprovantes de compras emergenciais que precisar fazer. A
+                                seguradora orientará sobre os procedimentos de indenização conforme as coberturas do seu
+                                plano.</p>
+                        </div>
+                    </details>
+
+                    <!-- FAQ 4 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden group">
+                        <summary
+                            class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                            <span>Posso contratar o seguro depois de iniciar a viagem?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-6 pb-4 text-text-dark">
+                            <p>Não. O seguro viagem deve ser contratado antes do início da viagem, estando você ainda em
+                                território nacional. A cobertura geralmente começa a valer a partir da data de embarque
+                                informada na apólice. Planejar com antecedência garante que você esteja protegido desde
+                                o primeiro momento.</p>
+                        </div>
+                    </details>
+
+                    <!-- FAQ 5 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden group">
+                        <summary
+                            class="px-6 py-4 cursor-pointer font-semibold text-gray-900 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                            <span>Posso estender o seguro se prolongar minha viagem?</span>
+                            <i class="fas fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+                        </summary>
+                        <div class="px-6 pb-4 text-text-dark">
+                            <p>Sim, na maioria dos casos é possível estender a cobertura do seguro viagem. Entre em
+                                contato com a seguradora ou com a Bivoo antes do término da vigência atual. Será
+                                necessário pagar um valor adicional proporcional aos dias extras de cobertura.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-text-dark mb-4">Ainda tem dúvidas?</p>
+                    <a href="tel:08008870248"
+                        class="inline-flex items-center px-6 py-3 bg-secondary hover:bg-blue-700 text-white rounded-lg font-semibold transition-all">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        Fale com um Especialista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-primary to-orange-600 text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                    Pronto para Viajar Protegido?
+                </h2>
+                <p class="text-xl lg:text-2xl mb-8 text-orange-50">
+                    Faça sua cotação agora e garanta tranquilidade na sua próxima viagem
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#cotacao"
+                        class="bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-xl">
+                        <i class="fas fa-calculator mr-2"></i>
+                        Fazer Cotação
+                    </a>
+                    <a href="tel:08008870248"
+                        class="bg-transparent border-2 border-white hover:bg-white hover:text-primary text-white px-8 py-4 rounded-lg font-bold text-lg transition-all">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        0800 887 0248
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Navegue</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="bivoo-home.html"
+                                class="text-gray-300 hover:text-white transition-colors">Início</a></li>
+                        <li><a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors">Hospedagens</a></li>
+                        <li><a href="bivoo-about.html" class="text-gray-300 hover:text-white transition-colors">Sobre
+                                nós</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="bivoo-help.html" class="text-gray-300 hover:text-white transition-colors">Central
+                                de ajuda</a></li>
+                        <li><a href="bivoo-faq.html" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
+                        </li>
+                        <li><a href="tel:08008870248" class="text-gray-300 hover:text-white transition-colors">0800 887
+                                0248</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Seguros</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#cotacao" class="text-gray-300 hover:text-white transition-colors">Fazer
+                                cotação</a></li>
+                        <li><a href="#planos" class="text-gray-300 hover:text-white transition-colors">Planos</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Como funciona</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contato</h4>
+                    <p class="text-sm text-gray-300 mb-2">Rua Bem e São Agostinho</p>
+                    <p class="text-sm text-gray-300 mb-2">Pipa/RN - CEP 59.178-000</p>
+                    <p class="text-sm text-gray-300">(84) 00694-0365</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-sm text-gray-400">&copy; 2025 Bivoo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+
+        // Form Submission
+        const insuranceForm = document.getElementById('insuranceForm');
+
+        if (insuranceForm) {
+            insuranceForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(insuranceForm);
+                const data = Object.fromEntries(formData);
+
+                // Calculate days
+                const startDate = new Date(data.startDate);
+                const endDate = new Date(data.endDate);
+                const days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+                // Show alert with summary
+                alert(`Cotação Recebida!\n\nDestino: ${data.destination}\nPeríodo: ${days} dias\nViajantes: ${data.adults} adulto(s), ${data.children} criança(s), ${data.seniors} idoso(s)\n\nEntraremos em contato em breve com as melhores opções!`);
+
+                // In production, send to backend
+                console.log('Form data:', data);
+                console.log('Trip days:', days);
+            });
+        }
+
+        // Plan Cards Selection
+        document.querySelectorAll('.plan-card button').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const planCard = this.closest('.plan-card');
+                const planName = planCard.querySelector('h3').textContent;
+
+                // Remove selected class from all cards
+                document.querySelectorAll('.plan-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+
+                // Add selected class to clicked card
+                planCard.classList.add('selected');
+
+                // Show confirmation
+                alert(`Plano ${planName} selecionado!\n\nProssiga para finalizar a contratação.`);
+
+                // Scroll to form
+                document.querySelector('#cotacao').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('startDate').setAttribute('min', today);
+
+        // Update end date minimum when start date changes
+        document.getElementById('startDate').addEventListener('change', function () {
+            document.getElementById('endDate').setAttribute('min', this.value);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

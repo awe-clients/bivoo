@@ -19,7 +19,7 @@
     <style>
         .sticky-booking {
             position: sticky;
-            top: 100px;
+            top: 140px;
         }
 
         .gallery-grid {
@@ -44,6 +44,34 @@
                 grid-column: 1;
                 grid-row: 1;
             }
+
+            .sticky-booking {
+                position: static;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
         }
     </style>
     <script>
@@ -68,30 +96,248 @@
 
 <body class="font-sans antialiased bg-white">
 
-    <!-- Header -->
-    <header class="bg-white sticky top-0 z-50 shadow-sm">
+    <!-- Header/Navigation -->
+    <!-- Header/Navigation -->
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-between py-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-4 border-b border-gray-200">
                 <!-- Logo -->
-                <a href="/" class="flex items-center">
-                    <img src="/path-to-bivoo-logo.svg" alt="Bivoo" class="h-10 w-auto">
+                <a href="bivoo-home.html" class="flex items-center">
+                    <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências" class="h-12 w-auto">
                 </a>
 
-                <!-- Actions -->
-                <div class="flex items-center space-x-4">
-                    <button
-                        class="hidden md:flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition">
-                        <i class="fas fa-share-alt mr-2"></i>
-                        <span>Compartilhar</span>
-                    </button>
-                    <button class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition">
-                        <i class="far fa-heart mr-2"></i>
-                        <span class="hidden md:inline">Salvar</span>
-                    </button>
+                <!-- Right Side Links Desktop -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <!-- Vendas -->
+                    <a href="tel:08008870248"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                        <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                    </a>
+
+                    <!-- Iniciar sessão -->
+                    <a href="#login"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                        <span>Iniciar sessão</span>
+                    </a>
+
+                    <!-- Minhas viagens -->
+                    <a href="#minhas-viagens"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                        <span>Minhas viagens</span>
+                    </a>
+
+                    <!-- Para onde ir? -->
+                    <a href="#para-onde-ir"
+                        class="flex items-center text-[#726983] hover:text-[#EC7430] transition-colors text-sm">
+                        <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                        <span>Para onde ir?</span>
+                    </a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-700 hover:text-[#EC7430] transition-colors"
+                    aria-label="Abrir menu" aria-expanded="false">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
+
+            <!-- Main Navigation -->
+            <nav class="hidden lg:block" role="navigation" aria-label="Menu principal">
+                <ul class="flex items-center justify-start space-x-8 py-4">
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="hospedagens">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="experiencias">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="pacotes">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] transition-all text-base"
+                            data-nav="seguros">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="nav-link text-[#726983] hover:text-[#EC7430] hover:font-bold transition-all text-base"
+                            data-nav="transfer">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <nav class="container mx-auto px-4 py-4" role="navigation" aria-label="Menu mobile">
+                <ul class="space-y-2">
+                    <!-- Top Links Mobile -->
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="tel:08008870248"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-phone-alt text-[#0099CC] mr-2"></i>
+                            Vendas: <strong>0800 887 0248</strong>
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#login"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-sign-in-alt text-[#0099CC] mr-2"></i>
+                            Iniciar sessão
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-2 border-b border-gray-200">
+                        <a href="#minhas-viagens"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="fas fa-map-marker-alt text-[#0099CC] mr-2"></i>
+                            Minhas viagens
+                        </a>
+                    </li>
+                    <li class="pb-2 mb-4 border-b border-gray-200">
+                        <a href="#para-onde-ir"
+                            class="block px-4 py-2 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all">
+                            <i class="far fa-question-circle text-[#0099CC] mr-2"></i>
+                            Para onde ir?
+                        </a>
+                    </li>
+
+                    <!-- Main Navigation -->
+                    <li>
+                        <a href="bivoo-listings.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Hospedagens
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=experiencias"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Experiências
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-listings.html?type=pacotes"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Pacotes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-safe.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Seguros
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bivoo-transfer.html"
+                            class="block px-4 py-3 text-[#726983] hover:text-[#EC7430] hover:bg-gray-50 rounded-lg transition-all font-medium">
+                            Transfer
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+
+        // Active Navigation Item
+        // Detecta a página atual e marca o item correspondente como ativo
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPath = window.location.pathname;
+            const currentParams = new URLSearchParams(window.location.search);
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                const linkPath = new URL(link.href).pathname;
+                const linkParams = new URLSearchParams(new URL(link.href).search);
+                const navType = link.getAttribute('data-nav');
+
+                // Verifica se é a página atual
+                let isActive = false;
+
+                if (currentPath.includes('bivoo-listings.html')) {
+                    const typeParam = currentParams.get('type');
+                    const linkTypeParam = linkParams.get('type');
+
+                    if (navType === 'hospedagens' && !typeParam) {
+                        isActive = true;
+                    } else if (typeParam === linkTypeParam) {
+                        isActive = true;
+                    }
+                } else if (currentPath.includes('bivoo-safe.html') && navType === 'seguros') {
+                    isActive = true;
+                } else if (currentPath.includes('bivoo-transfer.html') && navType === 'transfer') {
+                    isActive = true;
+                }
+
+                if (isActive) {
+                    link.classList.add('active-nav');
+                    link.classList.remove('text-[#726983]');
+                    link.classList.add('text-[#EC7430]', 'font-bold');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+            }
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            }
+        });
+    </script>
+
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 lg:px-8 py-6">
@@ -100,48 +346,56 @@
             <h1 class="text-3xl font-bold text-gray-900 mb-2">Casa EPIPÃ</h1>
             <div class="flex flex-wrap items-center gap-4 text-sm">
                 <div class="flex items-center">
-                    <i class="fas fa-star text-yellow-400 mr-1"></i>
+                    <i class="fas fa-star text-yellow-400 mr-1" aria-hidden="true"></i>
                     <span class="font-semibold">4.95</span>
                     <span class="text-gray-600 ml-1">(128 avaliações)</span>
                 </div>
-                <span class="text-gray-400">·</span>
-                <a href="#" class="font-semibold underline hover:text-gray-700">
-                    <i class="fas fa-map-marker-alt mr-1"></i>
+                <span class="text-gray-400" aria-hidden="true">·</span>
+                <a href="#location" class="font-semibold underline hover:text-gray-700">
+                    <i class="fas fa-map-marker-alt mr-1" aria-hidden="true"></i>
                     Pipa, Rio Grande do Norte, Brasil
                 </a>
             </div>
         </section>
 
         <!-- Photo Gallery -->
-        <section class="mb-8">
+        <section class="mb-8" aria-label="Galeria de fotos">
             <div class="gallery-grid rounded-2xl overflow-hidden">
-                <div class="gallery-main relative group cursor-pointer">
-                    <img src="assets/img/property-1.jpg" alt="Vista principal da Casa EPIPÃ"
+                <button class="gallery-main relative group cursor-pointer" onclick="openGallery(0)"
+                    aria-label="Ver foto principal em tela cheia">
+                    <img src="assets/img/details/cozy-studio-apartment-with-bedroom-living-space.jpg"
+                        alt="Vista principal da Casa EPIPÃ" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                </button>
+                <button class="relative group cursor-pointer" onclick="openGallery(1)"
+                    aria-label="Ver foto da piscina em tela cheia">
+                    <img src="assets/img/details/ocean-travel-modern-nobody-infinity.jpg" alt="Piscina da propriedade"
                         class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                </div>
-                <div class="relative group cursor-pointer">
-                    <img src="assets/img/property-2.jpg" alt="Piscina da propriedade"
+                </button>
+                <button class="relative group cursor-pointer" onclick="openGallery(2)"
+                    aria-label="Ver foto da área de lazer em tela cheia">
+                    <img src="assets/img/details/small-hotel-room-interior-with-double-bed-bathroom.jpg"
+                        alt="Área de lazer" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
+                </button>
+                <button class="relative group cursor-pointer" onclick="openGallery(3)"
+                    aria-label="Ver foto do quarto em tela cheia">
+                    <img src="assets/img/details/hotel-room-luxury-resort.jpg" alt="Quarto principal"
                         class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                </div>
-                <div class="relative group cursor-pointer">
-                    <img src="assets/img/property-3.jpg" alt="Área de lazer" class="w-full h-full object-cover">
+                </button>
+                <button class="relative group cursor-pointer" onclick="openGallery(4)"
+                    aria-label="Ver foto da cozinha em tela cheia">
+                    <img src="assets/img/details/beautiful-young-woman-using-mobile-phone.jpg" alt="Cozinha equipada"
+                        class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                </div>
-                <div class="relative group cursor-pointer">
-                    <img src="assets/img/property-4.jpg" alt="Quarto principal" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                </div>
-                <div class="relative group cursor-pointer">
-                    <img src="assets/img/property-5.jpg" alt="Cozinha equipada" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                </div>
+                </button>
             </div>
-            <button
+            <button id="showAllPhotosBtn"
                 class="mt-4 px-6 py-2 border border-gray-900 rounded-lg hover:bg-gray-50 transition text-sm font-medium">
-                <i class="fas fa-grip-horizontal mr-2"></i>
-                Mostrar todas as fotos
+                <i class="fas fa-grip-horizontal mr-2" aria-hidden="true"></i>
+                Mostrar todas as 25 fotos
             </button>
         </section>
 
@@ -150,178 +404,202 @@
             <!-- Left Column -->
             <div class="lg:col-span-2 space-y-8">
                 <!-- Host Info -->
-                <section class="pb-8 border-b border-gray-200">
+                <section class="pb-8 border-b border-gray-200" aria-labelledby="host-info">
                     <div class="flex items-start justify-between mb-6">
                         <div>
-                            <h2 class="text-2xl font-semibold text-gray-900 mb-2">
+                            <h2 id="host-info" class="text-2xl font-semibold text-gray-900 mb-2">
                                 Casa de temporada inteira hospedada por Maria Silva
                             </h2>
                             <p class="text-gray-600">6 hóspedes · 3 quartos · 4 camas · 2 banheiros</p>
                         </div>
-                        <img src="/path-to-host-avatar.jpg" alt="Maria Silva"
+                        <img src="/path-to-host-avatar.jpg" alt="Foto de Maria Silva, anfitriã"
                             class="w-16 h-16 rounded-full object-cover">
                     </div>
 
                     <!-- Features -->
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-home text-2xl text-gray-700 mt-1"></i>
+                    <ul class="space-y-6" role="list">
+                        <li class="flex items-start space-x-4">
+                            <i class="fas fa-home text-2xl text-gray-700 mt-1" aria-hidden="true"></i>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Casa inteira</h3>
                                 <p class="text-gray-600 text-sm">Você terá a casa só para você.</p>
                             </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-sparkles text-2xl text-gray-700 mt-1"></i>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i class="fas fa-sparkles text-2xl text-gray-700 mt-1" aria-hidden="true"></i>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Limpeza aprimorada</h3>
                                 <p class="text-gray-600 text-sm">Este anfitrião se comprometeu com processo de limpeza
                                     aprimorado.</p>
                             </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-key text-2xl text-gray-700 mt-1"></i>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i class="fas fa-key text-2xl text-gray-700 mt-1" aria-hidden="true"></i>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Check-in autônomo</h3>
                                 <p class="text-gray-600 text-sm">Faça check-in com o chaveiro.</p>
                             </div>
-                        </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-calendar-check text-2xl text-gray-700 mt-1"></i>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <i class="fas fa-calendar-check text-2xl text-gray-700 mt-1" aria-hidden="true"></i>
                             <div>
                                 <h3 class="font-semibold text-gray-900">Cancelamento grátis por 48 horas</h3>
                                 <p class="text-gray-600 text-sm">Política de cancelamento flexível.</p>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </section>
 
                 <!-- Description -->
-                <section class="pb-8 border-b border-gray-200">
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        A Casa EPIPÃ é uma propriedade exclusiva localizada no coração de Pipa, a apenas 5 minutos de
-                        caminhada da praia. Com uma decoração moderna e aconchegante, a casa oferece todo o conforto
-                        necessário para uma estadia inesquecível.
-                    </p>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        O espaço conta com ampla área de lazer, piscina privativa, churrasqueira e jardim. Perfeito para
-                        famílias e grupos de amigos que buscam tranquilidade e conforto.
-                    </p>
-                    <button class="font-semibold underline hover:text-gray-700">Mostrar mais ></button>
+                <section class="pb-8 border-b border-gray-200" aria-labelledby="description">
+                    <h2 id="description" class="sr-only">Descrição da propriedade</h2>
+                    <div id="descriptionText">
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            A Casa EPIPÃ é uma propriedade exclusiva localizada no coração de Pipa, a apenas 5 minutos
+                            de caminhada da praia. Com uma decoração moderna e aconchegante, a casa oferece todo o
+                            conforto necessário para uma estadia inesquecível.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            O espaço conta com ampla área de lazer, piscina privativa, churrasqueira e jardim. Perfeito
+                            para famílias e grupos de amigos que buscam tranquilidade e conforto.
+                        </p>
+                    </div>
+                    <button id="showMoreDescBtn"
+                        class="font-semibold text-primary underline hover:text-primary-dark transition"
+                        aria-expanded="false">
+                        Mostrar mais <i class="fas fa-chevron-down ml-1" aria-hidden="true"></i>
+                    </button>
                 </section>
 
                 <!-- What this place offers -->
-                <section class="pb-8 border-b border-gray-200">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">O que este lugar oferece</h2>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-wifi text-xl text-gray-700"></i>
+                <section class="pb-8 border-b border-gray-200" aria-labelledby="amenities">
+                    <h2 id="amenities" class="text-2xl font-semibold text-gray-900 mb-6">O que este lugar oferece</h2>
+                    <ul class="grid md:grid-cols-2 gap-4" role="list">
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-wifi text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Wi-Fi</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-swimming-pool text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-swimming-pool text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Piscina</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-parking text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-parking text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Estacionamento gratuito</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-snowflake text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-snowflake text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Ar-condicionado</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-utensils text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-utensils text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Cozinha completa</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-tv text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-tv text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">TV</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-fire text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-fire text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Churrasqueira</span>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-paw text-xl text-gray-700"></i>
+                        </li>
+                        <li class="flex items-center space-x-4">
+                            <i class="fas fa-paw text-xl text-gray-700" aria-hidden="true"></i>
                             <span class="text-gray-900">Pets permitidos</span>
-                        </div>
-                    </div>
-                    <button
+                        </li>
+                    </ul>
+                    <button id="showAllAmenitiesBtn"
                         class="mt-6 px-6 py-3 border border-gray-900 rounded-lg hover:bg-gray-50 transition font-medium">
                         Mostrar todas as 20 comodidades
                     </button>
                 </section>
 
                 <!-- Calendar -->
-                <section class="pb-8 border-b border-gray-200">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Selecione a data do check-in</h2>
+                <section class="pb-8 border-b border-gray-200" aria-labelledby="calendar">
+                    <h2 id="calendar" class="text-2xl font-semibold text-gray-900 mb-6">Selecione a data do check-in
+                    </h2>
                     <p class="text-gray-600 mb-4">Adicione suas datas de viagem para obter o preço exato.</p>
                     <div class="bg-gray-100 rounded-2xl p-8 text-center">
-                        <i class="fas fa-calendar-alt text-5xl text-gray-400 mb-4"></i>
-                        <p class="text-gray-600">Calendário interativo aqui</p>
+                        <i class="fas fa-calendar-alt text-5xl text-gray-400 mb-4" aria-hidden="true"></i>
+                        <p class="text-gray-600">Calendário interativo será implementado aqui</p>
+                        <button
+                            class="mt-4 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-semibold">
+                            Abrir calendário
+                        </button>
                     </div>
                 </section>
 
                 <!-- Reviews -->
-                <section class="pb-8 border-b border-gray-200">
+                <section class="pb-8 border-b border-gray-200" aria-labelledby="reviews">
                     <div class="flex items-center mb-6">
-                        <i class="fas fa-star text-yellow-400 text-xl mr-2"></i>
-                        <h2 class="text-2xl font-semibold text-gray-900">4.95 · 128 avaliações</h2>
+                        <i class="fas fa-star text-yellow-400 text-xl mr-2" aria-hidden="true"></i>
+                        <h2 id="reviews" class="text-2xl font-semibold text-gray-900">4.95 · 128 avaliações</h2>
                     </div>
 
                     <!-- Rating Categories -->
-                    <div class="grid md:grid-cols-2 gap-4 mb-8">
-                        <div class="flex items-center justify-between">
+                    <div class="grid md:grid-cols-2 gap-4 mb-8" role="list">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Limpeza</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-11/12 h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-11/12 h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="4.9" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de limpeza: 4.9 de 5"></div>
                                 </div>
                                 <span class="font-semibold">4.9</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Comunicação</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-full h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-full h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de comunicação: 5 de 5"></div>
                                 </div>
                                 <span class="font-semibold">5.0</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Check-in</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-11/12 h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-11/12 h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="4.9" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de check-in: 4.9 de 5"></div>
                                 </div>
                                 <span class="font-semibold">4.9</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Exatidão</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-full h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-full h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="5" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de exatidão: 5 de 5"></div>
                                 </div>
                                 <span class="font-semibold">5.0</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Localização</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-11/12 h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-11/12 h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="4.8" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de localização: 4.8 de 5"></div>
                                 </div>
                                 <span class="font-semibold">4.8</span>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center justify-between" role="listitem">
                             <span class="text-gray-700">Custo-benefício</span>
                             <div class="flex items-center">
                                 <div class="w-32 h-1 bg-gray-200 rounded-full mr-3">
-                                    <div class="w-11/12 h-full bg-gray-900 rounded-full"></div>
+                                    <div class="w-11/12 h-full bg-gray-900 rounded-full" role="progressbar"
+                                        aria-valuenow="4.9" aria-valuemin="0" aria-valuemax="5"
+                                        aria-label="Avaliação de custo-benefício: 4.9 de 5"></div>
                                 </div>
                                 <span class="font-semibold">4.9</span>
                             </div>
@@ -333,11 +611,11 @@
                         <!-- Review 1 -->
                         <article class="space-y-3">
                             <div class="flex items-center space-x-3">
-                                <img src="/path-to-reviewer-1.jpg" alt="João Pedro"
+                                <img src="assets/img/marina-brito.png" alt=""
                                     class="w-12 h-12 rounded-full object-cover">
                                 <div>
                                     <p class="font-semibold text-gray-900">João Pedro</p>
-                                    <p class="text-sm text-gray-600">Janeiro de 2025</p>
+                                    <p class="text-sm text-gray-600"><time datetime="2025-01">Janeiro de 2025</time></p>
                                 </div>
                             </div>
                             <p class="text-gray-700">
@@ -350,11 +628,12 @@
                         <!-- Review 2 -->
                         <article class="space-y-3">
                             <div class="flex items-center space-x-3">
-                                <img src="/path-to-reviewer-2.jpg" alt="Ana Carolina"
+                                <img src="assets/img/marina-brito.png" alt=""
                                     class="w-12 h-12 rounded-full object-cover">
                                 <div>
                                     <p class="font-semibold text-gray-900">Ana Carolina</p>
-                                    <p class="text-sm text-gray-600">Dezembro de 2024</p>
+                                    <p class="text-sm text-gray-600"><time datetime="2024-12">Dezembro de 2024</time>
+                                    </p>
                                 </div>
                             </div>
                             <p class="text-gray-700">
@@ -364,40 +643,49 @@
                         </article>
                     </div>
 
-                    <button class="px-6 py-3 border border-gray-900 rounded-lg hover:bg-gray-50 transition font-medium">
+                    <button id="showAllReviewsBtn"
+                        class="px-6 py-3 border border-gray-900 rounded-lg hover:bg-gray-50 transition font-medium">
                         Mostrar todas as 128 avaliações
                     </button>
                 </section>
 
                 <!-- Location -->
-                <section class="pb-8 border-b border-gray-200">
-                    <h2 class="text-2xl font-semibold text-gray-900 mb-6">Onde você estará</h2>
-                    <div class="bg-gray-200 rounded-2xl h-96 mb-4 flex items-center justify-center">
-                        <i class="fas fa-map-marked-alt text-6xl text-gray-400"></i>
+                <section id="location" class="pb-8 border-b border-gray-200" aria-labelledby="location-heading">
+                    <h2 id="location-heading" class="text-2xl font-semibold text-gray-900 mb-6">Onde você estará</h2>
+                    <div class="bg-gray-200 rounded-2xl h-96 mb-4 flex items-center justify-center" role="img"
+                        aria-label="Mapa da localização em Pipa, Rio Grande do Norte">
+                        <i class="fas fa-map-marked-alt text-6xl text-gray-400" aria-hidden="true"></i>
+                        <p class="sr-only">Mapa será implementado aqui</p>
                     </div>
                     <p class="font-semibold text-gray-900 mb-2">Pipa, Rio Grande do Norte, Brasil</p>
-                    <p class="text-gray-700 mb-4">
-                        Localizada no centro de Pipa, a 5 minutos da praia principal. Próximo a restaurantes, bares e
-                        lojas.
-                    </p>
-                    <button class="font-semibold underline hover:text-gray-700">Mostrar mais ></button>
+                    <div id="locationText">
+                        <p class="text-gray-700 mb-4">
+                            Localizada no centro de Pipa, a 5 minutos da praia principal. Próximo a restaurantes, bares
+                            e lojas.
+                        </p>
+                    </div>
+                    <button id="showMoreLocationBtn"
+                        class="font-semibold text-primary underline hover:text-primary-dark transition"
+                        aria-expanded="false">
+                        Mostrar mais <i class="fas fa-chevron-down ml-1" aria-hidden="true"></i>
+                    </button>
                 </section>
 
                 <!-- Host -->
-                <section class="pb-8">
+                <section class="pb-8" aria-labelledby="host-details">
                     <div class="flex items-start space-x-6">
-                        <img src="/path-to-host-avatar.jpg" alt="Maria Silva"
-                            class="w-20 h-20 rounded-full object-cover">
+                        <img src="assets/img/marina-brito.png" alt="" class="w-20 h-20 rounded-full object-cover">
                         <div class="flex-1">
-                            <h2 class="text-2xl font-semibold text-gray-900 mb-2">Hospedado por Maria Silva</h2>
+                            <h2 id="host-details" class="text-2xl font-semibold text-gray-900 mb-2">Hospedado por Maria
+                                Silva</h2>
                             <p class="text-gray-600 mb-4">Anfitrião desde 2018</p>
                             <div class="flex items-center space-x-4 text-sm mb-6">
                                 <span class="flex items-center">
-                                    <i class="fas fa-star text-gray-700 mr-1"></i>
+                                    <i class="fas fa-star text-gray-700 mr-1" aria-hidden="true"></i>
                                     156 Avaliações
                                 </span>
                                 <span class="flex items-center">
-                                    <i class="fas fa-shield-alt text-gray-700 mr-1"></i>
+                                    <i class="fas fa-shield-alt text-gray-700 mr-1" aria-hidden="true"></i>
                                     Identidade verificada
                                 </span>
                             </div>
@@ -405,7 +693,7 @@
                                 Olá! Sou apaixonada por Pipa e adoro receber hóspedes de todo o mundo. Estou sempre
                                 disponível para ajudar com dicas e recomendações locais.
                             </p>
-                            <button
+                            <button id="contactHostBtn"
                                 class="px-6 py-3 border border-gray-900 rounded-lg hover:bg-gray-50 transition font-medium">
                                 Entrar em contato
                             </button>
@@ -416,67 +704,75 @@
 
             <!-- Right Column - Booking Card (Sticky) -->
             <div class="lg:col-span-1">
-                <div class="sticky-booking border border-gray-300 rounded-2xl p-6 shadow-xl">
+                <aside class="sticky-booking border border-gray-300 rounded-2xl p-6 shadow-xl"
+                    aria-label="Card de reserva">
                     <div class="mb-6">
                         <div class="flex items-baseline mb-2">
                             <span class="text-2xl font-semibold text-gray-900">R$ 1.475</span>
                             <span class="text-gray-600 ml-1">/ noite</span>
                         </div>
                         <div class="flex items-center text-sm">
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1" aria-hidden="true"></i>
                             <span class="font-semibold">4.95</span>
                             <span class="text-gray-600 ml-1">(128 avaliações)</span>
                         </div>
                     </div>
 
                     <!-- Date Inputs -->
-                    <div class="border border-gray-300 rounded-lg mb-4">
-                        <div class="grid grid-cols-2 border-b border-gray-300">
-                            <div class="p-3 border-r border-gray-300">
-                                <label for="checkin"
-                                    class="block text-xs font-semibold text-gray-900 mb-1">CHECK-IN</label>
-                                <input type="date" id="checkin" class="w-full text-sm border-none focus:ring-0 p-0">
+                    <form aria-label="Formulário de reserva">
+                        <div class="border border-gray-300 rounded-lg mb-4">
+                            <div class="grid grid-cols-2 border-b border-gray-300">
+                                <div class="p-3 border-r border-gray-300">
+                                    <label for="checkin"
+                                        class="block text-xs font-semibold text-gray-900 mb-1">CHECK-IN</label>
+                                    <input type="date" id="checkin" name="checkin" required
+                                        class="w-full text-sm border-none focus:ring-0 p-0">
+                                </div>
+                                <div class="p-3">
+                                    <label for="checkout"
+                                        class="block text-xs font-semibold text-gray-900 mb-1">CHECKOUT</label>
+                                    <input type="date" id="checkout" name="checkout" required
+                                        class="w-full text-sm border-none focus:ring-0 p-0">
+                                </div>
                             </div>
                             <div class="p-3">
-                                <label for="checkout"
-                                    class="block text-xs font-semibold text-gray-900 mb-1">CHECKOUT</label>
-                                <input type="date" id="checkout" class="w-full text-sm border-none focus:ring-0 p-0">
+                                <label for="guests-booking"
+                                    class="block text-xs font-semibold text-gray-900 mb-1">HÓSPEDES</label>
+                                <select id="guests-booking" name="guests" required
+                                    class="w-full text-sm border-none focus:ring-0 p-0 text-gray-700">
+                                    <option value="2">2 hóspedes</option>
+                                    <option value="3">3 hóspedes</option>
+                                    <option value="4">4 hóspedes</option>
+                                    <option value="5">5 hóspedes</option>
+                                    <option value="6">6 hóspedes</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="p-3">
-                            <label for="guests-booking"
-                                class="block text-xs font-semibold text-gray-900 mb-1">HÓSPEDES</label>
-                            <select id="guests-booking"
-                                class="w-full text-sm border-none focus:ring-0 p-0 text-gray-700">
-                                <option>2 hóspedes</option>
-                                <option>3 hóspedes</option>
-                                <option>4 hóspedes</option>
-                                <option>5 hóspedes</option>
-                                <option>6 hóspedes</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <!-- Reserve Button -->
-                    <button
-                        class="w-full bg-gradient-to-r from-primary to-primary-dark text-white py-3 rounded-lg font-semibold hover:shadow-lg transition mb-4">
-                        Reservar
-                    </button>
+                        <!-- Reserve Button -->
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-primary-dark text-white py-3 rounded-lg font-semibold hover:shadow-lg transition mb-4">
+                            Reservar
+                        </button>
+                    </form>
 
                     <p class="text-center text-sm text-gray-600 mb-6">Você ainda não será cobrado</p>
 
                     <!-- Price Breakdown -->
                     <div class="space-y-3 mb-4 pb-4 border-b border-gray-300">
                         <div class="flex items-center justify-between text-gray-700">
-                            <span class="underline">R$ 1.475 x 5 noites</span>
+                            <button type="button" class="underline hover:text-gray-900 text-left">R$ 1.475 x 5
+                                noites</button>
                             <span>R$ 7.375</span>
                         </div>
                         <div class="flex items-center justify-between text-gray-700">
-                            <span class="underline">Taxa de limpeza</span>
+                            <button type="button" class="underline hover:text-gray-900 text-left">Taxa de
+                                limpeza</button>
                             <span>R$ 250</span>
                         </div>
                         <div class="flex items-center justify-between text-gray-700">
-                            <span class="underline">Taxa de serviço</span>
+                            <button type="button" class="underline hover:text-gray-900 text-left">Taxa de
+                                serviço</button>
                             <span>R$ 425</span>
                         </div>
                     </div>
@@ -486,31 +782,56 @@
                         <span>Total</span>
                         <span>R$ 8.050</span>
                     </div>
-                </div>
+                </aside>
 
                 <!-- Report -->
-                <button class="w-full mt-6 flex items-center justify-center text-gray-700 hover:underline text-sm">
-                    <i class="fas fa-flag mr-2"></i>
+                <button id="reportListingBtn"
+                    class="w-full mt-6 flex items-center justify-center text-gray-700 hover:underline text-sm"
+                    aria-label="Denunciar este anúncio">
+                    <i class="fas fa-flag mr-2" aria-hidden="true"></i>
                     Denunciar este anúncio
                 </button>
             </div>
         </div>
     </main>
 
+    <!-- Photo Gallery Modal -->
+    <div id="photoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="relative w-full h-full flex flex-col items-center justify-center p-4">
+            <button id="closeModal"
+                class="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition z-10"
+                aria-label="Fechar galeria">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 id="modalTitle" class="sr-only">Galeria de fotos em tela cheia</h2>
+            <img id="modalImage" src="" alt="" class="modal-content max-w-full max-h-full object-contain">
+            <div class="flex items-center space-x-4 mt-4">
+                <button id="prevPhoto" class="text-white text-2xl hover:text-gray-300 transition"
+                    aria-label="Foto anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <span id="photoCounter" class="text-white text-lg"></span>
+                <button id="nextPhoto" class="text-white text-2xl hover:text-gray-300 transition"
+                    aria-label="Próxima foto">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Similar Listings -->
-    <section class="bg-gray-50 py-16 mt-16">
+    <section class="bg-gray-50 py-16 mt-16" aria-labelledby="similar-listings">
         <div class="container mx-auto px-4 lg:px-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8">Lugares similares</h2>
+            <h2 id="similar-listings" class="text-2xl font-bold text-gray-900 mb-8">Lugares similares</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Similar listing cards (reuse from listings page) -->
+                <!-- Similar listing cards would go here -->
+                <p class="text-gray-600 col-span-full text-center py-8">Carregando propriedades similares...</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-
+    <!-- Footer (usando o footer refatorado) -->
     <footer class="bg-gray-900 text-white">
-        <!-- Main Footer Content -->
         <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
 
@@ -518,277 +839,296 @@
                 <div>
                     <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
                     <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="bivoo-listings.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Explorar hospedagens
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-about.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Sobre nós
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-host.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Anuncie seu imóvel
-                            </a>
-                        </li>
+                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Início</a></li>
+                        <li><a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors">Explorar hospedagens</a></li>
+                        <li><a href="bivoo-about.html" class="text-gray-300 hover:text-white transition-colors">Sobre
+                                nós</a></li>
+                        <li><a href="bivoo-host.html" class="text-gray-300 hover:text-white transition-colors">Anuncie
+                                seu imóvel</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 2: Suporte -->
                 <div>
-                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <h4 class="text-lg font-bold mb-4 text-white">Suporte</h4>
                     <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="bivoo-help.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Central de ajuda
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-faq.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Perguntas frequentes
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#cancelamento"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Política de cancelamento
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:08008870248"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                0800 887 0248
-                            </a>
-                        </li>
+                        <li><a href="bivoo-help.html" class="text-gray-300 hover:text-white transition-colors">Central
+                                de ajuda</a></li>
+                        <li><a href="bivoo-faq.html" class="text-gray-300 hover:text-white transition-colors">Perguntas
+                                frequentes</a></li>
+                        <li><a href="tel:08008870248" class="text-gray-300 hover:text-white transition-colors">0800 887
+                                0248</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 3: Destinos Populares -->
+                <!-- Column 3: Destinos -->
                 <div>
-                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <h4 class="text-lg font-bold mb-4 text-white">Destinos</h4>
                     <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="bivoo-listings.html?destino=pipa"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Pipa, RN
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-listings.html?destino=maceio"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Maceió, AL
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-listings.html?destino=buzios"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                <i
-                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
-                                Búzios, RJ
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-listings.html?destino=porto-galinhas"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Porto de Galinhas, PE
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-listings.html"
-                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
-                                Ver todos os destinos
-                            </a>
-                        </li>
+                        <li><a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors">Pipa, RN</a></li>
+                        <li><a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors">Maceió, AL</a></li>
+                        <li><a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors">Búzios, RJ</a></li>
+                        <li><a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold">Ver todos
+                                os destinos</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 4: Para Anfitriões -->
+                <!-- Column 4: Anfitriões -->
                 <div>
-                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <h4 class="text-lg font-bold mb-4 text-white">Anfitriões</h4>
                     <ul class="space-y-3 text-sm">
-                        <li>
-                            <a href="bivoo-host.html"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                Como anunciar
-                            </a>
-                        </li>
-                        <li>
-                            <a href="bivoo-faq.html#anfitrioes"
-                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
-                                FAQ para anfitriões
-                            </a>
-                        </li>
+                        <li><a href="bivoo-host.html" class="text-gray-300 hover:text-white transition-colors">Como
+                                anunciar</a></li>
+                        <li><a href="bivoo-dashboard.html"
+                                class="text-gray-300 hover:text-white transition-colors">Portal do anfitrião</a></li>
+                        <li><a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors">FAQ para anfitriões</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 5: Newsletter -->
                 <div>
-                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
-                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
-                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
-                        <div>
-                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
-                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
-                                required aria-required="true"
-                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
-                        </div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas</p>
+                    <form class="space-y-3" aria-label="Formulário de newsletter">
+                        <input type="email" placeholder="Seu melhor e-mail" required aria-label="Endereço de e-mail"
+                            class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white focus:ring-2 focus:ring-primary outline-none transition">
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            class="w-full bg-gradient-to-r from-primary to-secondary text-white font-semibold px-4 py-3 rounded-lg transition-all hover:shadow-lg">
                             Inscrever-se
                         </button>
                     </form>
-                    <p class="text-xs text-gray-400 mt-3">
-                        Ao se inscrever, você concorda com nossa
-                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
-                            Privacidade</a>
-                    </p>
                 </div>
             </div>
 
-            <!-- Payment Methods -->
-            <div class="border-t border-gray-800 pt-8 pb-8">
-                <div class="text-center mb-6">
-                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
-                    <div class="flex items-center justify-center flex-wrap gap-4">
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
-                        </div>
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
-                        </div>
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
-                        </div>
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <span class="font-bold text-blue-600 text-xs">ELO</span>
-                        </div>
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <span class="font-bold text-teal-600 text-xs">PIX</span>
-                        </div>
-                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
-                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
-
-                    <!-- Logo & Copyright -->
-                    <div class="text-center lg:text-left">
-                        <div class="mb-3">
-                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
-                                class="h-8 mx-auto lg:mx-0">
-                        </div>
-                        <p class="text-sm text-gray-400">
-                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
-                        </p>
-                        <p class="text-sm text-gray-400 mt-2">
-                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
-                            <a href="tel:08400694065" class="hover:text-white transition">
-                                (84) 00694-0365
-                            </a>
-                        </p>
-                    </div>
-
-                    <!-- Links Legais -->
-                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
-                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
-                        <span class="text-gray-700">•</span>
-                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
-                        <span class="text-gray-700">•</span>
-                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
-                        <span class="text-gray-700">•</span>
-                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
-                    </div>
-
-                    <!-- Social Media -->
-                    <div>
-                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
-                        <div class="flex items-center justify-center lg:justify-start space-x-4">
-                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
-                                aria-label="Facebook da Bivoo">
-                                <i class="fab fa-facebook-f text-lg"></i>
-                            </a>
-                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
-                                aria-label="Instagram da Bivoo">
-                                <i class="fab fa-instagram text-lg"></i>
-                            </a>
-                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
-                                aria-label="YouTube da Bivoo">
-                                <i class="fab fa-youtube text-lg"></i>
-                            </a>
-                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
-                                aria-label="LinkedIn da Bivoo">
-                                <i class="fab fa-linkedin-in text-lg"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Copyright -->
-                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
-                    <p class="text-sm text-gray-400">
-                        &copy; 2025 Bivoo. Todos os direitos reservados.
-                        <span class="text-gray-600 mx-2">|</span>
-                        CNPJ: 00.000.000/0001-00
-                    </p>
-                    <p class="text-xs text-gray-500 mt-2">
-                        Desenvolvido com
-                        <i class="fas fa-heart text-red-500 mx-1"></i>
-                        para conectar pessoas a experiências incríveis
-                    </p>
-                </div>
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-sm text-gray-400">&copy; 2025 Bivoo. Todos os direitos reservados.</p>
             </div>
         </div>
-
-        <!-- Back to Top Button (Accessibility) -->
-        <button id="backToTop"
-            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
-            aria-label="Voltar ao topo da página">
-            <i class="fas fa-arrow-up text-xl"></i>
-        </button>
     </footer>
 
     <!-- Scripts -->
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const isExpanded = !mobileMenu.classList.contains('hidden');
+            mobileMenuToggle.setAttribute('aria-expanded', isExpanded);
+            mobileMenuToggle.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Share Functionality
+        const shareButtons = [
+            document.getElementById('shareButtonDesktop'),
+            document.getElementById('shareButtonMobile')
+        ];
+
+        shareButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', async () => {
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: 'Casa EPIPÃ - Pipa, RN',
+                                text: 'Confira esta hospedagem incrível na Bivoo!',
+                                url: window.location.href
+                            });
+                        } catch (err) {
+                            if (err.name !== 'AbortError') {
+                                console.log('Erro ao compartilhar:', err);
+                            }
+                        }
+                    } else {
+                        // Fallback: copy to clipboard
+                        navigator.clipboard.writeText(window.location.href);
+                        alert('Link copiado para a área de transferência!');
+                    }
+                });
+            }
+        });
+
+        // Save/Favorite Functionality
+        const saveButtons = [
+            document.getElementById('saveButtonDesktop'),
+            document.getElementById('saveButtonMobile')
+        ];
+
+        saveButtons.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const icon = btn.querySelector('i');
+                    icon.classList.toggle('far');
+                    icon.classList.toggle('fas');
+                    icon.classList.toggle('text-red-500');
+
+                    const isSaved = icon.classList.contains('fas');
+                    btn.setAttribute('aria-label', isSaved ? 'Remover dos favoritos' : 'Salvar nos favoritos');
+
+                    // Show feedback
+                    const feedback = isSaved ? 'Salvo nos favoritos!' : 'Removido dos favoritos';
+                    console.log(feedback);
+                });
+            }
+        });
+
+        // Photo Gallery Modal
+        const photos = [
+            { src: 'assets/img/property-1.jpg', alt: 'Vista principal da Casa EPIPÃ' },
+            { src: 'assets/img/property-2.jpg', alt: 'Piscina da propriedade' },
+            { src: 'assets/img/property-3.jpg', alt: 'Área de lazer' },
+            { src: 'assets/img/property-4.jpg', alt: 'Quarto principal' },
+            { src: 'assets/img/property-5.jpg', alt: 'Cozinha equipada' }
+        ];
+
+        let currentPhotoIndex = 0;
+        const modal = document.getElementById('photoModal');
+        const modalImage = document.getElementById('modalImage');
+        const photoCounter = document.getElementById('photoCounter');
+        const closeModal = document.getElementById('closeModal');
+        const prevPhoto = document.getElementById('prevPhoto');
+        const nextPhoto = document.getElementById('nextPhoto');
+        const showAllPhotosBtn = document.getElementById('showAllPhotosBtn');
+
+        function openGallery(index) {
+            currentPhotoIndex = index;
+            updateModalPhoto();
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function updateModalPhoto() {
+            const photo = photos[currentPhotoIndex];
+            modalImage.src = photo.src;
+            modalImage.alt = photo.alt;
+            photoCounter.textContent = `${currentPhotoIndex + 1} / ${photos.length}`;
+        }
+
+        showAllPhotosBtn.addEventListener('click', () => openGallery(0));
+        closeModal.addEventListener('click', closeGallery);
+
+        prevPhoto.addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+            updateModalPhoto();
+        });
+
+        nextPhoto.addEventListener('click', () => {
+            currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+            updateModalPhoto();
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeGallery();
+            }
+        });
+
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeGallery();
+            }
+        });
+
+        // Show More Description
+        const showMoreDescBtn = document.getElementById('showMoreDescBtn');
+        const descriptionText = document.getElementById('descriptionText');
+
+        showMoreDescBtn.addEventListener('click', () => {
+            const isExpanded = showMoreDescBtn.getAttribute('aria-expanded') === 'true';
+
+            if (!isExpanded) {
+                const additionalText = document.createElement('p');
+                additionalText.className = 'text-gray-700 leading-relaxed mb-4';
+                additionalText.textContent = 'A propriedade também conta com roupa de cama e banho de alta qualidade, produtos de higiene pessoal, e uma cozinha totalmente equipada com utensílios modernos. O ambiente é ideal para quem busca relaxamento com toda a comodidade de um lar.';
+                descriptionText.appendChild(additionalText);
+
+                showMoreDescBtn.innerHTML = 'Mostrar menos <i class="fas fa-chevron-up ml-1" aria-hidden="true"></i>';
+                showMoreDescBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                const paragraphs = descriptionText.querySelectorAll('p');
+                if (paragraphs.length > 2) {
+                    paragraphs[paragraphs.length - 1].remove();
+                }
+                showMoreDescBtn.innerHTML = 'Mostrar mais <i class="fas fa-chevron-down ml-1" aria-hidden="true"></i>';
+                showMoreDescBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Show More Location
+        const showMoreLocationBtn = document.getElementById('showMoreLocationBtn');
+        const locationText = document.getElementById('locationText');
+
+        showMoreLocationBtn.addEventListener('click', () => {
+            const isExpanded = showMoreLocationBtn.getAttribute('aria-expanded') === 'true';
+
+            if (!isExpanded) {
+                const additionalText = document.createElement('p');
+                additionalText.className = 'text-gray-700 mb-4';
+                additionalText.textContent = 'A região oferece uma vida noturna vibrante, com diversos bares e restaurantes a poucos passos. Durante o dia, você pode explorar as praias vizinhas, praticar esportes aquáticos ou simplesmente relaxar no conforto da casa.';
+                locationText.appendChild(additionalText);
+
+                showMoreLocationBtn.innerHTML = 'Mostrar menos <i class="fas fa-chevron-up ml-1" aria-hidden="true"></i>';
+                showMoreLocationBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                const paragraphs = locationText.querySelectorAll('p');
+                if (paragraphs.length > 1) {
+                    paragraphs[paragraphs.length - 1].remove();
+                }
+                showMoreLocationBtn.innerHTML = 'Mostrar mais <i class="fas fa-chevron-down ml-1" aria-hidden="true"></i>';
+                showMoreLocationBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Show All Amenities
+        document.getElementById('showAllAmenitiesBtn').addEventListener('click', () => {
+            alert('Modal com todas as 20 comodidades será exibido aqui');
+        });
+
+        // Show All Reviews
+        document.getElementById('showAllReviewsBtn').addEventListener('click', () => {
+            alert('Página com todas as 128 avaliações será exibida');
+        });
+
+        // Contact Host
+        document.getElementById('contactHostBtn').addEventListener('click', () => {
+            alert('Modal de contato com o anfitrião será exibido');
+        });
+
+        // Report Listing
+        document.getElementById('reportListingBtn').addEventListener('click', () => {
+            if (confirm('Deseja denunciar este anúncio? Informe o motivo:')) {
+                alert('Sua denúncia foi enviada. Nossa equipe irá analisar.');
+            }
+        });
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href !== '#' && document.querySelector(href)) {
                     e.preventDefault();
-                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
-        });
-
-        // Share button
-        document.querySelector('[aria-label="Compartilhar"]')?.addEventListener('click', async () => {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'Casa EPIPÃ - Pipa, RN',
-                        text: 'Confira esta hospedagem incrível na Bivoo!',
-                        url: window.location.href
-                    });
-                } catch (err) {
-                    console.log('Erro ao compartilhar:', err);
-                }
-            }
         });
     </script>
 </body>
