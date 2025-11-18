@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bivoo - Encontre hospedagens, experiências e pacotes incríveis para sua próxima viagem. Filtre por localização, preço, tipo e muito mais.">
+    <title>Explorar Hospedagens e Experiências | Bivoo</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .filter-pill {
+            transition: all 0.2s ease;
+        }
+
+        .filter-pill.active {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        .price-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #6C40E7;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-backdrop {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <!-- Top Header Bar -->
+        <div class="relative">
+            <div class="absolute top-0 right-0 bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/path-to-bivoo-logo.svg" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <!-- Right Side -->
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-phone-alt text-primary mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+                        <a href="#login" class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            <span>Iniciar sessão</span>
+                        </a>
+                        <a href="#minhas-viagens"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-suitcase text-primary mr-2"></i>
+                            <span>Minhas viagens</span>
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden text-gray-700 hover:text-primary" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 lg:px-8 py-4">
+                <div class="flex items-center space-x-4">
+                    <!-- Location -->
+                    <div class="flex-1 max-w-xs">
+                        <label for="search-location" class="sr-only">Localização</label>
+                        <div class="relative">
+                            <i
+                                class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="search-location" placeholder="Para onde você vai?"
+                                class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Dates -->
+                    <div class="hidden md:flex items-center space-x-2">
+                        <input type="date"
+                            class="px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent">
+                        <span class="text-gray-400">até</span>
+                        <input type="date"
+                            class="px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-secondary focus:border-transparent">
+                    </div>
+
+                    <!-- Guests -->
+                    <button
+                        class="hidden md:flex items-center px-6 py-3 border border-gray-300 rounded-full hover:shadow-md transition">
+                        <i class="fas fa-user-friends text-gray-600 mr-2"></i>
+                        <span class="text-gray-700">Hóspedes</span>
+                    </button>
+
+                    <!-- Filter Button -->
+                    <button id="filterBtn"
+                        class="flex items-center px-6 py-3 border-2 border-gray-300 rounded-full hover:shadow-md transition">
+                        <i class="fas fa-sliders-h mr-2"></i>
+                        <span class="font-medium">Filtros</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="flex items-center space-x-3 py-4 overflow-x-auto no-scrollbar">
+                    <button
+                        class="filter-pill active px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-home mr-2"></i>
+                        Todos
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-hotel mr-2"></i>
+                        Hotéis
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-house-user mr-2"></i>
+                        Casas
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-umbrella-beach mr-2"></i>
+                        Experiências
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-hiking mr-2"></i>
+                        Passeios
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-bus mr-2"></i>
+                        Transfer
+                    </button>
+                    <button
+                        class="filter-pill px-6 py-2 rounded-full border border-gray-300 hover:border-gray-900 whitespace-nowrap text-sm font-medium">
+                        <i class="fas fa-tag mr-2"></i>
+                        Pacotes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="fixed inset-0 z-50 hidden overflow-y-auto modal-backdrop bg-black/40">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div
+                class="inline-block w-full max-w-2xl my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-900">Filtros</h3>
+                    <button id="closeFilterModal" class="text-gray-400 hover:text-gray-600 transition">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="px-6 py-6 space-y-8 max-h-[calc(100vh-200px)] overflow-y-auto">
+                    <!-- Price Range -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Faixa de preço</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <label for="minPrice" class="block text-sm text-gray-600 mb-1">Mínimo</label>
+                                    <input type="number" id="minPrice" value="0"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                                <span class="mx-4 mt-6">-</span>
+                                <div class="flex-1">
+                                    <label for="maxPrice" class="block text-sm text-gray-600 mb-1">Máximo</label>
+                                    <input type="number" id="maxPrice" value="5000"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                </div>
+                            </div>
+                            <input type="range" min="0" max="5000" value="2500"
+                                class="price-slider w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Property Type -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Tipo de propriedade</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label
+                                class="flex items-center p-4 border-2 border-gray-200 rounded-xl hover:border-secondary cursor-pointer transition">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-900 font-medium">Casa inteira</span>
+                            </label>
+                            <label
+                                class="flex items-center p-4 border-2 border-gray-200 rounded-xl hover:border-secondary cursor-pointer transition">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-900 font-medium">Apartamento</span>
+                            </label>
+                            <label
+                                class="flex items-center p-4 border-2 border-gray-200 rounded-xl hover:border-secondary cursor-pointer transition">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-900 font-medium">Hotel</span>
+                            </label>
+                            <label
+                                class="flex items-center p-4 border-2 border-gray-200 rounded-xl hover:border-secondary cursor-pointer transition">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-900 font-medium">Pousada</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rooms and Beds -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Quartos e camas</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Quartos</label>
+                                <div class="flex items-center space-x-2">
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">Qualquer</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">1+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">2+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">3+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">4+</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Camas</label>
+                                <div class="flex items-center space-x-2">
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">Qualquer</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">1+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">2+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">3+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">4+</button>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Banheiros</label>
+                                <div class="flex items-center space-x-2">
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">Qualquer</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">1+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">2+</button>
+                                    <button
+                                        class="px-4 py-2 border border-gray-300 rounded-full hover:border-gray-900 transition">3+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Comodidades</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Wi-Fi</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Piscina</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Estacionamento</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Ar-condicionado</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Cozinha</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox"
+                                    class="w-5 h-5 text-secondary border-gray-300 rounded focus:ring-secondary">
+                                <span class="ml-3 text-gray-700">Pet-friendly</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="flex items-center justify-between px-6 py-4 border-t border-gray-200">
+                    <button class="text-gray-700 font-medium underline hover:text-gray-900">Limpar tudo</button>
+                    <button
+                        class="bg-gray-900 text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition font-medium">
+                        Mostrar resultados
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 lg:px-8 py-8">
+        <!-- Results Info -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900 mb-1">Hospedagens e experiências em Pipa, RN</h1>
+                <p class="text-gray-600">Mais de 200 opções disponíveis</p>
+            </div>
+            <select
+                class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent">
+                <option>Recomendados</option>
+                <option>Menor preço</option>
+                <option>Maior preço</option>
+                <option>Melhor avaliados</option>
+            </select>
+        </div>
+
+        <!-- Listings Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" role="list"
+            aria-label="Lista de hospedagens e experiências">
+            <!-- Listing Card 1 -->
+            <article class="group cursor-pointer" role="listitem">
+                <a href="bivoo-details.html" class="block">
+                    <div class="relative overflow-hidden rounded-2xl mb-3">
+                        <img src="assets/img/experience-2.png" alt="Casa EPIPÃ em Pipa, RN com piscina e área verde"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full p-2 hover:bg-white transition"
+                            aria-label="Adicionar aos favoritos">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <span
+                            class="absolute top-3 left-3 bg-secondary text-white text-xs font-semibold px-3 py-1.5 rounded-full">Casa
+                            de temporada</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-semibold text-gray-900">Casa EPIPÃ</h3>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <span class="font-semibold text-sm">4.95</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Pipa, Rio Grande do Norte</p>
+                        <p class="text-gray-600 text-sm mb-2">3 quartos · 2 banheiros · Piscina</p>
+                        <p class="font-semibold text-gray-900">
+                            <span class="text-lg">R$ 1.475</span>
+                            <span class="text-sm font-normal text-gray-600"> / noite</span>
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Listing Card 2 -->
+            <article class="group cursor-pointer" role="listitem">
+                <a href="bivoo-details.html" class="block">
+                    <div class="relative overflow-hidden rounded-2xl mb-3">
+                        <img src="assets/img/experience-1.png" alt="Village Club Chalés em Pipa com vista para natureza"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full p-2 hover:bg-white transition"
+                            aria-label="Adicionar aos favoritos">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <span
+                            class="absolute top-3 left-3 bg-green-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Hotel</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-semibold text-gray-900">Village Club - Chalés Duplo</h3>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <span class="font-semibold text-sm">4.87</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Pipa, Rio Grande do Norte</p>
+                        <p class="text-gray-600 text-sm mb-2">2 quartos · 1 banheiro · Wi-Fi</p>
+                        <p class="font-semibold text-gray-900">
+                            <span class="text-lg">R$ 1.245</span>
+                            <span class="text-sm font-normal text-gray-600"> / noite</span>
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Listing Card 3 - Experience -->
+            <article class="group cursor-pointer" role="listitem">
+                <a href="bivoo-details.html" class="block">
+                    <div class="relative overflow-hidden rounded-2xl mb-3">
+                        <img src="assets/img/experience-2.png" alt="Passeio de buggy pelas dunas de Genipabu"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full p-2 hover:bg-white transition"
+                            aria-label="Adicionar aos favoritos">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <span
+                            class="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-3 py-1.5 rounded-full">Experiência</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-semibold text-gray-900">Passeio pelas Dunas de Genipabu</h3>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <span class="font-semibold text-sm">5.0</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Natal, Rio Grande do Norte</p>
+                        <p class="text-gray-600 text-sm mb-2">4 horas · Guia incluído</p>
+                        <p class="font-semibold text-gray-900">
+                            <span class="text-lg">R$ 345</span>
+                            <span class="text-sm font-normal text-gray-600"> / pessoa</span>
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- Listing Card 4 -->
+            <article class="group cursor-pointer" role="listitem">
+                <a href="bivoo-details.html" class="block">
+                    <div class="relative overflow-hidden rounded-2xl mb-3">
+                        <img src="assets/img/experience-3.png" alt="Casa 3030 Y Spa com piscina em Tibau do Sul"
+                            class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full p-2 hover:bg-white transition"
+                            aria-label="Adicionar aos favoritos">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <span
+                            class="absolute top-3 left-3 bg-secondary text-white text-xs font-semibold px-3 py-1.5 rounded-full">Casa
+                            de temporada</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-semibold text-gray-900">Casa 3030 Y Spa</h3>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <span class="font-semibold text-sm">4.92</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-1">Tibau do Sul, Rio Grande do Norte</p>
+                        <p class="text-gray-600 text-sm mb-2">4 quartos · 3 banheiros · Spa</p>
+                        <p class="font-semibold text-gray-900">
+                            <span class="text-lg">R$ 1.408</span>
+                            <span class="text-sm font-normal text-gray-600"> / noite</span>
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- More cards... (Repeat pattern) -->
+            <!-- Card 5-12 would follow same structure -->
+
+        </div>
+
+        <!-- Pagination -->
+        <nav class="flex items-center justify-center mt-12 space-x-2" aria-label="Navegação de páginas">
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+                aria-label="Página anterior">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="px-4 py-2 bg-gray-900 text-white rounded-lg font-medium" aria-current="page">1</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">2</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">3</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">4</button>
+            <span class="px-2">...</span>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">12</button>
+            <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+                aria-label="Próxima página">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </nav>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Filter Modal
+        const filterBtn = document.getElementById('filterBtn');
+        const filterModal = document.getElementById('filterModal');
+        const closeFilterModal = document.getElementById('closeFilterModal');
+
+        filterBtn.addEventListener('click', () => {
+            filterModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeFilterModal.addEventListener('click', () => {
+            filterModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal on backdrop click
+        filterModal.addEventListener('click', (e) => {
+            if (e.target === filterModal) {
+                filterModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Category Pills Toggle
+        const filterPills = document.querySelectorAll('.filter-pill');
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+            });
+        });
+
+        // Favorite Toggle
+        const favoriteButtons = document.querySelectorAll('[aria-label="Adicionar aos favoritos"]');
+        favoriteButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const icon = button.querySelector('i');
+                icon.classList.toggle('far');
+                icon.classList.toggle('fas');
+                icon.classList.toggle('text-red-500');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

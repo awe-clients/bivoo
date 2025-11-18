@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portal do Anfitrião Bivoo - Gerencie suas reservas, calendário, preços e análises em um só lugar.">
+    <title>Portal do Anfitrião | Bivoo</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar-link.active {
+            background: linear-gradient(135deg, #6C40E7 0%, #FF6B35 100%);
+            color: white;
+        }
+
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .calendar-day {
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-gray-50">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-white border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
+        <div class="px-4 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <button id="sidebarToggle" class="lg:hidden text-gray-600 hover:text-primary mr-4">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                    <a href="/" class="flex items-center">
+                        <img src="/path-to-bivoo-logo.svg" alt="Bivoo" class="h-8">
+                        <span class="ml-3 text-sm font-semibold text-gray-600">Portal do Anfitrião</span>
+                    </a>
+                </div>
+
+                <!-- Right Side -->
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <button class="relative text-gray-600 hover:text-primary transition">
+                        <i class="far fa-bell text-xl"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+
+                    <!-- Messages -->
+                    <button class="relative text-gray-600 hover:text-primary transition">
+                        <i class="far fa-comment-dots text-xl"></i>
+                        <span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full"></span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="relative">
+                        <button id="userMenuButton"
+                            class="flex items-center space-x-2 text-gray-700 hover:text-primary transition">
+                            <img src="/path-to-avatar.jpg" alt="João Silva" class="w-8 h-8 rounded-full object-cover">
+                            <span class="hidden md:inline font-semibold">João Silva</span>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="userMenu"
+                            class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-gray-200 py-2">
+                            <a href="#perfil" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition">
+                                <i class="fas fa-user mr-2 text-gray-400"></i>
+                                Meu Perfil
+                            </a>
+                            <a href="#configuracoes" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition">
+                                <i class="fas fa-cog mr-2 text-gray-400"></i>
+                                Configurações
+                            </a>
+                            <a href="bivoo-help.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 transition">
+                                <i class="fas fa-question-circle mr-2 text-gray-400"></i>
+                                Ajuda
+                            </a>
+                            <hr class="my-2">
+                            <a href="#sair" class="block px-4 py-2 text-red-600 hover:bg-red-50 transition">
+                                <i class="fas fa-sign-out-alt mr-2"></i>
+                                Sair
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="fixed left-0 top-16 bottom-0 w-64 bg-white border-r border-gray-200 overflow-y-auto z-40 transition-transform -translate-x-full lg:translate-x-0">
+        <div class="p-4 space-y-2">
+            <!-- Dashboard -->
+            <a href="#dashboard"
+                class="sidebar-link active flex items-center space-x-3 px-4 py-3 rounded-lg transition-all">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-semibold">Dashboard</span>
+            </a>
+
+            <!-- Reservas -->
+            <a href="#reservas"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-calendar-check text-xl"></i>
+                <span class="font-semibold">Reservas</span>
+                <span class="ml-auto bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">3</span>
+            </a>
+
+            <!-- Calendário -->
+            <a href="#calendario"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-calendar-alt text-xl"></i>
+                <span class="font-semibold">Calendário</span>
+            </a>
+
+            <!-- Mensagens -->
+            <a href="#mensagens"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-comments text-xl"></i>
+                <span class="font-semibold">Mensagens</span>
+                <span class="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">2</span>
+            </a>
+
+            <!-- Anúncios -->
+            <a href="#anuncios"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-home text-xl"></i>
+                <span class="font-semibold">Meus Anúncios</span>
+            </a>
+
+            <!-- Financeiro -->
+            <a href="#financeiro"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-chart-line text-xl"></i>
+                <span class="font-semibold">Financeiro</span>
+            </a>
+
+            <!-- Avaliações -->
+            <a href="#avaliacoes"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-star text-xl"></i>
+                <span class="font-semibold">Avaliações</span>
+            </a>
+
+            <hr class="my-4">
+
+            <!-- Recursos -->
+            <a href="#recursos"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-book text-xl"></i>
+                <span class="font-semibold">Recursos</span>
+            </a>
+
+            <!-- Configurações -->
+            <a href="#configuracoes"
+                class="sidebar-link flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-all">
+                <i class="fas fa-cog text-xl"></i>
+                <span class="font-semibold">Configurações</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="lg:ml-64 pt-16 min-h-screen">
+        <div class="p-4 lg:p-8">
+
+            <!-- Welcome Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Olá, João! 👋</h1>
+                <p class="text-gray-600">Aqui está o resumo das suas atividades hoje</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Stat 1 -->
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 border-l-4 border-primary">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-calendar-check text-2xl text-primary"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                            +12%
+                        </span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-1">Reservas este mês</p>
+                    <p class="text-3xl font-bold text-gray-900">28</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 border-l-4 border-secondary">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-dollar-sign text-2xl text-secondary"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                            +18%
+                        </span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-1">Receita este mês</p>
+                    <p class="text-3xl font-bold text-gray-900">R$ 45.280</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-50 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-star text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+                            4.9
+                        </span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-1">Avaliação média</p>
+                    <p class="text-3xl font-bold text-gray-900">4.9/5.0</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="stat-card bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-percentage text-2xl text-green-500"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                            +5%
+                        </span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-1">Taxa de ocupação</p>
+                    <p class="text-3xl font-bold text-gray-900">87%</p>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid lg:grid-cols-3 gap-6">
+
+                <!-- Left Column (2/3) -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Próximas Reservas -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="p-6 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-xl font-bold text-gray-900">Próximas Reservas</h2>
+                                <a href="#todas-reservas"
+                                    class="text-primary hover:text-primary-dark font-semibold text-sm">
+                                    Ver todas
+                                    <i class="fas fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="divide-y divide-gray-200">
+                            <!-- Reserva 1 -->
+                            <div class="p-6 hover:bg-gray-50 transition">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex space-x-4">
+                                        <img src="/path-to-guest-1.jpg" alt="Maria Santos"
+                                            class="w-12 h-12 rounded-full object-cover">
+                                        <div>
+                                            <h3 class="font-bold text-gray-900">Maria Santos</h3>
+                                            <p class="text-sm text-gray-600 mb-2">Casa *EPIPÃ* - Pipa, RN</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                                <span class="flex items-center">
+                                                    <i class="far fa-calendar mr-1 text-primary"></i>
+                                                    20 Dez - 27 Dez
+                                                </span>
+                                                <span class="flex items-center">
+                                                    <i class="far fa-user mr-1 text-primary"></i>
+                                                    2 adultos, 1 criança
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full mb-2">
+                                            Confirmada
+                                        </span>
+                                        <p class="text-lg font-bold text-gray-900">R$ 4.125,00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Reserva 2 -->
+                            <div class="p-6 hover:bg-gray-50 transition">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex space-x-4">
+                                        <img src="/path-to-guest-2.jpg" alt="Carlos Oliveira"
+                                            class="w-12 h-12 rounded-full object-cover">
+                                        <div>
+                                            <h3 class="font-bold text-gray-900">Carlos Oliveira</h3>
+                                            <p class="text-sm text-gray-600 mb-2">Casa 3030 Y SPA - Tibau do Sul</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                                <span class="flex items-center">
+                                                    <i class="far fa-calendar mr-1 text-primary"></i>
+                                                    28 Dez - 05 Jan
+                                                </span>
+                                                <span class="flex items-center">
+                                                    <i class="far fa-user mr-1 text-primary"></i>
+                                                    4 adultos
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full mb-2">
+                                            Pendente
+                                        </span>
+                                        <p class="text-lg font-bold text-gray-900">R$ 11.260,00</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Reserva 3 -->
+                            <div class="p-6 hover:bg-gray-50 transition">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex space-x-4">
+                                        <img src="/path-to-guest-3.jpg" alt="Ana Costa"
+                                            class="w-12 h-12 rounded-full object-cover">
+                                        <div>
+                                            <h3 class="font-bold text-gray-900">Ana Costa</h3>
+                                            <p class="text-sm text-gray-600 mb-2">Village Club - Chalés Duplo</p>
+                                            <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                                <span class="flex items-center">
+                                                    <i class="far fa-calendar mr-1 text-primary"></i>
+                                                    10 Jan - 17 Jan
+                                                </span>
+                                                <span class="flex items-center">
+                                                    <i class="far fa-user mr-1 text-primary"></i>
+                                                    2 adultos
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <span
+                                            class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full mb-2">
+                                            Confirmada
+                                        </span>
+                                        <p class="text-lg font-bold text-gray-900">R$ 8.715,00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de Performance -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-gray-900">Performance de Reservas</h2>
+                            <select
+                                class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>Últimos 7 dias</option>
+                                <option>Últimos 30 dias</option>
+                                <option>Últimos 3 meses</option>
+                                <option>Último ano</option>
+                            </select>
+                        </div>
+
+                        <!-- Simplified Chart Representation -->
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Seg</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 75%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">12</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Ter</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 60%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">9</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Qua</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 85%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">15</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Qui</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 50%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">8</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Sex</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 95%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">18</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Sáb</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 100%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">22</div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-24 text-sm text-gray-600">Dom</div>
+                                <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-full rounded-full"
+                                        style="width: 90%"></div>
+                                </div>
+                                <div class="w-16 text-right text-sm font-semibold text-gray-900">16</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column (1/3) -->
+                <div class="space-y-6">
+
+                    <!-- Calendário Mini -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Dezembro 2025</h2>
+
+                        <!-- Calendar Header -->
+                        <div class="grid grid-cols-7 gap-2 mb-2 text-center text-xs font-semibold text-gray-600">
+                            <div>Dom</div>
+                            <div>Seg</div>
+                            <div>Ter</div>
+                            <div>Qua</div>
+                            <div>Qui</div>
+                            <div>Sex</div>
+                            <div>Sáb</div>
+                        </div>
+
+                        <!-- Calendar Days -->
+                        <div class="grid grid-cols-7 gap-2 text-center text-sm">
+                            <!-- Previous month days -->
+                            <div class="calendar-day p-2 text-gray-300">28</div>
+                            <div class="calendar-day p-2 text-gray-300">29</div>
+                            <div class="calendar-day p-2 text-gray-300">30</div>
+                            <!-- Current month -->
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">1</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">2</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">3</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">4</div>
+
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">5</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">6</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">7</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">8</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">9</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">10</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">11</div>
+
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">12</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">13</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">14</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">15</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">16</div>
+                            <div class="calendar-day p-2 rounded-lg bg-primary text-white font-bold rounded-lg">17</div>
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">18</div>
+
+                            <div class="calendar-day p-2 rounded-lg hover:bg-gray-100 cursor-pointer">19</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                20</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                21</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                22</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                23</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                24</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                25</div>
+
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                26</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-green-100 text-green-700 font-semibold cursor-pointer">
+                                27</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-yellow-100 text-yellow-700 font-semibold cursor-pointer">
+                                28</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-yellow-100 text-yellow-700 font-semibold cursor-pointer">
+                                29</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-yellow-100 text-yellow-700 font-semibold cursor-pointer">
+                                30</div>
+                            <div
+                                class="calendar-day p-2 rounded-lg bg-yellow-100 text-yellow-700 font-semibold cursor-pointer">
+                                31</div>
+                            <div class="calendar-day p-2 text-gray-300">1</div>
+                        </div>
+
+                        <!-- Legend -->
+                        <div class="mt-4 space-y-2 text-xs">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-green-100 rounded mr-2"></div>
+                                <span class="text-gray-600">Reservado</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-yellow-100 rounded mr-2"></div>
+                                <span class="text-gray-600">Pendente</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-primary rounded mr-2"></div>
+                                <span class="text-gray-600">Hoje</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensagens Recentes -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="p-6 border-b border-gray-200">
+                            <h2 class="text-xl font-bold text-gray-900">Mensagens</h2>
+                        </div>
+                        <div class="divide-y divide-gray-200">
+                            <!-- Message 1 -->
+                            <a href="#mensagem-1" class="block p-4 hover:bg-gray-50 transition">
+                                <div class="flex items-start space-x-3">
+                                    <div class="relative">
+                                        <img src="/path-to-guest-1.jpg" alt="Maria Santos"
+                                            class="w-10 h-10 rounded-full object-cover">
+                                        <span
+                                            class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <p class="font-semibold text-gray-900 text-sm">Maria Santos</p>
+                                            <span class="text-xs text-gray-500">10 min</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Olá! Gostaria de saber se...</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Message 2 -->
+                            <a href="#mensagem-2" class="block p-4 hover:bg-gray-50 transition">
+                                <div class="flex items-start space-x-3">
+                                    <div class="relative">
+                                        <img src="/path-to-guest-2.jpg" alt="Carlos Oliveira"
+                                            class="w-10 h-10 rounded-full object-cover">
+                                        <span
+                                            class="absolute bottom-0 right-0 w-3 h-3 bg-gray-400 border-2 border-white rounded-full"></span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <p class="font-semibold text-gray-900 text-sm">Carlos Oliveira</p>
+                                            <span class="text-xs text-gray-500">1h</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Perfeito! Nos vemos em...</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <!-- Message 3 -->
+                            <a href="#mensagem-3" class="block p-4 hover:bg-gray-50 transition">
+                                <div class="flex items-start space-x-3">
+                                    <div class="relative">
+                                        <img src="/path-to-guest-3.jpg" alt="Ana Costa"
+                                            class="w-10 h-10 rounded-full object-cover">
+                                        <span
+                                            class="absolute bottom-0 right-0 w-3 h-3 bg-gray-400 border-2 border-white rounded-full"></span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <p class="font-semibold text-gray-900 text-sm">Ana Costa</p>
+                                            <span class="text-xs text-gray-500">3h</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 truncate">Obrigada pela hospitalidade!</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="p-4 bg-gray-50">
+                            <a href="#todas-mensagens"
+                                class="text-primary hover:text-primary-dark font-semibold text-sm flex items-center justify-center">
+                                Ver todas as mensagens
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Ações Rápidas</h2>
+                        <div class="space-y-3">
+                            <button
+                                class="w-full flex items-center justify-between p-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:shadow-lg transition-all">
+                                <span class="font-semibold">Adicionar Bloqueio</span>
+                                <i class="fas fa-ban"></i>
+                            </button>
+                            <button
+                                class="w-full flex items-center justify-between p-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg transition-all">
+                                <span class="font-semibold">Ajustar Preços</span>
+                                <i class="fas fa-dollar-sign"></i>
+                            </button>
+                            <button
+                                class="w-full flex items-center justify-between p-3 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-lg transition-all">
+                                <span class="font-semibold">Editar Anúncio</span>
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        // Sidebar Toggle (Mobile)
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024) {
+                if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            }
+        });
+
+        // User Menu Toggle
+        const userMenuButton = document.getElementById('userMenuButton');
+        const userMenu = document.getElementById('userMenu');
+
+        userMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            userMenu.classList.add('hidden');
+        });
+
+        // Sidebar Links Active State
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                // Remove active from all
+                document.querySelectorAll('.sidebar-link').forEach(l => {
+                    l.classList.remove('active');
+                    l.classList.add('text-gray-700', 'hover:bg-gray-100');
+                });
+
+                // Add active to clicked
+                this.classList.add('active');
+                this.classList.remove('text-gray-700', 'hover:bg-gray-100');
+            });
+        });
+
+        // Simulate real-time updates
+        setInterval(() => {
+            // Update notification badge randomly
+            const notificationBadge = document.querySelector('.fa-bell').nextElementSibling;
+            if (Math.random() > 0.7) {
+                notificationBadge.classList.toggle('hidden');
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

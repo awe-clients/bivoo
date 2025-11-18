@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Anuncie seu imóvel, experiência ou passeio na Bivoo. Alcance milhares de viajantes e aumente sua renda com comissões justas e suporte dedicado.">
+    <title>Anuncie seu Imóvel na Bivoo | Ganhe Renda Extra com Turismo</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .step {
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step:not(.active) {
+            display: none;
+        }
+
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        .beach-pattern {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23FFE5D9' fill-opacity='0.15' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");
+        }
+
+        .sun-pattern {
+            background-color: #fef3c7;
+            background-image: radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+        }
+
+        .wave-divider {
+            position: relative;
+        }
+
+        .wave-divider::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D',
+                        sand: '#F4E4C1',
+                        ocean: '#4A90E2'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-white">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="relative">
+            <div class="absolute top-0 right-0 bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/path-to-bivoo-logo.svg" alt="Bivoo" class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-phone-alt text-primary mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+                        <a href="#login" class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            <span>Já sou anunciante</span>
+                        </a>
+                    </div>
+
+                    <button class="lg:hidden text-gray-700 hover:text-primary" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-yellow-400 via-orange-400 to-primary overflow-hidden wave-divider"
+        style="min-height: 600px;">
+        <!-- Sun Pattern -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 right-10 w-64 h-64 bg-yellow-300 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-orange-300 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Palm Trees Illustration (SVG) -->
+        <div class="absolute bottom-0 left-0 w-full opacity-10">
+            <svg viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                <path d="M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z" fill="#059669" opacity="0.3" />
+                <circle cx="150" cy="120" r="40" fill="#10B981" />
+                <rect x="145" y="120" width="10" height="100" fill="#059669" />
+                <circle cx="450" cy="100" r="50" fill="#10B981" />
+                <rect x="445" y="100" width="10" height="120" fill="#059669" />
+                <circle cx="800" cy="130" r="35" fill="#10B981" />
+                <rect x="795" y="130" width="10" height="90" fill="#059669" />
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 py-20 relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block px-4 py-2 bg-white/90 backdrop-blur-sm text-primary rounded-full text-sm font-semibold mb-6">
+                    <i class="fas fa-star mr-2"></i>
+                    Seja um parceiro Bivoo
+                </span>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                    Transforme seu imóvel em uma fonte de renda extra
+                </h1>
+                <p class="text-xl lg:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow">
+                    Alcance milhares de viajantes, tenha suporte completo e comece a lucrar hoje mesmo com a maior
+                    plataforma de turismo do Nordeste.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#form-anunciar"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-bold hover:shadow-2xl transition-all transform hover:-translate-y-1 text-lg">
+                        <i class="fas fa-home mr-2"></i>
+                        Começar agora
+                    </a>
+                    <a href="#como-funciona"
+                        class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-primary transition-all text-lg">
+                        <i class="fas fa-play-circle mr-2"></i>
+                        Ver como funciona
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                    Por que escolher a Bivoo?
+                </span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Vantagens exclusivas para você
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Oferecemos tudo que você precisa para ter sucesso no mercado de turismo
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-primary transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-orange-400 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-percentage text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Comissão Justa</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Apenas 12% de comissão por reserva. Sem taxas escondidas ou mensalidades. Você só paga quando
+                        recebe.
+                    </p>
+                </article>
+
+                <!-- Benefit 2 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-secondary transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-secondary to-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-users text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Milhares de Viajantes</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Alcance mais de 50 mil viajantes ativos por mês buscando hospedagens e experiências autênticas.
+                    </p>
+                </article>
+
+                <!-- Benefit 3 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-green-500 transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-headset text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Suporte Dedicado</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Equipe especializada disponível 7 dias por semana para ajudar você e seus hóspedes.
+                    </p>
+                </article>
+
+                <!-- Benefit 4 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-blue-500 transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-check text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Pagamento Garantido</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Receba seu dinheiro com segurança em até 24h após o check-in. Proteção total contra fraudes.
+                    </p>
+                </article>
+
+                <!-- Benefit 5 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-yellow-500 transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Dashboard Completo</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Gerencie reservas, calendário, preços e relatórios financeiros em uma plataforma intuitiva.
+                    </p>
+                </article>
+
+                <!-- Benefit 6 -->
+                <article
+                    class="group p-8 rounded-2xl border-2 border-gray-100 hover:border-pink-500 transition-all hover:shadow-xl bg-white">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-camera text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Fotos Profissionais</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sessão de fotos gratuita para destacar seu anúncio e atrair mais reservas.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-20 beach-pattern">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold mb-6">
+                    Processo simples
+                </span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Como funciona?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Em apenas 4 passos você estará pronto para receber hóspedes
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-green-500"
+                    style="width: 75%; margin: 0 auto;"></div>
+
+                <!-- Step 1 -->
+                <article class="relative text-center">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-orange-500 text-white rounded-full text-3xl font-bold mb-6 shadow-lg relative z-10">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Preencha o formulário</h3>
+                    <p class="text-gray-600">
+                        Conte-nos sobre seu imóvel, experiência ou passeio. Leva apenas 10 minutos.
+                    </p>
+                </article>
+
+                <!-- Step 2 -->
+                <article class="relative text-center">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-secondary to-purple-600 text-white rounded-full text-3xl font-bold mb-6 shadow-lg relative z-10">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Nossa equipe entra em contato</h3>
+                    <p class="text-gray-600">
+                        Validamos as informações e agendamos a sessão de fotos gratuita.
+                    </p>
+                </article>
+
+                <!-- Step 3 -->
+                <article class="relative text-center">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-full text-3xl font-bold mb-6 shadow-lg relative z-10">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Anúncio publicado</h3>
+                    <p class="text-gray-600">
+                        Seu espaço fica visível para milhares de viajantes em até 48h.
+                    </p>
+                </article>
+
+                <!-- Step 4 -->
+                <article class="relative text-center">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-full text-3xl font-bold mb-6 shadow-lg relative z-10">
+                        4
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Comece a lucrar</h3>
+                    <p class="text-gray-600">
+                        Receba reservas, gerencie pelo dashboard e lucre com seu patrimônio.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials from Hosts -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                    Histórias de sucesso
+                </span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Quem já anunciou está lucrando
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Veja o que nossos parceiros têm a dizer
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <article
+                    class="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl shadow-lg border border-orange-100">
+                    <div class="flex items-center mb-6">
+                        <img src="/path-to-host-1.jpg" alt="Roberto Silva"
+                            class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Roberto Silva</h4>
+                            <p class="text-sm text-gray-600">Pousada Vista Mar - Pipa</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Aumentei minhas reservas em 250% no primeiro mês. O suporte da Bivoo é excepcional e a comissão
+                        é a mais justa do mercado!"
+                    </p>
+                    <div class="text-primary font-bold text-2xl">
+                        R$ 15.000/mês
+                    </div>
+                    <p class="text-sm text-gray-600">Renda média com a Bivoo</p>
+                </article>
+
+                <!-- Testimonial 2 -->
+                <article
+                    class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl shadow-lg border border-purple-100">
+                    <div class="flex items-center mb-6">
+                        <img src="/path-to-host-2.jpg" alt="Juliana Rocha"
+                            class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Juliana Rocha</h4>
+                            <p class="text-sm text-gray-600">Casa de Praia - Maceió</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "A casa que ficava vazia virou minha melhor fonte de renda passiva. A plataforma é super fácil
+                        de usar!"
+                    </p>
+                    <div class="text-secondary font-bold text-2xl">
+                        R$ 22.000/mês
+                    </div>
+                    <p class="text-sm text-gray-600">Renda média com a Bivoo</p>
+                </article>
+
+                <!-- Testimonial 3 -->
+                <article
+                    class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg border border-green-100">
+                    <div class="flex items-center mb-6">
+                        <img src="/path-to-host-3.jpg" alt="Carlos Mendes"
+                            class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Carlos Mendes</h4>
+                            <p class="text-sm text-gray-600">Passeios de Buggy - Natal</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Como guia turístico, a Bivoo me conectou com turistas de todo o Brasil. Triplicou meus
+                        agendamentos!"
+                    </p>
+                    <div class="text-green-600 font-bold text-2xl">
+                        R$ 8.000/mês
+                    </div>
+                    <p class="text-sm text-gray-600">Renda média com a Bivoo</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-step Form Section -->
+    <section id="form-anunciar" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span
+                        class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                        Passo a passo
+                    </span>
+                    <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
+                        Anuncie em 10 minutos
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Preencha o formulário e nossa equipe entrará em contato
+                    </p>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-medium text-gray-700">Progresso</span>
+                        <span class="text-sm font-medium text-primary" id="progressText">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-3">
+                        <div id="progressBar"
+                            class="progress-bar bg-gradient-to-r from-primary to-secondary h-3 rounded-full"
+                            style="width: 0%"></div>
+                    </div>
+                    <div class="flex items-center justify-between mt-2 text-xs text-gray-600">
+                        <span>Início</span>
+                        <span>Sobre você</span>
+                        <span>Detalhes</span>
+                        <span>Fotos</span>
+                        <span>Concluído</span>
+                    </div>
+                </div>
+
+                <!-- Form Container -->
+                <div class="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
+                    <form id="listingForm">
+                        <!-- Step 1: Type Selection -->
+                        <div class="step active" data-step="1">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">O que você quer anunciar?</h3>
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="type" value="property" class="sr-only peer" required>
+                                    <div
+                                        class="p-8 border-2 border-gray-200 rounded-2xl text-center transition-all peer-checked:border-primary peer-checked:bg-primary/5 hover:shadow-lg">
+                                        <i
+                                            class="fas fa-home text-5xl text-gray-400 mb-4 peer-checked:text-primary"></i>
+                                        <h4 class="font-bold text-gray-900 mb-2">Imóvel</h4>
+                                        <p class="text-sm text-gray-600">Casa, apartamento, pousada ou hotel</p>
+                                    </div>
+                                </label>
+
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="type" value="experience" class="sr-only peer" required>
+                                    <div
+                                        class="p-8 border-2 border-gray-200 rounded-2xl text-center transition-all peer-checked:border-secondary peer-checked:bg-secondary/5 hover:shadow-lg">
+                                        <i
+                                            class="fas fa-umbrella-beach text-5xl text-gray-400 mb-4 peer-checked:text-secondary"></i>
+                                        <h4 class="font-bold text-gray-900 mb-2">Experiência</h4>
+                                        <p class="text-sm text-gray-600">Tours, passeios e atividades</p>
+                                    </div>
+                                </label>
+
+                                <label class="group cursor-pointer">
+                                    <input type="radio" name="type" value="transport" class="sr-only peer" required>
+                                    <div
+                                        class="p-8 border-2 border-gray-200 rounded-2xl text-center transition-all peer-checked:border-green-500 peer-checked:bg-green-50 hover:shadow-lg">
+                                        <i
+                                            class="fas fa-bus text-5xl text-gray-400 mb-4 peer-checked:text-green-500"></i>
+                                        <h4 class="font-bold text-gray-900 mb-2">Transporte</h4>
+                                        <p class="text-sm text-gray-600">Transfer, ônibus ou van</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Personal Info -->
+                        <div class="step" data-step="2">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Sobre você</h3>
+                            <div class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nome
+                                            completo *</label>
+                                        <input type="text" id="name" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-mail
+                                            *</label>
+                                        <input type="email" id="email" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="phone"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">Telefone/WhatsApp
+                                            *</label>
+                                        <input type="tel" id="phone" required placeholder="(00) 00000-0000"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label for="cpf" class="block text-sm font-semibold text-gray-700 mb-2">CPF/CNPJ
+                                            *</label>
+                                        <input type="text" id="cpf" required placeholder="000.000.000-00"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Property Details -->
+                        <div class="step" data-step="3">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Detalhes do anúncio</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="title" class="block text-sm font-semibold text-gray-700 mb-2">Título do
+                                        anúncio *</label>
+                                    <input type="text" id="title" required
+                                        placeholder="Ex: Casa aconchegante a 5 min da praia"
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                </div>
+
+                                <div>
+                                    <label for="description"
+                                        class="block text-sm font-semibold text-gray-700 mb-2">Descrição *</label>
+                                    <textarea id="description" rows="5" required
+                                        placeholder="Descreva seu espaço, localização, comodidades..."
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition"></textarea>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="city" class="block text-sm font-semibold text-gray-700 mb-2">Cidade
+                                            *</label>
+                                        <input type="text" id="city" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label for="state" class="block text-sm font-semibold text-gray-700 mb-2">Estado
+                                            *</label>
+                                        <select id="state" required
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                            <option value="">Selecione...</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="SE">Sergipe</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-3 gap-6">
+                                    <div>
+                                        <label for="guests"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">Hóspedes</label>
+                                        <input type="number" id="guests" min="1"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label for="bedrooms"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">Quartos</label>
+                                        <input type="number" id="bedrooms" min="0"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                    <div>
+                                        <label for="bathrooms"
+                                            class="block text-sm font-semibold text-gray-700 mb-2">Banheiros</label>
+                                        <input type="number" id="bathrooms" min="0"
+                                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="price" class="block text-sm font-semibold text-gray-700 mb-2">Preço por
+                                        noite (R$) *</label>
+                                    <input type="number" id="price" required min="0" placeholder="150"
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Photos -->
+                        <div class="step" data-step="4">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Fotos do seu espaço</h3>
+                            <div class="space-y-6">
+                                <div
+                                    class="border-2 border-dashed border-gray-300 rounded-2xl p-12 text-center hover:border-primary transition">
+                                    <i class="fas fa-cloud-upload-alt text-6xl text-gray-400 mb-4"></i>
+                                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Arraste e solte suas fotos aqui
+                                    </h4>
+                                    <p class="text-gray-600 mb-4">ou clique para selecionar arquivos</p>
+                                    <input type="file" id="photos" accept="image/*" multiple class="hidden">
+                                    <button type="button" onclick="document.getElementById('photos').click()"
+                                        class="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition">
+                                        Selecionar fotos
+                                    </button>
+                                    <p class="text-sm text-gray-500 mt-4">PNG, JPG ou JPEG. Máximo 10MB por foto.</p>
+                                </div>
+
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <div class="flex items-start">
+                                        <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                        <div>
+                                            <h5 class="font-semibold text-blue-900 mb-1">Sessão de fotos gratuita</h5>
+                                            <p class="text-sm text-blue-800">Você pode enviar suas próprias fotos agora
+                                                ou agendar uma sessão profissional gratuita após a aprovação do anúncio.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Success -->
+                        <div class="step text-center" data-step="5">
+                            <div
+                                class="inline-flex items-center justify-center w-24 h-24 bg-green-100 rounded-full mb-6">
+                                <i class="fas fa-check text-5xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-4">Formulário enviado com sucesso!</h3>
+                            <p class="text-xl text-gray-600 mb-6">
+                                Nossa equipe entrará em contato em até 24 horas para validar as informações e agendar a
+                                sessão de fotos.
+                            </p>
+                            <div class="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-6 mb-6">
+                                <h4 class="font-bold text-gray-900 mb-2">Próximos passos:</h4>
+                                <ul class="text-left text-gray-700 space-y-2">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        Validação das informações
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        Agendamento da sessão de fotos
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        Publicação do anúncio
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                        Primeiras reservas
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="/"
+                                class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-bold hover:bg-primary-dark transition">
+                                <i class="fas fa-home mr-2"></i>
+                                Voltar ao início
+                            </a>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="flex items-center justify-between mt-8 pt-6 border-t border-gray-200"
+                            id="formNavigation">
+                            <button type="button" id="prevBtn"
+                                class="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Anterior
+                            </button>
+                            <button type="button" id="nextBtn"
+                                class="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-bold hover:shadow-lg transition">
+                                Próximo
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <span
+                        class="inline-block px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold mb-6">
+                        Dúvidas frequentes
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                        Perguntas frequentes
+                    </h2>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group bg-gray-50 rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition">
+                            <h3 class="text-lg font-semibold text-gray-900">Qual é a comissão da Bivoo?</h3>
+                            <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Nossa comissão é de apenas 12% por reserva confirmada. Não cobramos mensalidades, taxas
+                                de cadastro ou custos escondidos. Você só paga quando recebe.</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-gray-50 rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition">
+                            <h3 class="text-lg font-semibold text-gray-900">Quanto tempo leva para o anúncio ficar no
+                                ar?</h3>
+                            <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Após o envio do formulário, nossa equipe valida as informações em até 24h. Se aprovado,
+                                agendamos a sessão de fotos e seu anúncio fica ativo em até 48h após a sessão.</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-gray-50 rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition">
+                            <h3 class="text-lg font-semibold text-gray-900">Como funciona o pagamento?</h3>
+                            <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Você recebe o valor da reserva (menos a comissão) em até 24h após o check-in do hóspede.
+                                Os pagamentos são feitos via transferência bancária diretamente na sua conta.</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-gray-50 rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition">
+                            <h3 class="text-lg font-semibold text-gray-900">Preciso ter empresa aberta?</h3>
+                            <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Não é obrigatório. Você pode anunciar como pessoa física (CPF) ou jurídica (CNPJ).
+                                Recomendamos consultar um contador sobre a melhor opção para o seu caso.</p>
+                        </div>
+                    </details>
+
+                    <details class="group bg-gray-50 rounded-lg overflow-hidden">
+                        <summary
+                            class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-100 transition">
+                            <h3 class="text-lg font-semibold text-gray-900">E se houver algum problema com o hóspede?
+                            </h3>
+                            <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-gray-600">
+                            <p>Nossa equipe de suporte está disponível 7 dias por semana para mediar qualquer situação.
+                                Além disso, todos os hóspedes são verificados e avaliados pela comunidade.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-br from-primary via-orange-500 to-yellow-400 relative overflow-hidden">
+        <!-- Beach Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z" fill="white" opacity="0.3" />
+                <circle cx="200" cy="80" r="60" fill="white" opacity="0.2" />
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center text-white">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6 drop-shadow-lg">
+                    Pronto para começar a lucrar?
+                </h2>
+                <p class="text-xl mb-8 text-white/95 drop-shadow">
+                    Junte-se a mais de 500 anfitriões que já estão transformando seus espaços em fonte de renda
+                </p>
+                <a href="#form-anunciar"
+                    class="inline-flex items-center px-10 py-5 bg-white text-primary rounded-lg font-bold text-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Anunciar agora mesmo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Multi-step Form Logic
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        const steps = document.querySelectorAll('.step');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const formNavigation = document.getElementById('formNavigation');
+
+        function showStep(step) {
+            steps.forEach((s, index) => {
+                s.classList.remove('active');
+                if (index + 1 === step) {
+                    s.classList.add('active');
+                }
+            });
+
+            // Update progress
+            const progress = ((step - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+
+            // Update buttons
+            prevBtn.style.display = step === 1 ? 'none' : 'block';
+
+            if (step === totalSteps) {
+                formNavigation.style.display = 'none';
+            } else {
+                formNavigation.style.display = 'flex';
+                nextBtn.innerHTML = step === totalSteps - 1
+                    ? '<i class="fas fa-check mr-2"></i> Enviar'
+                    : 'Próximo <i class="fas fa-arrow-right ml-2"></i>';
+            }
+
+            // Scroll to top of form
+            document.getElementById('form-anunciar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        nextBtn.addEventListener('click', () => {
+            // Basic validation
+            const currentStepElement = document.querySelector(`.step[data-step="${currentStep}"]`);
+            const requiredInputs = currentStepElement.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+
+            if (!isValid) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Initialize
+        showStep(1);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

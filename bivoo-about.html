@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conheça a história da Bivoo, nossa missão de conectar pessoas a experiências únicas e como estamos transformando o turismo no Brasil.">
+    <title>Sobre a Bivoo - Nossa História e Missão | Bivoo</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .counter {
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-white">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="relative">
+            <div class="absolute top-0 right-0 bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/path-to-bivoo-logo.svg" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <!-- Right Side -->
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-phone-alt text-primary mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+                        <a href="#login" class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            <span>Iniciar sessão</span>
+                        </a>
+                        <a href="#minhas-viagens"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-suitcase text-primary mr-2"></i>
+                            <span>Minhas viagens</span>
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden text-gray-700 hover:text-primary" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 lg:px-8">
+                <nav class="hidden lg:flex items-center space-x-8 py-4">
+                    <a href="/" class="text-gray-600 hover:text-primary transition font-medium text-sm">Início</a>
+                    <a href="bivoo-listings.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Explorar</a>
+                    <a href="#" class="text-primary font-medium text-sm relative border-b-2 border-primary pb-3">Sobre
+                        nós</a>
+                    <a href="#contato"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Contato</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-secondary/90 to-primary/80 z-10"></div>
+        <img src="/path-to-about-hero.jpg" alt="Equipe Bivoo" class="absolute inset-0 w-full h-full object-cover">
+
+        <div class="relative z-20 container mx-auto px-4 lg:px-8 text-center text-white">
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6 animate-fade-in">
+                Somos apaixonados por <span class="text-yellow-300">conectar pessoas</span> a lugares incríveis
+            </h1>
+            <p class="text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+                Criamos experiências únicas que transformam viagens em memórias inesquecíveis
+            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                    Nossa Missão
+                </span>
+                <h2 class="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+                    Democratizar o acesso a experiências de viagem autênticas
+                </h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Acreditamos que cada pessoa merece viver momentos extraordinários. Por isso, selecionamos
+                    cuidadosamente
+                    hospedagens, experiências e passeios que capturam a essência de cada destino, oferecendo qualidade
+                    excepcional e preços justos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <span
+                        class="inline-block px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold mb-6">
+                        Nossa História
+                    </span>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                        Tudo começou com um sonho e uma praia
+                    </h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>
+                            Em 2018, um grupo de amigos apaixonados por viagens se reuniu em Pipa, RN,
+                            e percebeu algo especial: havia uma lacuna entre viajantes que buscavam experiências
+                            autênticas e anfitriões locais com histórias incríveis para compartilhar.
+                        </p>
+                        <p>
+                            Foi assim que nasceu a Bivoo. Começamos com apenas 5 propriedades em Pipa e,
+                            através do boca a boca e da confiança conquistada, crescemos para mais de 200 opções
+                            em diversos destinos pelo Brasil.
+                        </p>
+                        <p>
+                            Hoje, somos mais que uma plataforma de reservas. Somos curadores de experiências,
+                            conectando viajantes a lugares que tocam o coração e anfitriões que amam o que fazem.
+                        </p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <img src="/path-to-story-image.jpg" alt="Fundadores da Bivoo em Pipa"
+                        class="w-full rounded-2xl shadow-2xl" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                    Nossos Valores
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    O que nos move todos os dias
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Princípios que guiam cada decisão e cada interação
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Value 1 -->
+                <article
+                    class="group text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-orange-50 to-white border border-orange-100">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-primary-dark rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Paixão por pessoas</h3>
+                    <p class="text-gray-600">
+                        Cada hóspede, cada anfitrião é único. Tratamos todos com respeito, empatia e carinho.
+                    </p>
+                </article>
+
+                <!-- Value 2 -->
+                <article
+                    class="group text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50 to-white border border-purple-100">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-secondary to-secondary-dark rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-alt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Confiança</h3>
+                    <p class="text-gray-600">
+                        Verificamos cada anúncio, garantimos segurança nas transações e estamos sempre disponíveis.
+                    </p>
+                </article>
+
+                <!-- Value 3 -->
+                <article
+                    class="group text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-white border border-blue-100">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-lightbulb text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Inovação</h3>
+                    <p class="text-gray-600">
+                        Buscamos constantemente novas formas de melhorar a experiência de viagem.
+                    </p>
+                </article>
+
+                <!-- Value 4 -->
+                <article
+                    class="group text-center p-8 rounded-2xl hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-white border border-green-100">
+                    <div
+                        class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-leaf text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sustentabilidade</h3>
+                    <p class="text-gray-600">
+                        Promovemos turismo consciente que respeita comunidades locais e o meio ambiente.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-br from-secondary to-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Nosso impacto em números</h2>
+                <p class="text-xl text-white/90">Crescendo junto com nossos parceiros e viajantes</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="text-center">
+                    <div class="text-5xl lg:text-6xl font-bold mb-2 counter" data-target="200">0</div>
+                    <div class="text-xl font-semibold mb-1">Propriedades</div>
+                    <p class="text-white/80">Cuidadosamente selecionadas</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center">
+                    <div class="text-5xl lg:text-6xl font-bold mb-2 counter" data-target="15000">0</div>
+                    <div class="text-xl font-semibold mb-1">Viajantes felizes</div>
+                    <p class="text-white/80">Experiências inesquecíveis</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center">
+                    <div class="text-5xl lg:text-6xl font-bold mb-2"><span class="counter"
+                            data-target="4">0</span>.<span class="counter" data-target="9">0</span></div>
+                    <div class="text-xl font-semibold mb-1">Avaliação média</div>
+                    <p class="text-white/80">De 5 estrelas possíveis</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center">
+                    <div class="text-5xl lg:text-6xl font-bold mb-2 counter" data-target="25">0</div>
+                    <div class="text-xl font-semibold mb-1">Destinos</div>
+                    <p class="text-white/80">Pelo Brasil inteiro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold mb-6">
+                    Nosso Time
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    As pessoas por trás da Bivoo
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Uma equipe apaixonada, diversa e comprometida com sua experiência
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <article class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <img src="/path-to-team-1.jpg" alt="João Silva - CEO"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="LinkedIn de João Silva">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="Email de João Silva">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">João Silva</h3>
+                    <p class="text-primary font-semibold mb-2">CEO & Fundador</p>
+                    <p class="text-sm text-gray-600">Visionário apaixonado por turismo e tecnologia</p>
+                </article>
+
+                <!-- Team Member 2 -->
+                <article class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <img src="/path-to-team-2.jpg" alt="Maria Santos - COO"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="LinkedIn de Maria Santos">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="Email de Maria Santos">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Maria Santos</h3>
+                    <p class="text-primary font-semibold mb-2">COO</p>
+                    <p class="text-sm text-gray-600">Especialista em operações e experiência do cliente</p>
+                </article>
+
+                <!-- Team Member 3 -->
+                <article class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <img src="/path-to-team-3.jpg" alt="Pedro Oliveira - CTO"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="LinkedIn de Pedro Oliveira">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="Email de Pedro Oliveira">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Pedro Oliveira</h3>
+                    <p class="text-primary font-semibold mb-2">CTO</p>
+                    <p class="text-sm text-gray-600">Líder técnico com foco em inovação</p>
+                </article>
+
+                <!-- Team Member 4 -->
+                <article class="group text-center">
+                    <div class="relative mb-6 overflow-hidden rounded-2xl">
+                        <img src="/path-to-team-4.jpg" alt="Ana Costa - Head de Marketing"
+                            class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-6">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="LinkedIn de Ana Costa">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="text-white hover:text-primary transition"
+                                    aria-label="Email de Ana Costa">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Ana Costa</h3>
+                    <p class="text-primary font-semibold mb-2">Head de Marketing</p>
+                    <p class="text-sm text-gray-600">Especialista em branding e comunicação</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-6">
+                    Depoimentos
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    O que nossos parceiros dizem
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Anfitriões e viajantes compartilham suas experiências
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <article class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "A Bivoo transformou minha pousada. O suporte é excepcional e os hóspedes que chegam são
+                        exatamente o público que busco. Aumentei minhas reservas em 300%!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="/path-to-testimonial-1.jpg" alt="Carla Mendes"
+                            class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Carla Mendes</p>
+                            <p class="text-sm text-gray-600">Proprietária - Pousada Mar Azul</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Testimonial 2 -->
+                <article class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Sempre uso a Bivoo para minhas viagens. As experiências são autênticas, os preços justos
+                        e o atendimento impecável. Já viajei para 8 destinos diferentes!"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="/path-to-testimonial-2.jpg" alt="Ricardo Alves"
+                            class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Ricardo Alves</p>
+                            <p class="text-sm text-gray-600">Viajante frequente</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Testimonial 3 -->
+                <article class="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">
+                        "Como guia de turismo, encontrei na Bivoo o parceiro ideal. A plataforma valoriza
+                        experiências locais e conecta com viajantes que realmente querem conhecer nossa cultura."
+                    </p>
+                    <div class="flex items-center">
+                        <img src="/path-to-testimonial-3.jpg" alt="Juliana Rocha"
+                            class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Juliana Rocha</p>
+                            <p class="text-sm text-gray-600">Guia de turismo - Natal, RN</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\' fill=\'%23ffffff\' fill-opacity=\'1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                    Faça parte da nossa história
+                </h2>
+                <p class="text-xl mb-8 text-white/90">
+                    Seja você um anfitrião querendo compartilhar seu espaço ou um viajante em busca
+                    da próxima aventura, temos um lugar especial para você.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="bivoo-listings.html"
+                        class="inline-flex items-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        <i class="fas fa-search mr-2"></i>
+                        Explorar hospedagens
+                    </a>
+                    <a href="#anunciar"
+                        class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-primary transition-all transform hover:-translate-y-1">
+                        <i class="fas fa-home mr-2"></i>
+                        Anunciar meu espaço
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                // Intersection Observer to start animation when visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', animateCounters);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

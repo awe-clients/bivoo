@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Central de Ajuda Bivoo - Encontre respostas rápidas para suas dúvidas sobre reservas, pagamentos, cancelamentos e muito mais.">
+    <title>Central de Ajuda | Bivoo - Suporte e Atendimento</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .search-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .category-card {
+            transition: all 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .help-pattern {
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%236C40E7' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-white">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="relative">
+            <div class="absolute top-0 right-0 bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/path-to-bivoo-logo.svg" alt="Bivoo" class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-phone-alt text-primary mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+                        <a href="#login" class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            <span>Iniciar sessão</span>
+                        </a>
+                        <a href="#minhas-viagens"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-suitcase text-primary mr-2"></i>
+                            <span>Minhas viagens</span>
+                        </a>
+                    </div>
+
+                    <button class="lg:hidden text-gray-700 hover:text-primary" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 lg:px-8">
+                <nav class="hidden lg:flex items-center space-x-8 py-4">
+                    <a href="/" class="text-gray-600 hover:text-primary transition font-medium text-sm">Início</a>
+                    <a href="bivoo-listings.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Explorar</a>
+                    <a href="bivoo-about.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Sobre nós</a>
+                    <a href="#" class="text-primary font-medium text-sm relative border-b-2 border-primary pb-3">Central
+                        de Ajuda</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <section class="relative bg-gradient-to-br from-secondary to-primary py-20 lg:py-32 overflow-hidden">
+        <!-- Pattern Background -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="fas fa-life-ring text-4xl text-white"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                    Como podemos ajudar você?
+                </h1>
+                <p class="text-xl text-white/95 mb-8">
+                    Busque por respostas ou navegue pelas categorias abaixo
+                </p>
+
+                <!-- Search Bar -->
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="relative">
+                        <i
+                            class="fas fa-search absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
+                        <input type="text" id="helpSearch" placeholder="Digite sua dúvida ou palavra-chave..."
+                            class="w-full pl-16 pr-6 py-5 text-lg rounded-2xl shadow-2xl focus:ring-4 focus:ring-white/50 focus:outline-none transition"
+                            aria-label="Buscar na central de ajuda">
+                    </div>
+
+                    <!-- Search Results Dropdown -->
+                    <div id="searchResults"
+                        class="hidden absolute top-full left-0 right-0 mt-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <div class="search-results p-4">
+                            <div class="text-sm text-gray-500 mb-3 px-2">Resultados da busca:</div>
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Searches -->
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+                    <span class="text-white/80 text-sm">Buscas populares:</span>
+                    <button
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full text-sm font-medium transition">
+                        Cancelamento
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full text-sm font-medium transition">
+                        Alterar reserva
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full text-sm font-medium transition">
+                        Pagamento
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white rounded-full text-sm font-medium transition">
+                        Check-in
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Navegue por categoria
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Encontre respostas organizadas por tema
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Category 1 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-primary hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-orange-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-calendar-check text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Reservas</h3>
+                    <p class="text-gray-600 mb-4">Como fazer, alterar ou cancelar suas reservas</p>
+                    <a href="#reservas"
+                        class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all">
+                        <span>8 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+
+                <!-- Category 2 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-secondary hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-secondary to-purple-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-credit-card text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pagamentos</h3>
+                    <p class="text-gray-600 mb-4">Formas de pagamento, reembolsos e comprovantes</p>
+                    <a href="#pagamentos"
+                        class="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all">
+                        <span>12 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+
+                <!-- Category 3 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-green-500 hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-key text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Check-in e Check-out</h3>
+                    <p class="text-gray-600 mb-4">Procedimentos de entrada e saída das hospedagens</p>
+                    <a href="#checkin"
+                        class="inline-flex items-center text-green-600 font-semibold hover:gap-2 transition-all">
+                        <span>6 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+
+                <!-- Category 4 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-500 hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-home text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Para Anfitriões</h3>
+                    <p class="text-gray-600 mb-4">Dúvidas sobre anunciar e gerenciar propriedades</p>
+                    <a href="#anfitrioes"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:gap-2 transition-all">
+                        <span>15 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+
+                <!-- Category 5 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-yellow-500 hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-alt text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Segurança</h3>
+                    <p class="text-gray-600 mb-4">Políticas de segurança e privacidade</p>
+                    <a href="#seguranca"
+                        class="inline-flex items-center text-yellow-600 font-semibold hover:gap-2 transition-all">
+                        <span>10 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+
+                <!-- Category 6 -->
+                <article
+                    class="category-card group bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-pink-500 hover:shadow-xl cursor-pointer">
+                    <div
+                        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-user-circle text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Conta e Perfil</h3>
+                    <p class="text-gray-600 mb-4">Gerenciar dados pessoais e configurações</p>
+                    <a href="#conta"
+                        class="inline-flex items-center text-pink-600 font-semibold hover:gap-2 transition-all">
+                        <span>7 artigos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Articles -->
+    <section class="py-16 lg:py-24 help-pattern">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center mb-12">
+                <span
+                    class="inline-block px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold mb-6">
+                    Mais acessados
+                </span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                    Artigos populares
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Respostas para as dúvidas mais frequentes
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4">
+                <!-- Article 1 -->
+                <article
+                    class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200 group cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                                Como cancelar minha reserva?
+                            </h3>
+                            <p class="text-gray-600 mb-3">
+                                Aprenda o passo a passo para cancelar sua reserva e entenda as políticas de reembolso.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i class="far fa-eye mr-1"></i>
+                                    12.5k visualizações
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    5 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition ml-4"></i>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article
+                    class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200 group cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                                Quais formas de pagamento são aceitas?
+                            </h3>
+                            <p class="text-gray-600 mb-3">
+                                Veja todas as opções disponíveis: cartão de crédito, PIX, boleto e parcelamento.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i class="far fa-eye mr-1"></i>
+                                    10.2k visualizações
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    3 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition ml-4"></i>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article
+                    class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200 group cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                                Como alterar datas da minha reserva?
+                            </h3>
+                            <p class="text-gray-600 mb-3">
+                                Mudou de planos? Saiba como alterar as datas da sua viagem de forma fácil e rápida.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i class="far fa-eye mr-1"></i>
+                                    8.7k visualizações
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    4 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition ml-4"></i>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article
+                    class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200 group cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                                O que fazer se tiver um problema na hospedagem?
+                            </h3>
+                            <p class="text-gray-600 mb-3">
+                                Canais de suporte disponíveis 24/7 para resolver qualquer imprevisto durante sua
+                                estadia.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i class="far fa-eye mr-1"></i>
+                                    7.3k visualizações
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    6 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition ml-4"></i>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article
+                    class="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-200 group cursor-pointer">
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition">
+                                Como anunciar meu imóvel na Bivoo?
+                            </h3>
+                            <p class="text-gray-600 mb-3">
+                                Passo a passo completo para se tornar um anfitrião e começar a lucrar com seu espaço.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="flex items-center">
+                                    <i class="far fa-eye mr-1"></i>
+                                    6.8k visualizações
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="far fa-clock mr-1"></i>
+                                    8 min de leitura
+                                </span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-primary transition ml-4"></i>
+                    </div>
+                </article>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12">
+                <a href="#todos-artigos"
+                    class="inline-flex items-center px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition">
+                    Ver todos os artigos
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                        Ainda precisa de ajuda?
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Nossa equipe está pronta para atender você
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Chat -->
+                    <article class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6">
+                            <i class="fas fa-comments text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Chat Online</h3>
+                        <p class="text-gray-600 mb-6">
+                            Resposta em tempo real. Disponível 24/7.
+                        </p>
+                        <a href="#chat"
+                            class="inline-flex items-center justify-center w-full px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition">
+                            <i class="fas fa-comment-dots mr-2"></i>
+                            Iniciar chat
+                        </a>
+                    </article>
+
+                    <!-- WhatsApp -->
+                    <article class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl mb-6">
+                            <i class="fab fa-whatsapp text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">WhatsApp</h3>
+                        <p class="text-gray-600 mb-6">
+                            Fale conosco pelo WhatsApp Business.
+                        </p>
+                        <a href="https://wa.me/5584999999999" target="_blank"
+                            class="inline-flex items-center justify-center w-full px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            (84) 99999-9999
+                        </a>
+                    </article>
+
+                    <!-- Phone -->
+                    <article class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-orange-500 rounded-2xl mb-6">
+                            <i class="fas fa-phone text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Telefone</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ligação gratuita de qualquer lugar do Brasil.
+                        </p>
+                        <a href="tel:08008870248"
+                            class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            0800 887 0248
+                        </a>
+                    </article>
+                </div>
+
+                <!-- Email Form -->
+                <div class="mt-12 bg-white rounded-2xl p-8 lg:p-12 shadow-lg">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="text-center mb-8">
+                            <div
+                                class="inline-flex items-center justify-center w-16 h-16 bg-secondary/10 rounded-2xl mb-4">
+                                <i class="fas fa-envelope text-3xl text-secondary"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Envie-nos um e-mail</h3>
+                            <p class="text-gray-600">Responderemos em até 24 horas</p>
+                        </div>
+
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contact-name"
+                                        class="block text-sm font-semibold text-gray-700 mb-2">Nome *</label>
+                                    <input type="text" id="contact-name" required
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition">
+                                </div>
+                                <div>
+                                    <label for="contact-email"
+                                        class="block text-sm font-semibold text-gray-700 mb-2">E-mail *</label>
+                                    <input type="email" id="contact-email" required
+                                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="contact-subject"
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Assunto *</label>
+                                <select id="contact-subject" required
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition">
+                                    <option value="">Selecione...</option>
+                                    <option>Problema com reserva</option>
+                                    <option>Dúvida sobre pagamento</option>
+                                    <option>Cancelamento</option>
+                                    <option>Problema na hospedagem</option>
+                                    <option>Sugestão</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="contact-message"
+                                    class="block text-sm font-semibold text-gray-700 mb-2">Mensagem *</label>
+                                <textarea id="contact-message" rows="5" required
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent transition"
+                                    placeholder="Descreva sua dúvida ou problema..."></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full py-4 bg-gradient-to-r from-secondary to-primary text-white rounded-lg font-bold text-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Enviar mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Search functionality
+        const helpSearch = document.getElementById('helpSearch');
+        const searchResults = document.getElementById('searchResults');
+
+        const articles = [
+            { title: "Como cancelar minha reserva?", category: "Reservas", views: "12.5k" },
+            { title: "Quais formas de pagamento são aceitas?", category: "Pagamentos", views: "10.2k" },
+            { title: "Como alterar datas da minha reserva?", category: "Reservas", views: "8.7k" },
+            { title: "O que fazer se tiver um problema na hospedagem?", category: "Suporte", views: "7.3k" },
+            { title: "Como anunciar meu imóvel na Bivoo?", category: "Anfitriões", views: "6.8k" },
+            { title: "Política de cancelamento e reembolso", category: "Políticas", views: "5.9k" },
+            { title: "Como entrar em contato com o anfitrião?", category: "Comunicação", views: "5.2k" },
+            { title: "Verificação de identidade", category: "Segurança", views: "4.8k" }
+        ];
+
+        helpSearch.addEventListener('input', function (e) {
+            const query = e.target.value.toLowerCase();
+
+            if (query.length < 2) {
+                searchResults.classList.add('hidden');
+                return;
+            }
+
+            const filtered = articles.filter(article =>
+                article.title.toLowerCase().includes(query) ||
+                article.category.toLowerCase().includes(query)
+            );
+
+            if (filtered.length > 0) {
+                const resultsHTML = filtered.map(article => `
+                    <div class="p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition">
+                        <div class="font-semibold text-gray-900">${article.title}</div>
+                        <div class="text-sm text-gray-500 mt-1">
+                            <span class="inline-flex items-center">
+                                <i class="far fa-folder mr-1"></i>
+                                ${article.category}
+                            </span>
+                            <span class="mx-2">•</span>
+                            <span class="inline-flex items-center">
+                                <i class="far fa-eye mr-1"></i>
+                                ${article.views} visualizações
+                            </span>
+                        </div>
+                    </div>
+                `).join('');
+
+                searchResults.querySelector('.search-results').innerHTML =
+                    `<div class="text-sm text-gray-500 mb-3 px-2">Encontramos ${filtered.length} resultado(s):</div>` +
+                    resultsHTML;
+                searchResults.classList.remove('hidden');
+            } else {
+                searchResults.querySelector('.search-results').innerHTML =
+                    '<div class="text-center py-8 text-gray-500">Nenhum resultado encontrado</div>';
+                searchResults.classList.remove('hidden');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!helpSearch.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+
+        // Popular search buttons
+        document.querySelectorAll('[class*="bg-white/20"]').forEach(button => {
+            button.addEventListener('click', function () {
+                helpSearch.value = this.textContent.trim();
+                helpSearch.dispatchEvent(new Event('input'));
+                helpSearch.focus();
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

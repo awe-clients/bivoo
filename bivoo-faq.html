@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Perguntas Frequentes Bivoo - Encontre respostas rápidas sobre reservas, pagamentos, cancelamentos, check-in e muito mais.">
+    <title>Perguntas Frequentes (FAQ) | Bivoo</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary .icon-closed {
+            display: none;
+        }
+
+        details:not([open]) summary .icon-open {
+            display: none;
+        }
+
+        .faq-pattern {
+            background-color: #ffffff;
+            background-image: radial-gradient(circle at 25px 25px, rgba(108, 64, 231, 0.05) 2%, transparent 0%), radial-gradient(circle at 75px 75px, rgba(255, 107, 53, 0.05) 2%, transparent 0%);
+            background-size: 100px 100px;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased bg-white">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="relative">
+            <div class="absolute top-0 right-0 bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="/path-to-bivoo-logo.svg" alt="Bivoo" class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-phone-alt text-primary mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+                        <a href="#login" class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            <span>Iniciar sessão</span>
+                        </a>
+                        <a href="#minhas-viagens"
+                            class="flex items-center text-gray-700 hover:text-primary transition text-sm">
+                            <i class="fas fa-suitcase text-primary mr-2"></i>
+                            <span>Minhas viagens</span>
+                        </a>
+                    </div>
+
+                    <button class="lg:hidden text-gray-700 hover:text-primary" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="border-t border-gray-200">
+            <div class="container mx-auto px-4 lg:px-8">
+                <nav class="hidden lg:flex items-center space-x-8 py-4">
+                    <a href="/" class="text-gray-600 hover:text-primary transition font-medium text-sm">Início</a>
+                    <a href="bivoo-listings.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Explorar</a>
+                    <a href="bivoo-about.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Sobre nós</a>
+                    <a href="bivoo-help.html"
+                        class="text-gray-600 hover:text-primary transition font-medium text-sm">Central de Ajuda</a>
+                    <a href="#" class="text-primary font-medium text-sm relative border-b-2 border-primary pb-3">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+        class="relative bg-gradient-to-br from-primary via-orange-500 to-yellow-400 py-16 lg:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+                    <i class="fas fa-question-circle text-4xl text-white"></i>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg">
+                    Perguntas Frequentes
+                </h1>
+                <p class="text-xl lg:text-2xl text-white/95 mb-8">
+                    Tire suas dúvidas de forma rápida e simples
+                </p>
+
+                <!-- Search Bar -->
+                <div class="relative max-w-2xl mx-auto">
+                    <i
+                        class="fas fa-search absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl"></i>
+                    <input type="text" id="faqSearch" placeholder="Buscar perguntas..."
+                        class="w-full pl-16 pr-6 py-4 text-lg rounded-2xl shadow-2xl focus:ring-4 focus:ring-white/50 focus:outline-none transition">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter Pills -->
+    <section class="py-6 bg-white border-b border-gray-200 sticky top-[129px] z-40">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pb-2">
+                <button
+                    class="filter-category active px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-primary whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="all">
+                    <i class="fas fa-th-large mr-2"></i>
+                    Todas
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-primary whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="reservas">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    Reservas
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-secondary whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="pagamentos">
+                    <i class="fas fa-credit-card mr-2"></i>
+                    Pagamentos
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-green-500 whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="checkin">
+                    <i class="fas fa-key mr-2"></i>
+                    Check-in/Check-out
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-blue-500 whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="anfitrioes">
+                    <i class="fas fa-home mr-2"></i>
+                    Para Anfitriões
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-yellow-500 whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="seguranca">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Segurança
+                </button>
+                <button
+                    class="filter-category px-6 py-2.5 rounded-full border-2 border-gray-300 hover:border-pink-500 whitespace-nowrap text-sm font-semibold transition-all"
+                    data-category="conta">
+                    <i class="fas fa-user-circle mr-2"></i>
+                    Conta
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="py-16 lg:py-24 faq-pattern">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Reservas -->
+                <div class="faq-category mb-12" data-category="reservas">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-orange-500 rounded-xl mr-4">
+                            <i class="fas fa-calendar-check text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Reservas</h2>
+                            <p class="text-gray-600">Como fazer, alterar ou cancelar</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- FAQ Item -->
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-primary transition-colors"
+                            data-keywords="cancelar reserva cancelamento">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Como faço para cancelar minha
+                                    reserva?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-primary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-primary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Para cancelar sua reserva, siga estes passos:</p>
+                                <ol class="list-decimal list-inside space-y-2 mb-4">
+                                    <li>Acesse sua conta no site ou aplicativo Bivoo</li>
+                                    <li>Vá em "Minhas Viagens" no menu</li>
+                                    <li>Selecione a reserva que deseja cancelar</li>
+                                    <li>Clique em "Cancelar Reserva"</li>
+                                    <li>Confirme o cancelamento</li>
+                                </ol>
+                                <p class="mb-4">O reembolso seguirá a política de cancelamento do anúncio e será
+                                    processado em até 5 dias úteis após a confirmação.</p>
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                                    <p class="text-sm text-yellow-800">
+                                        <strong>Atenção:</strong> Algumas reservas podem ter taxas de cancelamento
+                                        dependendo da proximidade da data de check-in.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-primary transition-colors"
+                            data-keywords="alterar mudar datas modificar reserva">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Posso alterar as datas da minha
+                                    reserva?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-primary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-primary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Sim! Você pode solicitar alteração de datas seguindo estes passos:</p>
+                                <ol class="list-decimal list-inside space-y-2 mb-4">
+                                    <li>Acesse sua reserva em "Minhas Viagens"</li>
+                                    <li>Clique em "Alterar Datas"</li>
+                                    <li>Selecione as novas datas desejadas</li>
+                                    <li>Verifique a disponibilidade e diferença de preço</li>
+                                    <li>Confirme a alteração</li>
+                                </ol>
+                                <p class="mb-4">A alteração está sujeita à disponibilidade do imóvel e pode haver
+                                    diferença de valores (para mais ou menos) dependendo das novas datas escolhidas.</p>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-primary transition-colors"
+                            data-keywords="adicionar remover hóspedes pessoas">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Posso adicionar mais hóspedes após
+                                    a reserva?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-primary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-primary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Sim, desde que o número total não ultrapasse a capacidade máxima do
+                                    imóvel. Entre em contato com o anfitrião através da plataforma para solicitar a
+                                    inclusão.</p>
+                                <p>Pode haver cobrança adicional dependendo das regras do anúncio.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Pagamentos -->
+                <div class="faq-category mb-12" data-category="pagamentos">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-secondary to-purple-600 rounded-xl mr-4">
+                            <i class="fas fa-credit-card text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Pagamentos</h2>
+                            <p class="text-gray-600">Formas de pagamento e reembolsos</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-secondary transition-colors"
+                            data-keywords="formas pagamento pix cartão boleto">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Quais formas de pagamento são
+                                    aceitas?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-secondary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-secondary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Aceitamos as seguintes formas de pagamento:</p>
+                                <ul class="space-y-3 mb-4">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-credit-card text-secondary mr-3 mt-1"></i>
+                                        <div>
+                                            <strong>Cartão de Crédito:</strong> Visa, Mastercard, Elo, American Express
+                                            (parcelamento em até 12x)
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-qrcode text-secondary mr-3 mt-1"></i>
+                                        <div>
+                                            <strong>PIX:</strong> Confirmação instantânea
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-barcode text-secondary mr-3 mt-1"></i>
+                                        <div>
+                                            <strong>Boleto Bancário:</strong> Compensação em até 3 dias úteis
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-credit-card text-secondary mr-3 mt-1"></i>
+                                        <div>
+                                            <strong>Cartão de Débito:</strong> Confirmação instantânea
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-secondary transition-colors"
+                            data-keywords="reembolso devolução dinheiro estorno">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Como funciona o reembolso?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-secondary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-secondary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">O reembolso varia conforme a política de cancelamento do anúncio:</p>
+                                <ul class="list-disc list-inside space-y-2 mb-4">
+                                    <li><strong>Flexível:</strong> Reembolso total até 24h antes do check-in</li>
+                                    <li><strong>Moderada:</strong> Reembolso total até 5 dias antes do check-in</li>
+                                    <li><strong>Rígida:</strong> Reembolso parcial até 7 dias antes do check-in</li>
+                                </ul>
+                                <p class="mb-4">O prazo para receber o reembolso é de até 5 a 10 dias úteis, dependendo
+                                    da instituição financeira.</p>
+                                <p>As taxas de serviço da Bivoo não são reembolsáveis em cancelamentos feitos pelo
+                                    hóspede.</p>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-secondary transition-colors"
+                            data-keywords="parcelar parcelas vezes">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Posso parcelar minha reserva?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-secondary text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-secondary text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Sim! Aceitamos parcelamento em até 12x no cartão de crédito sem juros
+                                    para reservas acima de R$ 500.</p>
+                                <p>Reservas abaixo de R$ 500 podem ser parceladas em até 6x sem juros.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Check-in/Check-out -->
+                <div class="faq-category mb-12" data-category="checkin">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mr-4">
+                            <i class="fas fa-key text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Check-in e Check-out</h2>
+                            <p class="text-gray-600">Procedimentos de entrada e saída</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-green-500 transition-colors"
+                            data-keywords="horário check-in entrada">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Qual o horário de check-in e
+                                    check-out?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-green-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-green-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Os horários padrão são:</p>
+                                <ul class="space-y-2 mb-4">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-sign-in-alt text-green-600 mr-3"></i>
+                                        <strong>Check-in:</strong> A partir das 14h
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-sign-out-alt text-green-600 mr-3"></i>
+                                        <strong>Check-out:</strong> Até às 12h
+                                    </li>
+                                </ul>
+                                <p class="mb-4">Porém, cada anfitrião pode definir horários personalizados. Sempre
+                                    verifique os detalhes do anúncio ou entre em contato com o anfitrião para confirmar.
+                                </p>
+                                <p>Check-in antecipado ou check-out tardio podem estar disponíveis mediante solicitação
+                                    e disponibilidade.</p>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-green-500 transition-colors"
+                            data-keywords="chave código acesso entrada">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Como faço para pegar as chaves?
+                                </h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-green-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-green-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">O processo varia conforme o anúncio:</p>
+                                <ul class="space-y-3">
+                                    <li>
+                                        <strong>Check-in com o anfitrião:</strong> Encontro pessoal para receber as
+                                        chaves
+                                    </li>
+                                    <li>
+                                        <strong>Check-in autônomo:</strong> Código da fechadura eletrônica ou caixa de
+                                        chaves
+                                    </li>
+                                    <li>
+                                        <strong>Recepção:</strong> Retire as chaves na recepção do condomínio/hotel
+                                    </li>
+                                </ul>
+                                <p class="mt-4">O anfitrião enviará instruções detalhadas 48h antes do check-in através
+                                    da plataforma.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Para Anfitriões -->
+                <div class="faq-category mb-12" data-category="anfitrioes">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl mr-4">
+                            <i class="fas fa-home text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Para Anfitriões</h2>
+                            <p class="text-gray-600">Dúvidas sobre anunciar</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 transition-colors"
+                            data-keywords="anunciar cadastrar imóvel propriedade">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Como anuncio meu imóvel na Bivoo?
+                                </h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-blue-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-blue-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Anunciar é simples e rápido:</p>
+                                <ol class="list-decimal list-inside space-y-2 mb-4">
+                                    <li>Acesse a página <a href="bivoo-host.html"
+                                            class="text-blue-600 underline font-semibold">Anuncie seu Imóvel</a></li>
+                                    <li>Preencha o formulário com informações sobre seu espaço</li>
+                                    <li>Aguarde contato da nossa equipe em até 24h</li>
+                                    <li>Agende a sessão de fotos profissional gratuita</li>
+                                    <li>Após aprovação, seu anúncio fica ativo em 48h</li>
+                                </ol>
+                                <p>Nossa comissão é de apenas 12% por reserva confirmada, sem taxas mensais.</p>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-blue-500 transition-colors"
+                            data-keywords="comissão taxa custo anfitrião">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Qual a comissão da Bivoo?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-blue-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-blue-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Cobramos apenas 12% de comissão sobre o valor de cada reserva
+                                    confirmada.</p>
+                                <p class="mb-4"><strong>O que está incluído:</strong></p>
+                                <ul class="list-disc list-inside space-y-2 mb-4">
+                                    <li>Visibilidade para milhares de viajantes</li>
+                                    <li>Suporte 24/7</li>
+                                    <li>Sistema de pagamento seguro</li>
+                                    <li>Proteção contra fraudes</li>
+                                    <li>Dashboard de gerenciamento</li>
+                                </ul>
+                                <p>Sem taxas de cadastro, mensalidades ou custos escondidos.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Segurança -->
+                <div class="faq-category mb-12" data-category="seguranca">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl mr-4">
+                            <i class="fas fa-shield-alt text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Segurança</h2>
+                            <p class="text-gray-600">Políticas e proteção</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-yellow-500 transition-colors"
+                            data-keywords="seguro proteção garantia">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Meus dados estão seguros?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-yellow-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-yellow-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Sim! A segurança dos seus dados é nossa prioridade máxima.</p>
+                                <p class="mb-4">Utilizamos:</p>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Criptografia SSL em todas as transações</li>
+                                    <li>Conformidade com LGPD (Lei Geral de Proteção de Dados)</li>
+                                    <li>Servidores seguros e monitorados 24/7</li>
+                                    <li>Autenticação de dois fatores disponível</li>
+                                    <li>Verificação rigorosa de todos os usuários</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-yellow-500 transition-colors"
+                            data-keywords="verificação identidade documento">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Por que preciso verificar minha
+                                    identidade?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-yellow-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-yellow-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">A verificação de identidade garante segurança para toda a comunidade
+                                    Bivoo.</p>
+                                <p class="mb-4"><strong>Benefícios:</strong></p>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li>Proteção contra fraudes</li>
+                                    <li>Confiança entre hóspedes e anfitriões</li>
+                                    <li>Maior taxa de aceitação de reservas</li>
+                                    <li>Acesso a propriedades premium</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Conta -->
+                <div class="faq-category" data-category="conta">
+                    <div class="flex items-center mb-8">
+                        <div
+                            class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-pink-500 to-red-500 rounded-xl mr-4">
+                            <i class="fas fa-user-circle text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">Conta e Perfil</h2>
+                            <p class="text-gray-600">Gerenciar dados pessoais</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-pink-500 transition-colors"
+                            data-keywords="criar conta cadastro registrar">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Como crio uma conta?</h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-pink-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-pink-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Criar sua conta é rápido e gratuito:</p>
+                                <ol class="list-decimal list-inside space-y-2 mb-4">
+                                    <li>Clique em "Cadastre-se" no topo da página</li>
+                                    <li>Preencha seu e-mail e crie uma senha</li>
+                                    <li>Confirme seu e-mail através do link enviado</li>
+                                    <li>Complete seu perfil com informações básicas</li>
+                                </ol>
+                                <p>Você também pode criar conta usando suas credenciais do Google ou Facebook.</p>
+                            </div>
+                        </details>
+
+                        <details
+                            class="faq-item group bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-pink-500 transition-colors"
+                            data-keywords="alterar senha recuperar esqueci">
+                            <summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+                                <h3 class="text-lg font-semibold text-gray-900 pr-4">Esqueci minha senha, o que faço?
+                                </h3>
+                                <div class="flex-shrink-0">
+                                    <i
+                                        class="fas fa-plus icon-closed text-pink-600 text-xl transition-transform group-hover:scale-110"></i>
+                                    <i class="fas fa-minus icon-open text-pink-600 text-xl transition-transform"></i>
+                                </div>
+                            </summary>
+                            <div class="px-6 pb-6 text-gray-700 leading-relaxed border-t border-gray-100 pt-6">
+                                <p class="mb-4">Para recuperar sua senha:</p>
+                                <ol class="list-decimal list-inside space-y-2 mb-4">
+                                    <li>Clique em "Esqueci minha senha" na página de login</li>
+                                    <li>Digite seu e-mail cadastrado</li>
+                                    <li>Você receberá um link de recuperação por e-mail</li>
+                                    <li>Clique no link e crie uma nova senha</li>
+                                </ol>
+                                <p>Se não receber o e-mail em 5 minutos, verifique sua caixa de spam ou entre em contato
+                                    conosco.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Still need help CTA -->
+    <section class="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <div
+                    class="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full mb-6">
+                    <i class="fas fa-headset text-3xl"></i>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Não encontrou sua resposta?</h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Nossa equipe de suporte está pronta para ajudar você
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="bivoo-help.html"
+                        class="inline-flex items-center px-8 py-4 bg-white text-gray-900 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        <i class="fas fa-life-ring mr-2"></i>
+                        Central de Ajuda
+                    </a>
+                    <a href="tel:08008870248"
+                        class="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        0800 887 0248
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Category Filter
+        const filterButtons = document.querySelectorAll('.filter-category');
+        const faqCategories = document.querySelectorAll('.faq-category');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
+                    btn.classList.add('bg-white', 'text-gray-700');
+                });
+                button.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
+                button.classList.remove('bg-white', 'text-gray-700');
+
+                // Show/hide categories
+                faqCategories.forEach(cat => {
+                    if (category === 'all' || cat.dataset.category === category) {
+                        cat.style.display = 'block';
+                    } else {
+                        cat.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        const faqSearch = document.getElementById('faqSearch');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqSearch.addEventListener('input', function (e) {
+            const query = e.target.value.toLowerCase();
+
+            faqItems.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const keywords = item.dataset.keywords.toLowerCase();
+                const content = item.querySelector('.px-6').textContent.toLowerCase();
+
+                if (title.includes(query) || keywords.includes(query) || content.includes(query)) {
+                    item.style.display = 'block';
+                    item.closest('.faq-category').style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Hide empty categories
+            if (query.length > 0) {
+                faqCategories.forEach(category => {
+                    const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
+                    if (visibleItems.length === 0) {
+                        category.style.display = 'none';
+                    }
+                });
+            } else {
+                // Show all if search is empty
+                faqItems.forEach(item => item.style.display = 'block');
+                faqCategories.forEach(category => category.style.display = 'block');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

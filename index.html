@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bivoo - Seu refúgio na praia, do seu jeito. Casas por temporada, hotéis e experiências selecionadas em lugares que você vai amar.">
+    <title>Bivoo - Reservas de Hospedagens Selecionadas</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .carousel-slide {
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .carousel-dot.active {
+            width: 2rem;
+            background-color: white;
+        }
+
+        .carousel-dot {
+            transition: all 0.3s ease;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B35',
+                        'primary-dark': '#E85A28',
+                        secondary: '#6C40E7',
+                        'secondary-dark': '#5B3FD6',
+                        accent: '#FF6B9D'
+                    },
+                    fontFamily: {
+                        'sans': ['Rubik', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <!-- Top Header Bar -->
+        <div class="relative">
+            <!-- Background extension for right side -->
+            <div class="absolute top-0 right-0 rounded-bl-xl bottom-0 w-1/2 bg-gray-100"></div>
+
+            <div class="container mx-auto px-4 lg:px-8 relative z-10">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-10 w-auto">
+                        </a>
+                    </div>
+
+                    <!-- Right Side - Contact & Actions -->
+                    <div class="hidden lg:flex items-center space-x-6">
+                        <!-- Phone -->
+                        <a href="tel:08008870248"
+                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
+                            <i class="fas fa-phone-alt text-orange-500 mr-2"></i>
+                            <span>Vendas: <strong class="font-semibold">0800 887 0248</strong></span>
+                        </a>
+
+                        <!-- Login -->
+                        <a href="#login"
+                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
+                            <i class="fas fa-user text-orange-500 mr-2"></i>
+                            <span>Iniciar sessão</span>
+                        </a>
+
+                        <!-- My Trips -->
+                        <a href="#minhas-viagens"
+                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
+                            <i class="fas fa-suitcase text-orange-500 mr-2"></i>
+                            <span>Minhas viagens</span>
+                        </a>
+
+                        <!-- Help -->
+                        <a href="#ajuda"
+                            class="flex items-center text-gray-700 hover:text-orange-500 transition text-sm">
+                            <i class="fas fa-question-circle text-orange-500 mr-2"></i>
+                            <span>Para onde ir?</span>
+                        </a>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden text-gray-700 hover:text-orange-500" aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Header - Main Navigation -->
+        <div>
+            <div class="container mx-auto px-4 lg:px-8">
+                <nav class="hidden lg:flex items-center space-x-8 py-4">
+                    <a href="#hospedagens"
+                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
+                        Hospedagens
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#experiencias" class="text-orange-500 font-medium text-sm relative border-orange-500">
+                        Experiências
+                    </a>
+                    <a href="#pacotes"
+                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
+                        Pacotes
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#seguros"
+                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
+                        Seguros
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#transfer"
+                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
+                        Transfer
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#onibus"
+                        class="text-gray-600 hover:text-orange-500 transition font-medium text-sm relative group">
+                        Ônibus
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden h-[600px] lg:h-[550px]">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="assets/img/temp-hero-img.png" alt="Pipa, RN - Destino paradisíaco"
+                class="w-full h-full object-cover">
+        </div>
+
+        <!-- Gradient Overlay - Maior opacidade à esquerda, transparente à direita -->
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/90 via-purple-800/60 to-transparent"></div>
+
+        <!-- Content Container -->
+        <div class="relative h-full flex items-center">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="w-full lg:w-1/2">
+                    <!-- Icon -->
+                    <div class="flex items-center space-x-3 mb-6">
+                        <i class="fas fa-umbrella-beach text-3xl lg:text-4xl text-white/80"></i>
+                    </div>
+
+                    <!-- Heading -->
+                    <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-white">
+                        Seu refúgio na praia, do seu jeito.
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="text-lg lg:text-xl text-white/95 leading-relaxed mb-8">
+                        Casas por temporada, hotéis e experiências selecionadas em lugares que você vai amar.
+                    </p>
+
+                    <!-- CTA Button (Opcional) -->
+                    <a href="bivoo-listings.html"
+                        class="inline-flex items-center px-8 py-4 bg-white text-purple-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <span>Explorar destinos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Badge -->
+        <div
+            class="absolute bottom-8 right-6 lg:right-12 bg-white/95 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2">
+            <i class="fas fa-map-marker-alt text-purple-600"></i>
+            <span class="font-semibold text-sm">Pipa, RN</span>
+        </div>
+    </section>
+
+    <!-- Search Form - Absolute Positioned (Half Outside Hero) -->
+    <section class="py-8 lg:py-12 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 lg:p-8 w-full">
+                <h2 class="text-purple-600 text-xl lg:text-2xl font-bold mb-6">Encontre o melhor</h2>
+
+                <form class="space-y-6">
+                    <!-- First Row: Destination and Dates -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Destination -->
+                        <div class="relative">
+                            <label for="destination" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Destino
+                            </label>
+                            <select id="destination"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent appearance-none bg-white text-gray-900 cursor-pointer">
+                                <option>Todas as opções</option>
+                                <option>Pipa - RN</option>
+                                <option>Maceió - AL</option>
+                                <option>Búzios - RJ</option>
+                                <option>Porto de Galinhas - PE</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 top-11 text-gray-400 pointer-events-none text-sm"></i>
+                        </div>
+
+                        <!-- Check-in -->
+                        <div>
+                            <label for="checkin-date" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Check-in
+                            </label>
+                            <input type="date" id="checkin-date" value="2025-10-09"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900">
+                        </div>
+
+                        <!-- Check-out -->
+                        <div>
+                            <label for="checkout-date" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Check-out
+                            </label>
+                            <input type="date" id="checkout-date" value="2025-10-10"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-gray-900">
+                        </div>
+                    </div>
+
+                    <!-- Second Row: Guests Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                        <!-- Adults -->
+                        <div class="relative">
+                            <label for="adults" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Adultos
+                            </label>
+                            <select id="adults"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent appearance-none bg-white text-gray-900 cursor-pointer">
+                                <option>2 Adultos</option>
+                                <option>1 Adulto</option>
+                                <option>3 Adultos</option>
+                                <option>4 Adultos</option>
+                                <option>5 Adultos</option>
+                                <option>6+ Adultos</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 bottom-4 text-gray-400 pointer-events-none text-sm"></i>
+                        </div>
+
+                        <!-- Children -->
+                        <div class="relative">
+                            <label for="children" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Crianças
+                            </label>
+                            <select id="children"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent appearance-none bg-white text-gray-900 cursor-pointer">
+                                <option value="0">0 Crianças</option>
+                                <option value="1" selected>1 Criança</option>
+                                <option value="2">2 Crianças</option>
+                                <option value="3">3 Crianças</option>
+                                <option value="4">4 Crianças</option>
+                                <option value="5">5 Crianças</option>
+                            </select>
+                            <i
+                                class="fas fa-chevron-down absolute right-4 bottom-4 text-gray-400 pointer-events-none text-sm"></i>
+                        </div>
+
+                        <!-- Children Ages (Dynamic) -->
+                        <div id="childrenAgesContainer" class="md:col-span-2">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Idade das crianças
+                            </label>
+                            <div id="childrenAges" class="flex flex-wrap gap-2">
+                                <!-- Ages will be added dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Search Button -->
+                        <div class="flex items-end">
+                            <button type="submit"
+                                class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                <i class="fas fa-search text-lg"></i>
+                                <span class="hidden sm:inline">Buscar</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Destinations Section -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-12">
+                Encontre experiências únicas para a sua viagem
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Destination Card 1 -->
+                <a href="bivoo-details.html"
+                    class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all block">
+                    <img src="assets/img/pipa.jpg" alt="Pipa, RN"
+                        class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Pipa, RN</h3>
+                        <p class="text-sm text-white/90">12 opções de hospedagens</p>
+                    </div>
+                    <!-- Hover overlay -->
+                    <div
+                        class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none">
+                    </div>
+                </a>
+
+                <!-- Destination Card 2 -->
+                <a href="bivoo-details.html"
+                    class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all block">
+                    <img src="assets/img/maceio.jpg" alt="Boipeba, BA"
+                        class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Boipeba, BA</h3>
+                        <p class="text-sm text-white/90">25 opções de hospedagens</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none">
+                    </div>
+                </a>
+
+                <!-- Destination Card 3 -->
+                <a href="bivoo-details.html"
+                    class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all block">
+                    <img src="assets/img/praia-da-rosa.png" alt="Praia da Rosa, SC"
+                        class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Praia da Rosa, SC
+                        </h3>
+                        <p class="text-sm text-white/90">Conheça Paradizia</p>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casas por Temporada Section -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Casas por temporada</h2>
+                    <p class="text-gray-600">Descubra o lar perfeito longe de casa</p>
+                </div>
+                <a href="bivoo-listings.html"
+                    class="hidden md:flex items-center text-primary hover:text-secondary font-semibold transition">
+                    <span>Explorar mais</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Property Card 1 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-1.png" alt="Casa *EPIPÃ*"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <!-- Hover Overlay -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Pipa, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-primary transition-colors">CASA
+                            *EPIPÃ*</h3>
+                        <p class="text-sm text-gray-600 mb-3">Casa RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.475,00</div>
+                    </div>
+                </a>
+
+                <!-- Property Card 2 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-2.png" alt="Village Club Chalés"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Pipa, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-primary transition-colors">
+                            VILLAGE CLUB - CHALÉS DUPLO</h3>
+                        <p class="text-sm text-gray-600 mb-3">Pipa, RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.245,00</div>
+                    </div>
+                </a>
+
+                <!-- Property Card 3 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-3.png" alt="Casa 3030"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Tibau do Sul, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-primary transition-colors">CASA
+                            3030 Y SPA</h3>
+                        <p class="text-sm text-gray-600 mb-3">Tibau do Sul</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.407,50</div>
+                    </div>
+                </a>
+
+                <!-- Property Card 4 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-4.png" alt="Ingressa"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Canoa Quebrada, CE</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-primary transition-colors">
+                            Ingressa para 8 dias no mínimo de 4</h3>
+                        <p class="text-sm text-gray-600 mb-3">Pipa, RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.200,00</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mobile "Explorar mais" -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="bivoo-listings.html"
+                    class="inline-flex items-center text-primary hover:text-secondary font-semibold transition">
+                    <span>Explorar mais</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Dynamic Children Age Selection
+        const childrenSelect = document.getElementById('children');
+        const childrenAgesContainer = document.getElementById('childrenAges');
+
+        function updateChildrenAges() {
+            const numChildren = parseInt(childrenSelect.value);
+            childrenAgesContainer.innerHTML = '';
+
+            for (let i = 1; i <= numChildren; i++) {
+                const ageSelect = document.createElement('select');
+                ageSelect.className = 'px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent text-sm';
+                ageSelect.setAttribute('aria-label', `Idade da criança ${i}`);
+
+                // Add age options (0-17)
+                for (let age = 0; age <= 17; age++) {
+                    const option = document.createElement('option');
+                    option.value = age;
+                    option.textContent = age === 0 ? '< 1 ano' : `${age} ${age === 1 ? 'ano' : 'anos'}`;
+                    if (age === 5) option.selected = true; // Default to 5 years
+                    ageSelect.appendChild(option);
+                }
+
+                childrenAgesContainer.appendChild(ageSelect);
+            }
+
+            // Show/hide container based on children count
+            const container = document.getElementById('childrenAgesContainer');
+            if (numChildren > 0) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // Initialize on page load
+        updateChildrenAges();
+
+        // Update when children select changes
+        childrenSelect.addEventListener('change', updateChildrenAges);
+
+        // Prevent form submission (for demo purposes)
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Busca iniciada! (Em produção, isso redirecionaria para a página de resultados)');
+        });
+    </script>
+
+    <!-- Hotéis & Pousadas Section -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Hotéis & Pousadas</h2>
+                    <p class="text-gray-600">Estadias com mimos, estilos e experiências</p>
+                </div>
+                <a href="bivoo-listings.html"
+                    class="hidden md:flex items-center text-primary hover:text-secondary font-semibold transition">
+                    <span>Explorar mais</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Hotel Card 1 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-1.png" alt="Casa *EPIPÃ*"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Pipa, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-secondary transition-colors">
+                            CASA *EPIPÃ*</h3>
+                        <p class="text-sm text-gray-600 mb-3">Casa RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.475,00</div>
+                    </div>
+                </a>
+
+                <!-- Hotel Card 2 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-2.png" alt="Village Club"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Pipa, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-secondary transition-colors">
+                            VILLAGE CLUB - CHALÉS DUPLO</h3>
+                        <p class="text-sm text-gray-600 mb-3">Pipa, RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.245,00</div>
+                    </div>
+                </a>
+
+                <!-- Hotel Card 3 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-3.png" alt="Casa 3030"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Tibau do Sul, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-secondary transition-colors">
+                            CASA 3030 Y SPA</h3>
+                        <p class="text-sm text-gray-600 mb-3">Tibau do Sul</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.407,50</div>
+                    </div>
+                </a>
+
+                <!-- Hotel Card 4 -->
+                <a href="bivoo-details.html"
+                    class="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all block">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/img/casa-4.png" alt="Ingressa"
+                            class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <button
+                            class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-700 rounded-full p-2 transition z-10"
+                            aria-label="Adicionar aos favoritos"
+                            onclick="event.preventDefault(); event.stopPropagation(); toggleFavorite(this);">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-600 mb-2">
+                            <i class="fas fa-map-marker-alt mr-1 text-primary"></i>
+                            <span>Pipa, RN</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-1 group-hover:text-secondary transition-colors">
+                            Ingressa para 8 dias no mínimo de 4</h3>
+                        <p class="text-sm text-gray-600 mb-3">Pipa, RN</p>
+                        <div class="flex items-baseline space-x-1">
+                            <span class="text-sm text-gray-600">A partir de</span>
+                        </div>
+                        <div class="text-2xl font-bold text-gray-900">R$ 1.200,00</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mobile "Explorar mais" -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="bivoo-listings.html"
+                    class="inline-flex items-center text-primary hover:text-secondary font-semibold transition">
+                    <span>Explorar mais</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pacotes & Experiências Section -->
+    <section class="py-16 lg:py-24 bg-white" aria-labelledby="packages-heading">
+        <div class="container mx-auto px-4 lg:px-8">
+            <header class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 id="packages-heading" class="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Pacotes &
+                        Experiências</h2>
+                    <p class="text-gray-600">Viva momentos únicos com nossos roteiros e passeios.</p>
+                </div>
+                <a href="comidades.html"
+                    class="hidden md:flex items-center text-purple-600 hover:text-purple-700 font-semibold transition group"
+                    aria-label="Explorar mais pacotes e experiências">
+                    <span aria-hidden="true">Explore mais</span>
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"
+                        aria-hidden="true"></i>
+                </a>
+            </header>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" role="list"
+                aria-label="Lista de pacotes e experiências disponíveis">
+                <!-- Experience Card 1 -->
+                <article
+                    class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    role="listitem">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="assets/img/experience-1.png"
+                            alt="Passeio de buggy pelas dunas de Genipabu com turistas aproveitando a aventura"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <a href="#ver-experiencia-1"
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full p-2.5 transition shadow-md opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Ver detalhes do passeio em fotos pelas dunas de Genipabu">
+                            <i class="fas fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block text-purple-600 text-sm font-semibold mb-3"
+                            role="text">Experiências</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">
+                            <a href="#ver-experiencia-1" class="hover:text-purple-600 transition">
+                                Com emoção: um passeio em fotos pelas dunas de Genipabu.
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                            Conheça nosso passeio exclusivo para hóspedes com temporadas reservadas.
+                        </p>
+                        <footer class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="assets/img/marina-brito.png" alt="Foto de perfil de Marina Brito"
+                                class="w-10 h-10 rounded-full object-cover" loading="lazy">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Marina Brito</p>
+                                <time datetime="2025-01-14" class="text-xs text-gray-500">14 Jan 2025</time>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Experience Card 2 -->
+                <article
+                    class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    role="listitem">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="assets/img/experience-2.png"
+                            alt="Vista panorâmica de praias paradisíacas além de Pipa com águas cristalinas"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <a href="#ver-experiencia-2"
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full p-2.5 transition shadow-md opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Ver detalhes do passeio para conhecer novas praias além da Pipa">
+                            <i class="fas fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block text-purple-600 text-sm font-semibold mb-3"
+                            role="text">Passeios</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">
+                            <a href="#ver-experiencia-2" class="hover:text-purple-600 transition">
+                                Conheça novas praias além da Pipa.
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                            Você irá se encantar com toda a beleza e exuberância que o RN pode te oferecer.
+                        </p>
+                        <footer class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="assets/img/marina-brito.png" alt="Foto de perfil de Marina Brito"
+                                class="w-10 h-10 rounded-full object-cover" loading="lazy">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Marina Brito</p>
+                                <time datetime="2025-01-14" class="text-xs text-gray-500">14 Jan 2025</time>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Experience Card 3 -->
+                <article
+                    class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    role="listitem">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="assets/img/experience-3.png"
+                            alt="Grupo de turistas em quadriciclos vermelhos na praia durante passeio de aventura"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <a href="#ver-experiencia-3"
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full p-2.5 transition shadow-md opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Ver detalhes do passeio de quadriciclo em Pipa">
+                            <i class="fas fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block text-purple-600 text-sm font-semibold mb-3"
+                            role="text">Excursões</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">
+                            <a href="#ver-experiencia-3" class="hover:text-purple-600 transition">
+                                Passeio de Quadriciclo
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                            Reservar Passeio de Quadriciclo em Pipa | Aventura e Diversão Pelo Litoral Sul
+                        </p>
+                        <footer class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="assets/img/marina-brito.png" alt="Foto de perfil de Marina Brito"
+                                class="w-10 h-10 rounded-full object-cover" loading="lazy">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Marina Brito</p>
+                                <time datetime="2025-01-14" class="text-xs text-gray-500">14 Jan 2025</time>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+
+                <!-- Experience Card 4 -->
+                <article
+                    class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                    role="listitem">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="assets/img/experience-4.png"
+                            alt="Ônibus moderno de transfer na estrada entre o aeroporto de Natal e Pipa"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <a href="#ver-experiencia-4"
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 rounded-full p-2.5 transition shadow-md opacity-0 group-hover:opacity-100 focus:opacity-100"
+                            aria-label="Ver detalhes do serviço de transfer do aeroporto de Natal para Pipa">
+                            <i class="fas fa-arrow-up-right-from-square text-sm" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="p-5">
+                        <span class="inline-block text-purple-600 text-sm font-semibold mb-3"
+                            role="text">Transfer</span>
+                        <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2 min-h-[3.5rem]">
+                            <a href="#ver-experiencia-4" class="hover:text-purple-600 transition">
+                                TRANSFER AEROPORTO NATAL PARA PIPA
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                            Nosso parceiro Whel Tour | Passeios em Natal | Traslados | Orgulho de ser Norteriograndense
+                        </p>
+                        <footer class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="assets/img/marina-brito.png" alt="Foto de perfil de Marina Brito"
+                                class="w-10 h-10 rounded-full object-cover" loading="lazy">
+                            <div>
+                                <p class="text-sm font-semibold text-gray-900">Marina Brito</p>
+                                <time datetime="2025-01-14" class="text-xs text-gray-500">14 Jan 2025</time>
+                            </div>
+                        </footer>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Mobile "Explore mais" -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="comidades.html"
+                    class="inline-flex items-center text-purple-600 hover:text-purple-700 font-semibold transition group"
+                    aria-label="Explorar mais pacotes e experiências">
+                    <span aria-hidden="true">Explore mais</span>
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"
+                        aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                        <i class="fas fa-badge-percent text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Melhor preço garantido</h3>
+                    <p class="text-sm text-gray-600">Nas suas próximas hospedagens</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                        <i class="fas fa-calendar-xmark text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Cancelamento gratuito</h3>
+                    <p class="text-sm text-gray-600">Sem taxas, até antes do checkin</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                        <i class="fas fa-shield-check text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Reservas de verdade</h3>
+                    <p class="text-sm text-gray-600">Todas as ofertas verificadas</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
+                        <i class="fas fa-headset text-3xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Suporte humano</h3>
+                    <p class="text-sm text-gray-600">Atendemos quando você precisar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="duvidas" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Tire sua dúvida e reserve</h2>
+                <p class="text-gray-600">Dúvidas rápidas, respostas claras. Para que você reserve em poucos toques</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">Qual a política de cancelamento e reembolso?
+                        </h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Oferecemos cancelamento gratuito para a maioria das reservas até 7 dias antes do check-in.
+                            Você receberá um reembolso completo. Alguns anúncios com tarifas especiais podem ter
+                            políticas específicas. Em casos de emergência, não reembolsáveis, trabalhamos para encontrar
+                            a melhor solução. Basta acessar sua reserva e solicitar no sistema. Todo e qualquer outro
+                            procedimento de reembolso também será tratado com cordialidade.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">Como faço para reservar uma acomodação?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>É muito simples! Busque seu destino, selecione as datas, escolha a acomodação ideal e
+                            finalize a reserva com pagamento seguro. Você receberá confirmação por e-mail imediatamente.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">O depósito de caução ou o depósito de danos?
+                        </h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Alguns anfitriões podem solicitar um depósito de segurança que será devolvido após o
+                            check-out, caso não haja danos. Os valores e condições variam por propriedade e estão
+                            descritos em cada anúncio.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">As hospedagens aceitam pets? Há taxas
+                            adicionais?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Muitas de nossas acomodações aceitam pets! Use o filtro "Pet-friendly" na busca. Algumas
+                            propriedades podem cobrar taxa adicional para limpeza ou cauções específicas. Verifique os
+                            detalhes em cada anúncio.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 5 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">Quais formas de pagamento são aceitas?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Aceitamos cartões de crédito (Visa, Mastercard, Elo, American Express), cartões de débito,
+                            PIX e boleto bancário. O parcelamento está disponível dependendo do valor e da propriedade
+                            selecionada.</p>
+                    </div>
+                </details>
+
+                <!-- FAQ Item 6 -->
+                <details class="group bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 transition">
+                        <h3 class="text-lg font-semibold text-gray-900">As acomodações foram Bivoo do dono? Posso falar
+                            por você?</h3>
+                        <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600">
+                        <p>Sim! Todas as propriedades são cuidadosamente verificadas pela equipe Bivoo. Você pode entrar
+                            em contato conosco através do chat, telefone ou WhatsApp a qualquer momento para tirar
+                            dúvidas ou resolver questões.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <!-- Main Footer Content -->
+        <div class="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 mb-12">
+
+                <!-- Column 1: Navegação Principal -->
+                <div>
+                    <h4 class="text-lg font-bold mb-4 text-white">Navegue</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Explorar hospedagens
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-about.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Anuncie seu imóvel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Suporte -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-help.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Central de ajuda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Perguntas frequentes
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cancelamento"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Política de cancelamento
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:08008870248"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                0800 887 0248
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Destinos Populares -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Destinos</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-listings.html?destino=pipa"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Pipa, RN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=maceio"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Maceió, AL
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=buzios"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                <i
+                                    class="fas fa-map-marker-alt text-green-500 mr-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                                Búzios, RJ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html?destino=porto-galinhas"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Porto de Galinhas, PE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-listings.html"
+                                class="text-primary hover:text-primary-dark transition-colors font-semibold flex items-center group">
+                                Ver todos os destinos
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Para Anfitriões -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Anfitriões</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="bivoo-host.html"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                Como anunciar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="bivoo-faq.html#anfitrioes"
+                                class="text-gray-300 hover:text-white transition-colors flex items-center group">
+                                FAQ para anfitriões
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Newsletter -->
+                <div>
+                    <h4 class="text-lg mb-4 text-white">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Receba ofertas exclusivas e novidades direto no seu e-mail</p>
+                    <form class="space-y-3" id="newsletterForm" aria-label="Formulário de newsletter">
+                        <div>
+                            <label for="newsletter-email" class="sr-only">Endereço de e-mail</label>
+                            <input type="email" id="newsletter-email" name="email" placeholder="Seu melhor e-mail"
+                                required aria-required="true"
+                                class="w-full px-4 py-3 rounded-lg text-gray-900 bg-white border-2 border-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold px-4 py-3 rounded-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
+                            Inscrever-se
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-400 mt-3">
+                        Ao se inscrever, você concorda com nossa
+                        <a href="#privacidade" class="text-primary hover:text-primary-dark underline">Política de
+                            Privacidade</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div class="border-t border-gray-800 pt-8 pb-8">
+                <div class="text-center mb-6">
+                    <h5 class="text-sm font-semibold text-gray-400 mb-4">Formas de pagamento</h5>
+                    <div class="flex items-center justify-center flex-wrap gap-4">
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-visa text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-mastercard text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fab fa-cc-amex text-3xl text-blue-800"></i>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-blue-600 text-xs">ELO</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <span class="font-bold text-teal-600 text-xs">PIX</span>
+                        </div>
+                        <div class="bg-white rounded-lg p-2 w-16 h-10 flex items-center justify-center">
+                            <i class="fas fa-barcode text-2xl text-gray-700"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between space-y-6 lg:space-y-0 gap-6">
+
+                    <!-- Logo & Copyright -->
+                    <div class="text-center lg:text-left">
+                        <div class="mb-3">
+                            <img src="assets/img/logo-bivoo.png" alt="Bivoo - Hospedagens e Experiências"
+                                class="h-8 mx-auto lg:mx-0">
+                        </div>
+                        <p class="text-sm text-gray-400">
+                            Rua Bem e São Agostinho, Pipa/RN - CEP 59.178-000
+                        </p>
+                        <p class="text-sm text-gray-400 mt-2">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <a href="tel:08400694065" class="hover:text-white transition">
+                                (84) 00694-0365
+                            </a>
+                        </p>
+                    </div>
+
+                    <!-- Links Legais -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400">
+                        <a href="#termos" class="hover:text-white transition">Termos de Uso</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#privacidade" class="hover:text-white transition">Privacidade</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#cookies" class="hover:text-white transition">Cookies</a>
+                        <span class="text-gray-700">•</span>
+                        <a href="#lgpd" class="hover:text-white transition">LGPD</a>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <p class="text-sm text-gray-400 mb-3 text-center lg:text-left">Siga-nos</p>
+                        <div class="flex items-center justify-center lg:justify-start space-x-4">
+                            <a href="https://facebook.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Facebook da Bivoo">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="Instagram da Bivoo">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://youtube.com/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="YouTube da Bivoo">
+                                <i class="fab fa-youtube text-lg"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/bivoo" target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 bg-gray-800 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all transform hover:scale-110"
+                                aria-label="LinkedIn da Bivoo">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-sm text-gray-400">
+                        &copy; 2025 Bivoo. Todos os direitos reservados.
+                        <span class="text-gray-600 mx-2">|</span>
+                        CNPJ: 00.000.000/0001-00
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">
+                        Desenvolvido com
+                        <i class="fas fa-heart text-red-500 mx-1"></i>
+                        para conectar pessoas a experiências incríveis
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button (Accessibility) -->
+        <button id="backToTop"
+            class="fixed bottom-6 right-6 bg-primary hover:bg-primary-dark text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 opacity-0 invisible"
+            aria-label="Voltar ao topo da página">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </button>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Newsletter Form Submission
+        document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+
+            // Simulação de envio
+            alert(`Obrigado por se inscrever! Você receberá nossas novidades em: ${email}`);
+
+            // Reset form
+            this.reset();
+
+            // Em produção, aqui você faria a chamada AJAX para seu backend
+            // fetch('/api/newsletter', { method: 'POST', body: JSON.stringify({ email }) })
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // External Links - Open in new tab
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            // Ensure security attributes
+            if (!link.hasAttribute('rel')) {
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- ESTILOS ADICIONAIS (Opcional - Animações) -->
+    <style>
+        /* Transição suave para o botão back to top */
+        #backToTop {
+            transition: all 0.3s ease;
+        }
+
+        /* Animação hover nos ícones de redes sociais */
+        footer a[aria-label*="Facebook"]:hover i,
+        footer a[aria-label*="Instagram"]:hover i,
+        footer a[aria-label*="YouTube"]:hover i,
+        footer a[aria-label*="LinkedIn"]:hover i {
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Focus states melhorados para acessibilidade */
+        footer a:focus,
+        footer button:focus {
+            outline: 2px solid #FF6B35;
+            outline-offset: 2px;
+        }
+    </style>
+
+</body>
+
+</html>
