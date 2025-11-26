@@ -596,3 +596,292 @@ function bivoo_register_required_plugins()
     tgmpa($plugins);
 }
 add_action('tgmpa_register', 'bivoo_register_required_plugins');
+
+
+function bivoo_pacote_meta_boxes()
+{
+    add_meta_box(
+        'pacote_details',
+        __('Detalhes do Pacote', 'bivoo'),
+        'bivoo_pacote_details_callback',
+        'pacote',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'bivoo_pacote_meta_boxes');
+
+function bivoo_pacote_details_callback($post)
+{
+    wp_nonce_field('bivoo_save_pacote', 'bivoo_pacote_nonce');
+
+    // Get values
+    $preco = get_post_meta($post->ID, '_bivoo_pacote_preco', true);
+    $duracao_dias = get_post_meta($post->ID, '_bivoo_pacote_duracao_dias', true);
+    $duracao_noites = get_post_meta($post->ID, '_bivoo_pacote_duracao_noites', true);
+    $hospedagem = get_post_meta($post->ID, '_bivoo_pacote_hospedagem', true);
+    $refeicoes = get_post_meta($post->ID, '_bivoo_pacote_refeicoes', true);
+    $transporte = get_post_meta($post->ID, '_bivoo_pacote_transporte', true);
+    $passeios = get_post_meta($post->ID, '_bivoo_pacote_passeios', true);
+    $min_pessoas = get_post_meta($post->ID, '_bivoo_pacote_min_pessoas', true);
+    $max_pessoas = get_post_meta($post->ID, '_bivoo_pacote_max_pessoas', true);
+    $saida_de = get_post_meta($post->ID, '_bivoo_pacote_saida_de', true);
+    $destinos = get_post_meta($post->ID, '_bivoo_pacote_destinos', true);
+?>
+    <table class="form-table">
+        <tr>
+            <th><label>Preço por Pessoa (R$)</label></th>
+            <td><input type="number" name="bivoo_preco" value="<?php echo esc_attr($preco); ?>" step="0.01" class="regular-text"></td>
+        </tr>
+        <tr>
+            <th><label>Duração</label></th>
+            <td>
+                <input type="number" name="bivoo_duracao_dias" value="<?php echo esc_attr($duracao_dias); ?>" placeholder="Dias" style="width: 80px;">
+                dias /
+                <input type="number" name="bivoo_duracao_noites" value="<?php echo esc_attr($duracao_noites); ?>" placeholder="Noites" style="width: 80px;">
+                noites
+            </td>
+        </tr>
+        <tr>
+            <th><label>Hospedagem</label></th>
+            <td><input type="text" name="bivoo_hospedagem" value="<?php echo esc_attr($hospedagem); ?>" class="regular-text" placeholder="Ex: Hotel 4★"></td>
+        </tr>
+        <tr>
+            <th><label>Refeições</label></th>
+            <td>
+                <select name="bivoo_refeicoes" class="regular-text">
+                    <option value="Café da manhã" <?php selected($refeicoes, 'Café da manhã'); ?>>Café da manhã</option>
+                    <option value="Meia pensão" <?php selected($refeicoes, 'Meia pensão'); ?>>Meia pensão</option>
+                    <option value="Pensão completa" <?php selected($refeicoes, 'Pensão completa'); ?>>Pensão completa</option>
+                    <option value="All inclusive" <?php selected($refeicoes, 'All inclusive'); ?>>All inclusive</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th><label>Transporte</label></th>
+            <td><input type="text" name="bivoo_transporte" value="<?php echo esc_attr($transporte); ?>" class="regular-text" placeholder="Ex: Aéreo ida e volta"></td>
+        </tr>
+        <tr>
+            <th><label>Passeios</label></th>
+            <td><input type="text" name="bivoo_passeios" value="<?php echo esc_attr($passeios); ?>" class="regular-text" placeholder="Ex: 3 passeios inclusos"></td>
+        </tr>
+        <tr>
+            <th><label>Grupo (min - max)</label></th>
+            <td>
+                <input type="number" name="bivoo_min_pessoas" value="<?php echo esc_attr($min_pessoas); ?>" placeholder="Min" style="width: 80px;">
+                a
+                <input type="number" name="bivoo_max_pessoas" value="<?php echo esc_attr($max_pessoas); ?>" placeholder="Max" style="width: 80px;">
+                pessoas
+            </td>
+        </tr>
+        <tr>
+            <th><label>Saída de</label></th>
+            <td><input type="text" name="bivoo_saida_de" value="<?php echo esc_attr($saida_de); ?>" class="regular-text" placeholder="Ex: Natal, São Paulo"></td>
+        </tr>
+        <tr>
+            <th><label>Destinos</label></th>
+            <td><input type="text" name="bivoo_destinos" value="<?php echo esc_attr($destinos); ?>" class="regular-text" placeholder="Ex: Pipa, Natal, Maracajaú"></td>
+        </tr>
+    </table>
+<?php
+}
+
+
+function bivoo_experiencia_meta_boxes()
+{
+    add_meta_box(
+        'experiencia_details',
+        __('Detalhes da Experiência', 'bivoo'),
+        'bivoo_experiencia_details_callback',
+        'experiencia',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'bivoo_experiencia_meta_boxes');
+
+function bivoo_experiencia_details_callback($post)
+{
+    wp_nonce_field('bivoo_save_experiencia', 'bivoo_experiencia_nonce');
+
+    $duracao = get_post_meta($post->ID, '_bivoo_experiencia_duracao', true);
+    $preco = get_post_meta($post->ID, '_bivoo_experiencia_preco', true);
+    $grupo_max = get_post_meta($post->ID, '_bivoo_experiencia_grupo_max', true);
+    $nivel = get_post_meta($post->ID, '_bivoo_experiencia_nivel', true);
+    $idiomas = get_post_meta($post->ID, '_bivoo_experiencia_idiomas', true);
+    $inclusos = get_post_meta($post->ID, '_bivoo_experiencia_inclusos', true);
+    $nao_inclusos = get_post_meta($post->ID, '_bivoo_experiencia_nao_inclusos', true);
+?>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div>
+            <label><strong>Duração</strong></label>
+            <input type="text" name="bivoo_duracao" value="<?php echo esc_attr($duracao); ?>" placeholder="Ex: 4 horas" style="width: 100%;">
+        </div>
+
+        <div>
+            <label><strong>Preço por Pessoa (R$)</strong></label>
+            <input type="number" name="bivoo_preco" value="<?php echo esc_attr($preco); ?>" step="0.01" style="width: 100%;">
+        </div>
+
+        <div>
+            <label><strong>Grupo Máximo</strong></label>
+            <input type="number" name="bivoo_grupo_max" value="<?php echo esc_attr($grupo_max); ?>" style="width: 100%;">
+        </div>
+
+        <div>
+            <label><strong>Nível</strong></label>
+            <select name="bivoo_nivel" style="width: 100%;">
+                <option value="Fácil" <?php selected($nivel, 'Fácil'); ?>>Fácil</option>
+                <option value="Moderado" <?php selected($nivel, 'Moderado'); ?>>Moderado</option>
+                <option value="Difícil" <?php selected($nivel, 'Difícil'); ?>>Difícil</option>
+            </select>
+        </div>
+
+        <div>
+            <label><strong>Idiomas</strong></label>
+            <input type="text" name="bivoo_idiomas" value="<?php echo esc_attr($idiomas); ?>" placeholder="Português, Inglês" style="width: 100%;">
+        </div>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <label><strong>O que está incluído (um por linha)</strong></label>
+        <textarea name="bivoo_inclusos" rows="5" style="width: 100%;"><?php echo esc_textarea($inclusos); ?></textarea>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <label><strong>O que NÃO está incluído (um por linha)</strong></label>
+        <textarea name="bivoo_nao_inclusos" rows="5" style="width: 100%;"><?php echo esc_textarea($nao_inclusos); ?></textarea>
+    </div>
+<?php
+}
+
+function bivoo_save_experiencia_details($post_id)
+{
+    if (!isset($_POST['bivoo_experiencia_nonce']) || !wp_verify_nonce($_POST['bivoo_experiencia_nonce'], 'bivoo_save_experiencia')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    $fields = array(
+        'bivoo_duracao' => '_bivoo_experiencia_duracao',
+        'bivoo_preco' => '_bivoo_experiencia_preco',
+        'bivoo_grupo_max' => '_bivoo_experiencia_grupo_max',
+        'bivoo_nivel' => '_bivoo_experiencia_nivel',
+        'bivoo_idiomas' => '_bivoo_experiencia_idiomas',
+        'bivoo_inclusos' => '_bivoo_experiencia_inclusos',
+        'bivoo_nao_inclusos' => '_bivoo_experiencia_nao_inclusos',
+    );
+
+    foreach ($fields as $field => $meta_key) {
+        if (isset($_POST[$field])) {
+            update_post_meta($post_id, $meta_key, sanitize_text_field($_POST[$field]));
+        }
+    }
+}
+add_action('save_post_experiencia', 'bivoo_save_experiencia_details');
+
+
+function bivoo_filter_hospedagem_query($query)
+{
+    if (!is_admin() && $query->is_main_query() && is_post_type_archive('hospedagem')) {
+
+        // Price filter
+        if (isset($_GET['price'])) {
+            $price_range = explode('-', $_GET['price']);
+            $meta_query = array(
+                'key' => '_bivoo_preco_noite',
+                'value' => $price_range,
+                'compare' => 'BETWEEN',
+                'type' => 'NUMERIC'
+            );
+            $query->set('meta_query', array($meta_query));
+        }
+
+        // Guests filter
+        if (isset($_GET['guests'])) {
+            $meta_query = array(
+                'key' => '_bivoo_hospedes',
+                'value' => intval($_GET['guests']),
+                'compare' => '>=',
+                'type' => 'NUMERIC'
+            );
+            $query->set('meta_query', array($meta_query));
+        }
+
+        // Sort by
+        if (isset($_GET['orderby'])) {
+            switch ($_GET['orderby']) {
+                case 'price-asc':
+                    $query->set('meta_key', '_bivoo_preco_noite');
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('order', 'ASC');
+                    break;
+
+                case 'price-desc':
+                    $query->set('meta_key', '_bivoo_preco_noite');
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('order', 'DESC');
+                    break;
+
+                case 'rating-desc':
+                    $query->set('meta_key', '_bivoo_avaliacao');
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('order', 'DESC');
+                    break;
+
+                case 'popular':
+                    $query->set('meta_key', '_bivoo_views'); // Criar sistema de views
+                    $query->set('orderby', 'meta_value_num');
+                    $query->set('order', 'DESC');
+                    break;
+            }
+        }
+    }
+}
+add_action('pre_get_posts', 'bivoo_filter_hospedagem_query');
+
+
+function bivoo_article_schema()
+{
+    if (is_single()) {
+        $schema = array(
+            '@context' => 'https://schema.org',
+            '@type' => 'Article',
+            'headline' => get_the_title(),
+            'datePublished' => get_the_date('c'),
+            'dateModified' => get_the_modified_date('c'),
+            'author' => array(
+                '@type' => 'Person',
+                'name' => get_the_author()
+            ),
+            'publisher' => array(
+                '@type' => 'Organization',
+                'name' => get_bloginfo('name')
+            ),
+            'image' => get_the_post_thumbnail_url()
+        );
+
+        echo '<script type="application/ld+json">' . json_encode($schema) . '</script>';
+    }
+}
+add_action('wp_head', 'bivoo_article_schema');
+
+
+function bivoo_reading_time()
+{
+    $content = get_post_field('post_content', get_the_ID());
+    $word_count = str_word_count(strip_tags($content));
+    $reading_time = ceil($word_count / 200); // 200 palavras por minuto
+
+    return sprintf(
+        _n('%s min de leitura', '%s min de leitura', $reading_time, 'bivoo'),
+        number_format_i18n($reading_time)
+    );
+}
